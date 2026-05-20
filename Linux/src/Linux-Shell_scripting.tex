@@ -1,0 +1,87 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Shell Scripting}
+\date{\today\\v.0.9.5}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2026 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: Cron
+\chapter{Shell scripting}\index{Shell scripting}
+\input{src/ScriptingIntro}
+\section{Waarom scripting?}
+\input{src/ScriptingGebruik}
+\section{Hello World - een eerste script}
+\input{src/ScriptingHelloWorld}
+\section{Het starten van scripts}\index{Shell scripting!Starten}
+\input{src/ScriptingOpstarten}
+\section{Commentaar}\index{Shell scripting!commentaar}
+\input{src/ScriptingCommentaar}
+\section{Variabelen}\index{Variabelen, shell scripting}\index{Shell scripting!Variabelen}
+\input{src/ScriptingVariabelen}
+\section{if}\index{if}\index{Shell scripting!if}
+\input{src/ScriptingIf}
+\subsection{Opdracht: Werken met if}
+\input{src/ScriptingIfOpdracht}
+\section{for}\index{for}\index{Shell scripting!for}
+\input{src/ScriptingFor}
+\subsection{Opdracht: Werken met for}
+\input{src/ScriptingForOpdracht}
+\section{while}\index{while}\index{Shell scripting!while}
+\input{src/ScriptingWhile}
+\subsection{Opdracht: Werken met While}
+\input{src/ScriptingWhileOpdracht}
+\section{Opdracht: Gemiddelde cijfer van een student}
+\input{src/ScriptingKlasOpdracht}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%
