@@ -1,0 +1,21 @@
+Op het moment dat je een programma schrijft is het meestal volledig duidelijk wat je aan het doen bent en waarom. Als het script complexer wordt is het soms al lastiger en als je er na een jaar naar kijkt heb je soms geen idee meer waarom je het hebt gemaakt en hoe het ook alweer in elkaar zat. Het is daarom goed om uitleg in je script te verwerken. Dit maakt het voor jezelf duidelijker, maar ook als iemand anders iets wil wijzigen aan wat jij gemaakt hebt maakt het het voor die persoon een stuk makkelijker als hij of zij weet wat er waar gebeurd in het script.
+Open met vi het hello\_world.sh\index{hello\_world.sh} script en wijzig het zo dat het er zo uit komt te zien:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2020, Dennis Leeuw
+# License: GPL v3
+# Versie: 1.0
+# Dit script print Hello world! Op het scherm
+
+echo "Hello World!"
+# Verlaat het script met error-code 0
+exit 0
+#END
+\end{lstlisting}
+Je hebt nu 5 regels commentaar toegevoegd. Het \# symbool geeft dat het commentaar is en dat de interpreter (de shell) er niets mee moet doen. Als je het script opnieuw uitvoert zie je dat er niets gewijzigd is aan de uitvoer.
+
+Vervang aan het commentaar het jaartal 2020 naar het jaartal waarin je nu leeft en verander de naam Dennis Leeuw in je eigen naam.
+
+Het is een goede gewoonte om aan te geven wie een script gemaakt heeft, wat de licentie is en een korte beschrijving te geven van wat het script doet. Je werkt waarschijnlijk niet je leven lang op dezelfde afdeling of waarschijnlijk niet eens bij hetzelfde bedrijf. Beheerders na jou kunnen op deze manier snel zien wie iets gemaakt heeft en wat het script doet.
+
+Ik laat mijn scripts meestal eindigen met \#END zodat ik weet of het script compleet is. Als het script begint met een she-bang en eindigt met \#END dan is het script compleet.

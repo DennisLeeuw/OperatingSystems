@@ -1,0 +1,57 @@
+\documentclass[a4paper,12pt,twoside,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Operating Systems Werkboek}
+\date{\today\\
+0.0.0
+\vfill
+\raggedright
+\copyright\ 2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% requires: 
+% provides: programmeren, python
+\section{Operating systems: Wie maakt het?}
+\input{src/opdracht-soorten-vanwie}
+
+\section{Operating systems: Wat draait waar?}
+\input{src/opdracht-soorten}
+
+\section{Operating systems: Waarom zijn ze anders?}
+\input{src/opdracht-soorten-waarom}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

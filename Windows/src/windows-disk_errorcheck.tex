@@ -1,0 +1,14 @@
+Error checking controleert je disk op fouten.
+
+Je kan de controle ook op de commandline doen. Start daarvoor PowerShell op als Administrator en run:
+\begin{lstlisting}[language=bash]
+sfc /scannow
+\end{lstlisting}
+De \texttt{sfc} (System File Checker) tool scant de disk op errors. Mochten deze er zijn dan kan je met \texttt{dism} (Deployment Image Servicing and Management) proberen de problemen op te lossen:
+\begin{lstlisting}[language=bash]
+dism /online /cleanup-image /restorehealth
+sfc /scannow
+\end{lstlisting}
+
+Treden er na de tweede scan van \texttt{sfc} geen errors meer op, reboot dan Windows en alles zou weer goed moeten zijn.
+

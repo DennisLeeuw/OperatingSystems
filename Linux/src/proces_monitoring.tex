@@ -1,0 +1,25 @@
+Met \texttt{ps}\index{ps} kan je zien welke processen er draaien op een systeem. In deze sectie gaan we \texttt{ps} met andere opties gebruiken dan we eerder hebben gedaan. De Linux variant van \texttt{ps} kent de mogelijkheid om ook opties te gebruiken zonder gebruik van het min teken voor de optie, dit is de zogenaamde BSD-style:
+\begin{lstlisting}[language=bash]
+$ ps aux
+\end{lstlisting}
+doet bijna hetzelfde als \texttt{ps -ef}. De output ziet er ook bijna hetzelfde uit:
+\begin{lstlisting}[language=bash]
+$ ps aux
+USER   PID %CPU %MEM    VSZ   RSS TTY   STAT START   TIME COMMAND
+root     1  0.0  0.0 167316 11924 ?     Ss   Feb02   0:48 /sbin/init
+root     2  0.0  0.0      0     0 ?     S    Feb02   0:00 [kthreadd]
+root     3  0.0  0.0      0     0 ?     I<   Feb02   0:00 [rcu_gp]
+root     4  0.0  0.0      0     0 ?     I<   Feb02   0:00 [rcu_par_gp]
+root     9  0.0  0.0      0     0 ?     I<   Feb02   0:00 [mm_percpu_wq]
+root    10  0.0  0.0      0     0 ?     S    Feb02   0:00 [rcu_tasks_rude_]
+root    11  0.0  0.0      0     0 ?     S    Feb02   0:00 [rcu_tasks_trace]
+root    12  0.0  0.0      0     0 ?     S    Feb02   1:25 [ksoftirqd/0]
+root    13  0.0  0.0      0     0 ?     I    Feb02   6:07 [rcu_sched]
+root    14  0.0  0.0      0     0 ?     S    Feb02   0:03 [migration/0]
+root    16  0.0  0.0      0     0 ?     S    Feb02   0:00 [cpuhp/0]
+root    17  0.0  0.0      0     0 ?     S    Feb02   0:00 [cpuhp/1]
+root    18  0.0  0.0      0     0 ?     S    Feb02   0:03 [migration/1]
+root    19  0.0  0.0      0     0 ?     S    Feb02   0:10 [ksoftirqd/1]
+\end{lstlisting}
+De extra informatie is voornamelijk de extra data over het gebruik van de CPU en van het geheugen (MEM). Deze informatie kennen we ook uit de \texttt{top} applicatie. Ook dit commando is behandeld in de 'Linux CLI' handleiding.
+

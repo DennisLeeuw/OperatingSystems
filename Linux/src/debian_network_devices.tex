@@ -1,0 +1,42 @@
+Er zijn verschillende manieren om te achterhalen welke netwerk devices we hebben. We geven er hier twee:
+\begin{lstlisting}[language=bash]
+cat /proc/net/dev
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+ip link show
+\end{lstlisting}
+
+In de output van beide commando's zien we de interface \texttt{lo} wat de localhost interface is en we hebben een interface die begint met \texttt{en} wat een ethernet interface is.
+
+Na een
+\begin{lstlisting}[language=bash]
+cat /etc/network/interfaces
+\end{lstlisting}
+zien we een output die lijkt op:
+\begin{lstlisting}[language=bash]
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug ens33
+iface ens33 inet dhcp
+\end{lstlisting}
+We zien dat we in de twee regel van het bestand verwezen worden naar de manual-pagina van interfaces. Daar staat veel meer in. Lees deze man-page door tot en met het stukje over INCLUDING OTHER FILES.
+
+Verder zien we in ons \texttt{interfaces} bestand nog twee regels die beginnen met \texttt{iface}. Na de \texttt{iface} optie komt eerst de naam van de interface die we willen configureren. Het key-word \texttt{inet} geeft aan dat we het hebben over een Internet-configuratie. Het Internet gebruikt TCP/IP en dat is wat hier bedoeld wordt, inet = IP. Tot slot zien we bij de \texttt{lo} interface dat er \texttt{loopback} gebruikt wordt. De \texttt{loopback} methode kent geen verdere opties en zorgt ervoor dat op de \texttt{lo} interface het 127.0.0.1 IP adres komt te staan. Voor de \texttt{ens33} interface, die bij jou best anders kan heten, zien we de methode \texttt{dhcp}. Op deze interface zal het systeem dus proberen via DHCP zijn settings te verkrijgen.
+
+In de man-page van interfaces hebben we ook gezien dat we een methode \texttt{static} hebben waarmee een statisch IP-adres op de interface kunnen zetten.
+\begin{lstlisting}[language=bash]
+iface eth1 inet static
+     address 192.168.1.2/24
+     gateway 192.168.1.1
+\end{lstlisting}
+Static kent een aantal opties die we meekunnen geve. Let op het inspringen! De ingesprongen opties behoren bij de configuratie van \texttt{eth1}. De \texttt{eth1} interface krijgt het IP-adres 192.168.1.2 met als subnetmask 255.255.255.0. Ook wordt de default gateway gezet naar 192.168.1.1.
+

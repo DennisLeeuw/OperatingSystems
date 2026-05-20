@@ -1,0 +1,116 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Systeem Inventarisatie}
+\date{\today\\v.0.9.5}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: sudo, cat
+% Provides: lscpu, free, dmidecode, uname
+% lspci, lsusb, lsscsi, lsblk, du, df, fdisk
+
+\chapter{Systeem inventarisatie}
+\input{src/inventarisatie}
+
+\section{Systeem versienummers}
+\input{src/versienummers}
+\subsection{Distributie versie}
+\input{src/distro_version}
+\subsection{Kernel versie}
+\input{src/kernel_version}
+
+\section{Het moederbord}
+\subsection{CPU}\index{CPU}\index{Hardware informatie!CPU}
+\input{src/cpu_info}
+\subsection{RAM}\index{RAM}\index{Hardware informatie!RAM}
+\input{src/ram_info}
+\subsection{BIOS}\index{BIOS}\index{Hardware informatie!BIOS}
+\input{src/bios_info}
+
+\section{Extensie bussen}
+\subsection{PCI}\index{PCI}\index{Hardware informatie!PCI}
+\input{src/pci_info}
+\subsection{USB}\index{USB}\index{Hardware informatie!USB}
+\input{src/usb_info}
+\subsection{SCSI}\index{SCSI}\index{Hardware informatie!SCSI}
+\input{src/scsi_info}
+
+\section{Harddisks}
+\input{src/disks}
+\input{src/disks-fs}
+\input{src/disks-partition}
+\input{src/disk-free}
+\input{src/disk-usage}
+
+\section{Netwerk}
+\input{src/netwerk_hardware}
+\subsection{Hostname}
+\input{src/linux-hostname}
+
+\section{De /etc directory}
+\subsection{Datum en tijd}
+\input{src/linux-localtime}
+\subsection{Taal}
+\input{src/linux-locale}
+\subsection{Keyboard}
+\input{src/linux-keyboard}
+
+\subsection{Login berichten}
+\subsubsection{Issue}
+\input{src/linux-issue}
+\subsubsection{motd}
+\input{src/linux-motd}
+
+\section{Inventarisatie opdracht}
+\input{src/inventarisatie_opdracht}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

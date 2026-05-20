@@ -1,0 +1,20 @@
+Om DNS te testen zijn er op GNU/Linux systemen vaak meerdere tools. De twee meest gebruikte zijn \texttt{host} voor simpele queries en \texttt{dig} voor een meer uitgebreid overzicht. We zullen het hier simpel houden en alleen \texttt{host} introduceren.
+
+De meest eenvoudige query is het aanroepen van \texttt{host} met een FQDN of een IP-adres:
+\begin{lstlisting}[language=bash]
+$ host www.google.com
+\end{lstlisting}
+Dit geeft een overzicht van de verschillende IP-adressen die Google gebruikt voor deze FQDN.
+
+Wil je een adres resolven tegen een specifieke DNS-server dan kan je na de query het IP-adres van een DNS server meegeven:
+\begin{lstlisting}[language=bash]
+$ host www.google.com 192.168.1.1
+\end{lstlisting}
+Vervang hierbij \texttt{192.168.1.1} door het IP-adres van je \'e\'en van je eigen lokale DNS-servers (zie het \texttt{resolv.conf} bestand).
+
+Tot slot kan je aan \texttt{host} nog specifieke query types meegeven, zoals wat bijvoorbeeld de IP-adressen zijn van de mailserver (MX records uit DNS)
+\begin{lstlisting}[language=bash]
+$ host -t MX google.com
+\end{lstlisting}
+Let op dat je hierbij het domeinnaam meegeeft en niet een FQDN.
+

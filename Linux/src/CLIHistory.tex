@@ -1,0 +1,22 @@
+Een ander handigheidje van de shell is dat hij een geschiedenis (history) opslaat van gebruikte commando's. Met de
+pijltjes toetsen $\uparrow $ (pijltje-omhoog) en $\downarrow $ (pijltje-omlaag) kan je door de geschiedenis van je
+commando's scrollen. Omhoog is terug in de tijd en omlaag is het omgekeerde. Met CTRL-c breek je af waar je gebleven
+bent en met enter voer je het commando uit.
+
+Met CTRL-r kan je zoeken in je history. Type maar eens CTRL-r en dan de p. Er zal vrijwel direct pwd verschijnen. Op
+enter drukken is dan het enige dat nog nodig is om het commando uit te voeren. Als je toch besluit dat je het commando
+niet wil uitvoeren dan druk je op CTRL-c om de zoekfunctie te verlaten.
+
+Met !! herhaal je het laatste commando dat je gedaan hebt en met !<commando> herhaal je het
+laatste <commando> dat je gedaan hebt. Type nu eens
+
+\begin{lstlisting}[language=bash]
+$ !!
+\end{lstlisting}
+
+dan zal het pwd commando opnieuw uitgevoerd worden.
+
+\begin{lstlisting}[language=bash]
+$ !hostname
+\end{lstlisting}
+zal de hostname -s uitvoeren want dat is het laatste hostname commando dat we gedaan hebben.

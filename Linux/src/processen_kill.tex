@@ -1,0 +1,13 @@
+Er zijn momenten dat we een proces willen afsluiten omdat het klaar is met zijn taak of omdat we het niet meer willen gebruiken. Het commando om een draaiend proces te stoppen heet \texttt{kill}\index{kill}\index{commando!kill}.
+
+Het \texttt{kill} commando kan op twee manieren aan een proces vragen om te stoppen met werken. Het kan op de vriendelijke manier en op de botte manier. Op de vriendelijke manier krijgt een proces de mogelijkheid om alles wat hij nog aan het doen is af te ronden. Bij de botte manier is dat niet het geval. Het is verstandig om een proces te vragen op een vriendelijk manier af te sluiten zodat het proces netjes alles kan afhandelen. Op deze manier raakt er geen data verloren.
+
+De nette manier is het vragen aan het proces om te stoppen, ofwel in Engels to terminate. Het signaal heet dan ook SIGTERM
+\begin{lstlisting}[language=bash]
+$ kill -s SIGTERM firefox
+\end{lstlisting}
+
+De botte manier is het killen van het proces ofwel SIGKILL.
+\begin{lstlisting}[language=bash]
+$ kill -s SIGKILL firefox
+\end{lstlisting}

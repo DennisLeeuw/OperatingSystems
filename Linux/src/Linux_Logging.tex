@@ -1,0 +1,75 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux Logging}
+\date{\today\\v.0.8.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2021-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_Server}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% requires: tail
+% provides: syslog, rsyslog, systemd-journald, journalctl
+\chapter{Introductie}
+\input{src/linux_logging_intro}
+
+% provides: syslog, systemd-journald
+\chapter{syslog}\label{sec:syslog}
+\input{src/syslog}
+\input{src/rsyslog}
+\section{Werken met log bestanden}
+\input{src/linux_logs}
+% provides: logrotate
+\section{Log rotation}\label{sec:logrotate}
+\input{src/logrotate}
+
+% requires: logrotate systemd-journald
+\chapter{systemd-journald}\label{sec:journalctl}
+\input{src/systemd-journald}
+\section{Werken met journalctl}
+\input{src/journalctl}
+\section{prioriteit en facility}\label{sec:journalctl-prio_fac}
+\input{src/journalctl-prio_fac}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

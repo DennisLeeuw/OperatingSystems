@@ -1,0 +1,83 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux Configuration}
+\date{\today\\v.0.5.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_cli_configuratie}
+\subsection{Voorkennis}
+\input{src/voorkennis_cli_configuratie}
+
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% requires: ls
+% provides: configuration information, /etc
+\chapter{Configuration directory}
+\input{src/configuration_dir}
+
+% requires:
+% provides:
+\section{System configuration}
+\subsection{OS Version}
+\subsubsection{debian\textunderscore version}
+\input{src/linux_debian_version}
+\subsubsection{os-release}
+\input{src/linux_os-release}
+\subsection{Hostname}
+\input{src/linux-hostname}
+\subsection{Datum en tijd}
+\input{src/linux-localtime}
+\subsection{Taal}
+\input{src/linux-locale}
+\subsection{Keyboard}
+\input{src/linux-keyboard}
+
+\section{Login berichten}
+\subsection{Issue}
+\input{src/linux-issue}
+\subsection{motd}
+\input{src/linux-motd}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

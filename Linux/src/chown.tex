@@ -1,0 +1,24 @@
+Met \texttt{chown}\index{chown}\index{commando!chown} kan de eigenaarschap van een bestand wijzigen. Om dit te kunnen testen moeten we een aantal zaken regelen:
+\begin{itemize}
+\item Maak een groep aan met de naam \textbf{samen}
+\item Voeg jezelf en de gebruiker eengebruiker toe aan deze groep
+\item Maak een directory aan \texttt{/home/samen}
+\end{itemize}
+
+Nu gaan we ervoor zorgen dat de groep samen toegang heeft tot de directory samen en dat jezelf de hoofd eigenaar wordt. We beginnen met het laatste:
+\begin{lstlisting}[language=bash]
+$ sudo chown $(id -un) /home/samen
+\end{lstlisting}
+We hebben in dit commando een extraatje toegevoegd. We kunnen een variabele gebruiken om de gebruikers naam in te zetten en die gebruiken bij \texttt{chown}. Er bestaat echter ook een mogelijkheid om in de shell direct een commando aan te roepen en deze als variabele te gebruiken en dat is wat we hier gedaan hebben. We hebben \texttt{id -un} aangeroepen (wat onze gebruikersnaam terug geeft) en deze hebben we gebruikt als optie aan \texttt{chown}. Dus eigenlijk staat er \texttt{sudo chown username /home/samen}. Bekijk met \texttt{ls -l} het resultaat.
+
+Nu gaan we zorgen dat de beide gebruikers gebruik kunnen maken van deze directory. Eerst moeten we zorgen dat de groep \textbf{samen} de groeps-eigenaar wordt van de directory:
+\begin{lstlisting}[language=bash]
+$ sudo chown .samen /home/samen
+\end{lstlisting}
+Door een punt voor \textbf{samen} te zetten gevevn we aan dat we de groeps-eigenaarschap willen wijzigen. Bekijk met \texttt{ls -l} het resultaat.
+
+Beide commando's hadden we ook in \'e\'en keer kunnen doen:
+\begin{lstlisting}[language=bash]
+$ sudo chown dennis.samen /home/samen
+\end{lstlisting}
+

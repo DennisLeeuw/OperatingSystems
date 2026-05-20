@@ -1,0 +1,20 @@
+Om een overzicht te krijgen van de beschikbare block-devices is er het \texttt{lsblk} commando. De output van het \texttt{lsblk} commando kan er zo uit zien:
+\begin{lstlisting}[language=bash]
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 953.9G  0 disk 
+|-nvme0n1p1 259:1    0    30G  0 part 
+|-nvme0n1p2 259:2    0   977M  0 part /boot/efi
+|-nvme0n1p3 259:3    0  54.6G  0 part /
+|-nvme0n1p4 259:4    0  48.1G  0 part [SWAP]
+|-nvme0n1p5 259:5    0 820.2G  0 part /home
+\end{lstlisting}
+We zien hier 1 disk met de naam \textit{nvme0n1} van 1TB (953.9GiB). Deze disk bestaat uit 5 partities (p1 tot en met p5):
+\begin{description}
+\item[nvme0n1p3] P3 is de partitie waarop de root (\texttt{/}) van ons bestandssysteem staat.
+\item[nvme0n1p5] P5 is de partitie waarop de data van de gebruikers staat (\texttt{/home}).
+\item[nvme0n1p2] P2 is de EFI partitie (\texttt{/boot/efi}), waarop de bestanden staan die nodig zijn voor UEFI. Het bevat o.a. de bootloader.
+\end{description}
+
+De partitie die aangemerkt wordt als \textit{[SWAP]} wordt gebruikt door het systeem om data die niet meer in het geheugen past en niet actief gebruikt wordt tijdelijk op disk te zetten. Andere systemen gebruiken hiervoor swap-files die onderdeel zijn van het bestandssyteem. Hoewel Linux dat ook kan is het standaard om er een aparte partitie voor te gebruiken met zijn eigen filesysteem.
+
+

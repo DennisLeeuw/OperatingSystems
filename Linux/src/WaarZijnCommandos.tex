@@ -1,0 +1,62 @@
+Een gemiddeld Linux systeem bevat heel veel commando's en dat is omdat er in de Unix-wereld twee filosofie\"en zijn die bij elkaar aansluiten de eerste is het KISS-principe. KISS staat voor Keep It Simple, Stupid en is oorspronkelijk afkomstig uit de US Navy. De tweede is Small is Beautiful en die is afkomstig uit de Economie.\footnote{Small Is Beautiful: A Study of Economics As If People Mattered door E. F. Schumacher}
+
+Je komt op UNIX-achtige systemen dan ook vele kleine commando's tegen die \'e\'en ding goed doen. Dit heeft een aantal voordelen. Omdat ze maar \'e\'en ding doen is de code simpel en is dus code waarin de programma's geschreven zijn makkelijker te controleren op fouten. Een ander voordeel is dat niet iedereen in elk programma weer dezelfde code hoeft te herhalen maar gebruik kan maken van iemand anders zijn programma. De totale hoeveelheid code is daardoor klein, een compleet Linux systeem met grafische interface kan ge\"installeerd worden op een 15GB disk, zonder grafische interface past het zelfs op een 5GB disk. De laatste reden is dat wij als gebruikers vaak zonder te programmeren al heel complexe dingen met Linux kunnen doen omdat we al die kleine commando's aan elkaar kunnen knopen waarmee complexe dingen te doen zijn.
+
+Het nadeel van heel veel kleine programma's is dat je het overzicht snel kwijt kan raken, zeker ook omdat vele commando's soms cryptische afkortingen hebben. Zo staat \texttt{ls} voor list. De oorspronkelijke ontwikkeling van Unix werd gedaan op systemen met toetsenborden die niet zo ergonomisch zijn als tegenwoordig. Ze hadden toetsen die je met enige kracht moest indrukken en na een dag programmeren hadden de programmeurs Ken Thompson en Dennis Ritchie en hun team vaak zere knokkels door overbelasting. Door commando's zo kort mogelijke namen te geven verminderden ze het aantal toetsaanslagen. Vandaar de vaak korte commando namen.
+
+Type
+\begin{lstlisting}[language=bash]
+$ ls
+\end{lstlisting}
+en je zal een aantal blauwe directories op je scherm zien verschijnen. Als je nu
+\begin{lstlisting}[language=bash]
+$ ls /usr/bin/
+\end{lstlisting}
+typt dan verschijnen er allemaal groene commando's op je scherm, of beter ze scrollen van je scherm af in kolommen, omdat het er heel veel zijn. Het past niet op je scherm. Als we de hele lijst willen zien dan zullen we gebruik moeten maken van een programma de uitvoer van \texttt{ls} opdeelt in pagina's die zoveel regels bevatten dat ze het scherm vullen.
+Een programma dat dat doet heet \texttt{more}. De kunst is nu om de uitvoer van \texttt{ls} te koppelen aan \texttt{more} en daarvoor is er de pipe, \texttt{|}, of de pijp. Het pipe-character koppelt twee commando's aan elkaar:
+\begin{lstlisting}[language=bash]
+$ ls /usr/bin/ | more
+\end{lstlisting}
+met de spatie-balk kan je nu pagina voor pagina bekijken en met de letter q verlaat je \texttt{more}. Nu is \texttt{more} wel heel simpel en kan het alleen dat wat je nu gezien hebt. Makkelijker zou het zijn als je omhoog en omlaag door de commando's kan gaan, en misschien zelfs wel zou kunnen zoeken in zo'n lange lijst. Dat kan ook, daarvoor hebben we de opvolger van \texttt{more} die meer kan en \texttt{less} heet want less is more.
+
+\begin{lstlisting}[language=bash]
+$ ls /usr/bin/ | less
+\end{lstlisting}
+Nu kan je met de spatie-balk door de pagina's gaan, met de pijltjes omhoog en omlaag per regel door de lijst gaan, met PgUp en PgDn per pagina omhoog en omlaag gaan en met / kan je zoeken. Type maar eens als je in \texttt{less} zit
+\begin{lstlisting}[language=bash]
+/less
+\end{lstlisting}
+Zo kom je bij het eerste commando uit dat less in de naam heeft. Met n kan je zoeken naar het volgende (next) commando dat ook less bevat, en zo vderer . Ook hier weer is de q-toets de manier om \texttt{less} te verlaten.
+
+We hebben nu gezien dat heel veel commando's terug te vinden zijn in de \texttt{/usr/bin/} directory. Maar dit is maar \'e\'en plek waar commando's te vinden zijn. Commando's vind je terug in de \texttt{bin/} en \texttt{sbin/} directories. We gebruiken hier bewust een meervoud omdat we deze directories op verschillende plekken kunnen vinden. Je bent in de \texttt{/usr} directory al de \texttt{bin/} directory tegen gekomen. De \texttt{bin/} directories bevatten commando's die door iedereen gebruikt kunnen worden. De \texttt{sbin/} directories zijn voor de commando's die alleen toegankelijk zijn voor de systeembeheerder.
+
+Naast in \texttt{/usr/} vind je ook \texttt{bin/} en \texttt{sbin/} directories in de \texttt{/} en de \texttt{/usr/local/} directory. Al deze locaties hebben een andere functie:
+\begin{itemize}
+	\item \texttt{/} is de root van het systeem en de \texttt{bin/} en \texttt{sbin/} directories bevatten daar de commando's die nodig zijn voor het opstarten van het systeem en zijn afkomstig van de distributie.
+	\item \texttt{/usr/} bevat (s)bin directories die de commando's bevatten voor normaal gebruik van het systeem en deze commando's zijn afkomstig van de distributie.
+	\item \texttt{/usr/local/} bevat (s)bin directories die commando's bevatten die door de systeembeheerder ge\"installeerd zijn (gecompileerd)
+	\item \texttt{/opt/} bevat subdirectories met daarin (s)bin directories per ge\"installeerd softwarepakket dat niet door de distributie is meegeleverd, maar later vanaf een pakket is ge\"installeerd.
+\end{itemize}
+
+Om te bepalen welke directories gebruikt worden voor het zoeken naar een commando is er een variabele aanwezig in de shell en die variabele heeft de logische naam PATH. Type maar eens:
+\begin{lstlisting}[language=bash]
+$ echo $PATH
+\end{lstlisting}
+Dit levert een output op die er ongeveer zo uit ziet: \texttt{/usr/local/bin:/usr/bin:/bin} (dit kan per systeem verschillen). Voor een gebruiker met dit PATH wordt er voor een commando eerst gezocht in \texttt{/usr/local/bin/}, daarna in \texttt{/usr/bin/} en als laatste in \texttt{/bin/}.
+
+Als we willen weten waar een commando vandaan komt, dan kunnen we \texttt{which} gebruiken:
+\begin{lstlisting}[language=bash]
+$ which ls
+\end{lstlisting}
+
+Met het commando su kan je als een andere gebruiker inloggen (switch user). Type eens:
+\begin{lstlisting}[language=bash]
+$ su - root
+\end{lstlisting}
+geef het root wachtwoord en type
+\begin{lstlisting}[language=bash]
+# echo $PATH
+# exit
+\end{lstlisting}
+Na het su commando moet je het password van de root gebruiker geven dat je ingesteld hebt tijdens de installatie. Je zult nu zien dat het PATH van de root gebruiker ook de \texttt{sbin/} directories bevat. De root gebruiker heeft dus veel meer commando's tot zijn beschikking dan een normale gebruiker.
+

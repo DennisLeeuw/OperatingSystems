@@ -1,0 +1,32 @@
+Om bestanden te kopie\"eren gebruiken \texttt{cp}\index{cp}\index{Bestanden!cp} van het Engelse copy:
+\begin{lstlisting}[language=bash]
+$ cp hello.txt Boom/hello.txt
+\end{lstlisting}
+We kunnen ook gelijk de naam veranderen als we dat willen:
+\begin{lstlisting}[language=bash]
+$ cp hello.txt Boom/Hallo.txt
+\end{lstlisting}
+
+Om bestanden verplaatsen gebruiken \texttt{mv}\index{mv}\index{Bestanden!mv} van het Engelse move. Het verschil met copy is dat een bestand niet meer op de oorspronkelijke plek terug te vinden is. Bij move heb je dus maar 1 bestand na de handeling, na copy heb je 2 bestanden.
+\begin{lstlisting}[language=bash]
+$ mv Boom/Hallo.txt .
+\end{lstlisting}
+Het \texttt{mv} commando kunnen we ook gebruiken om bestanden van naam te veranderen:
+\begin{lstlisting}[language=bash]
+$ mv Hallo.txt hallo.txt
+\end{lstlisting}
+
+Voor het weggooien van bestanden gebruiken we \texttt{rm} van remove.
+\begin{lstlisting}[language=bash]
+$ rm hallo.txt
+\end{lstlisting}
+
+Omdat alles een bestand is op een Linux systeem zijn ook directories bestanden, speciale bestanden, maar toch bestanden. We hebben al gezien dat we met \texttt{rmdir} lege directories weg kunnen gooien. Zouden we nu \texttt{rm} kunnen gebruiken om ook directories weg te gooien. Ja, dat kan, maar ook hier geldt dat de directory leeg moet zijn.
+\begin{lstlisting}[language=bash]
+$ rm Boom
+\end{lstlisting}
+geeft weer een foutmelding. Het systeem zegt tegen ons dat \texttt{Boom} een directory is. Als we tegen \texttt{rm} vertellen dat hij de zaken recursive weg met gooien, dan zal de hele boomstructuur wegggegooid worden:
+\begin{lstlisting}[language=bash]
+$ rm -r Boom
+\end{lstlisting}
+De \texttt{-r} optie verteld aan rm dat hij vanuit de diepste plek in de Boom directory moet beginnen met bestanden (en directories) weg te gooien net zo lang tot hij de directory Boom weg kan gooien. In ons voorbeeld is het niet veel dat \texttt{rm} te doen heeft, maar je zal niet de eerste zijn die met \texttt{-r} meer weggooid dan de bedoeling was en dat tot de ontdekking komt dat een Linux systeem geen undelete kent. Terug halen van data is er dan ook niet bij.

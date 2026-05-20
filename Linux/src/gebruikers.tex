@@ -1,0 +1,40 @@
+Bij het inloggen heb je een gebruikersnaam en wachtwoord opgegeven en bij de installatie heb je ook een wachtwoord moeten opgeven voor de gebruiker root. Op het systeem zijn dus minimaal al twee gebruikers aanwezig. Op een Linux systeem kunnen ook processen een gebruiker hebben. Dus een proces kan onder een bepaalde gebruiker werken zodat andere gebruikers niet bij dit proces kunnen. Processen zijn taken die op de achtergrond draaien zoals bijvoorbeeld een webserver.
+
+De database met gebruikersnamen is een bestand dat staat in de \texttt{/etc} directory. Het bestand heet \texttt{passwd}\index{passwd} en dat kan je bekijken met \texttt{less}.
+
+\begin{lstlisting}[language=bash]
+$ less /etc/passwd
+\end{lstlisting}
+
+De wachtwoorden staan in een ander bestand, dat heet \texttt{shadow}\index{shadow}. Dit bestand kan je met \texttt{less} niet bekijken, omdat alleen de beheerder (root) hier rechten voor heeft. De wachtwoorden zijn niet leesbaar, maar ge-encrypt, opgeslagen. Met het \texttt{passwd}-commando\index{passwd}\index{commando!passwd} kan je je wachtwoord wijzigen.
+
+Gebruik \texttt{grep}\index{grep} om je eigen gegevens uit \texttt{/etc/passwd}\index{/etc/passwd} te halen:
+\begin{lstlisting}[language=bash]
+$ grep dennis /etc/passwd
+\end{lstlisting}
+vervang hierbij \textsl{dennis} door je eigen gebruikersnaam.
+
+De output van de vorige commando zal er ongeveer zo uit zien:
+\begin{lstlisting}[language=bash]
+dennis:x:1000:1000:Dennis Leeuw,,,:/home/dennis:/bin/bash
+\end{lstlisting}
+Het \texttt{passwd} bestand is een soort database waarin de verschillende elementen (velden) gescheiden zijn door een :. Computers werken met getallen, het zijn rekenaars, dus elke gebruiker en elke groep heeft een nummer. De gebruikersnaam en groepsnaam zijn er voor ons mensen, de nummers voor de computer. Het nummer voor de gebruiker noemen we het UID of User ID en het getal voor de groep het GID of Group ID.
+
+De verschillende velden van het \texttt{/etc/passwd} bestand bevatten, van voor naar achter, deze informatie:
+\begin{enumerate}
+	\item gebruikersnaam (login-naam)
+	\item dit veld werd vroeger gebruikt voor het wachtwoord, nu staat er altijd een x. Wachtwoorden staan nu in het \texttt{shadow} bestand.
+	\item nummerieke ID van de gebruiker (UID: User ID). De UID's 0-999 zijn gereserveerd voor het systeem en 1000 en hoger zijn vrij te gebruiken voor gebruikers. Het root-account heeft altijd UID 0.
+	\item nummerieke ID van de primaire groep van de gebruiker (GID: Group ID). De GID's 0-999 zijn gereserveerd voor het systeem.
+	\item extra informatie over de gebruiker, met komma's gescheiden. Heet ook wel het GECOS-field en kan dan de volgende informatie bevatten:
+		\begin{enumerate}
+			\item Volledige naam van de gebruiker
+			\item Adres gegevens van de gebruiker (gebouw en kamernummer)
+			\item Werk telefoonnummer
+			\item Thuis telefoonnummer
+			\item Overige contact informatie (fax, prive e-mail adres, pager, social media)
+		\end{enumerate}
+	\item de home-directory van de gebruiker
+	\item de shell die wordt opgestart als de gebruiker inlogt
+\end{enumerate}
+

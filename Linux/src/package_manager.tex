@@ -1,0 +1,31 @@
+In de loop van de tijd zijn er twee dominante package managers\index{package manager} ontstaan. De ene heet RPM, Red Hat Package Manager, en de andere heet DPKG, Debian Package Manager. De packages die gemaakt worden en die geschikt zijn voor RPM hebben de extensie .rpm en de packages die door DPKG gemaakt worden hebben de extensie .deb. Er zijn nog vele andere package managers, maar daar gaan we in dit document niet verder op in.
+
+Als er een packet gemaakt is wil je het natuurlijk ook kunnen installeren. Dat kan met \texttt{rpm}\index{rpm}\index{commando!rpm} en met \texttt{dpkg}\index{dpkg}\index{commando!dpkg}.
+
+Om pakketten uit een repository te kunnen installeren heb je tools nodig die naast de installatie ook het pakket ophalen van het Internet. Voor DPKG gebaseerde systemen heet die tool \texttt{apt}(Advanced Packaging Tool)\index{apt}\index{commando!apt} en voor RPM gebaseerde systemen is dat veelal \texttt{yum}\index{yum}\index{commando!yum}(Yellow Dog Updater, Modified) of \texttt{dnf}\index{dnf}\index{commando!dnf}(Dandified YUM).
+
+Een andere taak van de package manager is het oplossing van dependencies. Als je een tekstverwerker applicatie wil installeren moet er een grafische interface aanwezig zijn. Het is dus handig als de package manager ervoor zorgt dat er een grafische interface aanwezig is voordat de tekstverwerker ge\"installeerd wordt. De package manager is ervoor verantwoordelijk om per stukje software dat je wil installeren de afhankelijkheden (dependencies) uit te zoeken en deze ook te installeren, zodat je de software meteen kan gebruiken.
+
+De verschillende tools hebben verschillende manieren waarop ze moeten worden aangesproken om software te installeren. De belangrijkste functies van de package managers zijn de mogelijkheid om extra software te installeren, software van een systeem te verwijderen en het updaten van het totale systeem. Bij een update van het systeem wordt alle software die je vanuit de repositories ge\"installeerd hebt en de basis software geupdate.
+
+Afhankelijk van de distributie die je gebruikt is er de ene of de andere tool aanwezig. In de rest van dit hoofdstuk wordt per tool aangegeven hoe je het moet gebruiken. Zoek uit welke tool er voor jouw installatie aanwezig is. Een paar voorbeelden:
+
+\begin{tabular}{| l | l |}
+\hline
+Red Hat & yum \\
+\hline
+CentOS & yum \\
+\hline
+Fedora & dnf \\
+\hline
+Scientific Linux & yum \\
+\hline
+Debian & apt \\
+\hline
+Ubuntu & apt \\
+\hline
+Mint & apt \\
+\hline
+Raspbian & apt \\
+\hline
+\end{tabular}

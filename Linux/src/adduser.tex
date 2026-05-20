@@ -1,0 +1,13 @@
+Om gebruikers toe te voegen aan het systeem zijn er twee tools. De eerste is \texttt{useradd}\index{useradd}\index{commandos!useradd} en de andere is \texttt{adduser}\index{adduser}\index{commando!adduser}. Het programma \texttt{useradd} is een low-level tool, de standaard manier om gebruikers aan te maken is via \texttt{adduser} en dat is dan ook wat we gaan gebruiken.
+
+\begin{lstlisting}[language=bash]
+$ sudo adduser eengebruiker
+\end{lstlisting}
+Om gebruikers te kunnen aanmaken hebben we root-rechten nodig, dus we gebruiken het \texttt{sudo} commando.
+
+Het \texttt{adduser} commando maakt bijna alles automatisch aan. Het enige dat je hoeft te doen is te vertellen wat het wachtwoord van de gebruiker is en welke informatie er in het GECOS-veld terecht moet komen.
+
+Je mag aan \texttt{adduser} ook meegeven dat zaken anders moeten zijn. Bijvoorbeeld dat een gebruiker een andere shell gebruikt dan bash. Dat kan door de optie \texttt{--shell /bin/chsh} mee te geven. Lees de man-page van \texttt{adduser} eens door met wat er nog meer mogelijk is.
+
+Als op het systeem UPG gebruikt wordt dan zal je zien dat er ook gelijk een groep voor de gebruiker aangemaakt is. Gebruik \texttt{id} om te zien wat de ID is van de nieuwe gebruiker.
+

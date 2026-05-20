@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux CLI: Werken met commando's}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2020-2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%B% \frontmatter
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_cli_commandos}
+\subsection{Voorkennis}
+\input{src/voorkennis_cli_commandos}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+%B% \mainmatter
+% Requires: ls, man, variabelen
+% Provides: type, which, xargs, | ; && ||
+\section{Commando's}
+\input{src/command_syntax}
+\subsection{Waar zijn de commando's?}
+\input{src/WaarZijnCommandos}
+\input{src/VariabelenShellPATH}
+\subsection{Shell builtin commando's}
+\input{src/shell_builtin}
+\subsection{Error codes}
+\input{src/ErrorCodes}
+\section{Commando samenstellingen}
+\input{src/commando_samenstellingen}
+\subsection{pipe}
+\input{src/pipe}
+\subsection{xargs}
+\input{src/xargs}
+\section{Vragen en Opdrachten}
+\subsection{Vragen}
+\input{src/vragen-commandos}
+\subsection{Opdrachten}
+\input{src/opdrachten-commandos}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

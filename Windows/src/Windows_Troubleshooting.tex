@@ -1,0 +1,110 @@
+\documentclass[a4paper,12pt,twoside,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Windows: Troubleshooting}
+\date{\today\\
+0.0.0
+\vfill
+\raggedright
+\copyright\ 2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% requires: 
+% provides: 
+
+\section{Introductie}
+\input{src/troubleshooting-intro}
+
+\section{Boot problems}
+\input{src/windows-boot_problems}
+\section{Herstel het MBR}
+\input{src/windows-mbr_restore}
+
+\section{Het lezen van de logs}
+\input{src/windows-mmc_eventviewer}
+\subsection{Event Viewer Logboeken}
+\input{src/windows-mmc_eventviewer_logboeken}
+\input{src/windows-mmc_eventviewer-windows_logs}
+\subsection{Event Viewer Events}
+\input{src/windows-mmc_eventviewer_events}
+\subsection{Filtering Logs}
+\input{src/windows-mmc_eventviewer-events_filtering}
+
+\section{Storage problems}
+\subsection{Disk Management}
+\input{src/windows-disk_management}
+\subsection{Error Checking}
+\input{src/windows-disk_errorcheck}
+\subsection{Defragmentation}
+\input{src/windows-disks_defrag}
+\subsection{Disk Clean-Up}
+\input{src/windows-disk_cleanup}
+
+\section{Network issues}
+\input{src/windows-network-issues}
+\subsection{Network drivers}
+\input{src/windows-network-issues_drivers}
+
+\section{Mogelijke WiFi oplossingen}
+\input{src/windows-network-wifi}
+\subsection{WiFi vergeten en opnieuw verbinden}
+\input{src/windows-network-wifi-reset}
+\input{src/windows-network-wifi-forget}
+\subsection{WiFi en Power Management}
+\input{src/windows-network-wifi-pm}
+
+\section{Device problems}
+\subsection{Keyboard en mouse}
+\subsection{Monitor}
+\subsection{Printers}
+
+\section{Application problems}
+\subsection{Application slow}
+\subsection{Application frozen}
+
+\section{Windows is frozen}
+
+\section{Automatic Troubleshooting}
+\input{src/windows-settings_troubleshoot}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

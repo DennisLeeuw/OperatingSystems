@@ -1,0 +1,23 @@
+In de eerste kolom van \texttt{ls -l} vinden we de bestandsrechten en het geeft tevens aan met welk type bestand we te maken hebben. Naast normale bestanden (zoals tekstbestanden) hebben we op POSIX-compliant systemen ook speciale bestanden zoals directories. De onderstaande tabel geeft de mogelijke bestandtypen weer.
+
+\begin{tabularx}{5in}{ |c|c|X| }
+\hline
+	Mode veld & Bestandstype & Beschrijving \\
+\hline
+\hline
+	- & normaal bestand & Documenten, etc. \\
+\hline
+	d & directory & Directories bevatten geen bestand, maar een overzicht van de bestandsnamen waaraan gekoppeld referenties naar iets wat inodes worden genoemd. De inodes bevatten de daadwerkelijke bestanden en meta-data (eigenaar, groep, permissies, time stamps, etc.). Door deze manier van werken kan een bestand (met meta-data) verschillende namen hebben (hard-link), mits binnen \'e\'en bestandssysteem (partitie of disk). Bij verschillende bestandsnamen kunnen dezelfde inodes vermeldt staan. \\
+\hline
+	l & Symbolic link & een link naar een bestand die over bestandssystemen heen kan gaan \\
+\hline
+	b & Block device & Een apparaat waar van of waar naar toe data in een random manier gestuurd kan worden. Het hoeft dus niet in de juiste volgorde te zijn. Denk aan harddisks waar eerst sector 2014 en dan sector 5678 geschreven kan worden. \\
+\hline
+	c & Character device & Een apparaat waar data in een stroom van characters naar of naar toe gestuurd kan worden. \\
+\hline
+	p & FIFO & Ook bekend als named pipes. Een pipe verbindt het ene proces met het andere proces zodat data van proces 1 naar proces 2 gestuurd kan worden. Dit kan maar \'e\'en kant op. \\
+\hline
+	s & Socket & Verbindt net als FIFO's processen, maar dan op een manier dat er twee weg communicatie mogelijk is. \\
+\hline
+\end{tabularx}
+

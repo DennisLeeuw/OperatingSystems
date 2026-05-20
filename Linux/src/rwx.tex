@@ -1,0 +1,22 @@
+De rechten op een bestand zijn opgedeeld in drie blokken. Elk blok kan de waarden r, w, en x bevatten. Er zijn dus in totaal 9 posities (rwxrwxrwx). De mogelijke rechten zijn:
+\begin{description}
+\item[r] Read
+\item[w] Write
+\item[x] Execute
+\end{description}
+Elk blokje heeft zijn eigen betekenis:
+\begin{tabular}{ | c | c | c | c | }
+\hline
+Type & Owner & Group & Other \\
+\hline
+d & rwx & rwx & rwx \\
+\hline
+\end{tabular}
+Er zijn dus rechten te vergeven voor de eigenaar, voor de groep en voor de rest van de wereld.
+
+Voor normale bestanden geldt dat je met read rechten een bestand mag openen en dus het kunt lezen, met write rechten mag je bestand ook schrijven en dus wijzigen en met execute rechten mag je een bestand opstarten, dat is natuurlijk alleen handig als je een bestand ook daadwerkelijk op mag starten zoals een script of programma.
+
+Voor directories zijn de regels even anders. Met leesrechten mag je zien welke bestanden er in een directory staan en mag je deze lezen, je kan dus \texttt{ls} gebruiken en een bestand openen in de directory, met schrijfrechten mag je nieuwe bestanden aanmaken en met execute het je daadwerkelijk toegang tot de directory kortom je kunt \texttt{cd} gebruiken om in de directory te komen.
+
+Computers zijn slecht in namen, maar goed in nummers, dus de rechten r, w en x moeten omgezet worden naar een getal waarmee de computer kan werken. Omdat computers heel goed zijn in binair zijn de rechten omgezet naar binaire getallen. Een 1 betekent dat het recht gegeven is, een 0 zegt dat het recht niet gegeven is. 101 betekent dus leesrechten en execute-rechten. Deze binaire manier van tellen kan ook decimaal geschreven worden 101 is dan 5. Een blok van rechten voor eigenaar, groep en de wereld zou er zo uit kunnen zien: rwxr-x-r--. Omgerekend naar binair is dat 111 101 100 en dat per stukje omgezet naar decimaal is 754.
+

@@ -1,0 +1,20 @@
+Net als met de standaardisatie van Unix in een POSIX standaard werden er in het begin op Linux Distributies soms bestanden in verschillende directories neergezet. Dat is voor programma's die op die systemen moeten draaien niet handig. Als de ene distributie /var/db heeft voor het plaatsen van databases en de ander /var/databases dan schept dat verwarring. De oplossing die hiervoor gekomen is is de Filesystem Hierarchy Standard. Deze is beschikbaar op \url{https://refspecs.linuxfoundation.org/fhs.shtml}. Hier gaan we heel globaal in op een aantal belangrijke directories, mocht je alle ins en outs willen weten dan raden we je aan om het document een keer te lezen.
+
+\begin{description}
+\item [/] De basis van het bestandssysteem wordt bepaald door de root-directory, zo genoemd omdat de vertakkende directories op een wortelstructuur lijken en het Engelse root betekent wortel.
+
+Een ls van \texttt{/} laat ons een aantal verschillende directories zien. Waarvan we er een aantal zullen behandelen.
+
+\item [/home/] bevat de directories waarin gebruikers hun bestanden kunnen zetten. Een uitzondering hierop is de directory waarin de root gebruiker (de baas of administrator van het systeem), zijn bestanden kan opslaan. Die directory is \texttt{/root/}.
+
+\item [/etc/] Deze directory bevat de configuratiebestanden van het systeem. Op een unix-achtig systeem bestaat uit configuratie uit platte-tekstbestanden. Als je een instelling systemwide wilt wijzigen is dit de plek om te gaan zoeken. De configuratie bestanden voor een gebruiker staan in zijn of haar home-directory.
+
+\item [/boot/] Deze directory bevat bestanden die cruciaal zijn voor het opstarten maar die geen commando zijn. Hier vinden we de kernel en bestanden die behoren bij de bootloader.
+
+\item [/dev/] Omdat op een GNU/Linux systeem alles een bestand is vind je in deze directory de bestanden die verwijzen aan devices. Devices worden verder besproken in het hoofdstuk over devices. Dus daar gaan we later nog op in.
+
+\item [/var/] is de directory voor de systeem opslag van variabele data zoals bijvoorbeeld de logbestanden, databases, etc. De log bestanden kan je vinden in \texttt{/var/log/}.
+
+\item [/srv/] bevat de data van de diensten die door het systeem worden aangeboden. Data van web- of ftp-servers kan hier gevonden worden.
+\end{description}
+

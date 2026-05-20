@@ -1,0 +1,74 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Zoeken en vinden - opdrachten}
+\date{\today\\
+1.0.0\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_zoeken_vinden-opdr}
+\subsection{Voorkennis}
+\input{src/voorkennis_zoeken_vinden-opdr}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% Requires:
+% Provides:
+\section{Situatie}
+\input{src/linux-zoek_vind-situatie}
+
+\section{Voorbereidingen}
+\input{src/linux-zoek_vind-voorbereiding}
+
+\section{Opdracht 1 - Werken met find}
+\input{src/linux-zoek_vind-find}
+
+\section{Opdracht 2 - Werken met grep}
+\input{src/linux-zoek_vind-grep}
+
+\section{Opdracht 3 - find en grep}
+\input{src/linux-zoek_vind-find_grep}
+
+\section{Reflectie}
+\input{src/linux-zoek_vind-reflectie}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

@@ -1,0 +1,18 @@
+Zoals je waarschijnlijk weet heeft een computer een naam, de zogenaamde hostname. Daarnaast hebben systemen op een IP netwerk ook een domainname. Net als www.google.com, daar is google.com de domainname en www een verwijzing naar een dienst of machine. De totale naam www.google.com noemen we de Fully Qualified Domain Name\index{Fully Qualified Domain Name} of afgekort FQDN\index{fqdn}.
+
+Met het commando \texttt{hostname}\index{hostname} kan je de naam van je machine opvragen en met \texttt{dnsdomainname}\index{dnsdomainname} het domain waartoe de machine behoort. Kijk niet vreemd op als daar (none) staat.
+
+Veel machines gebruiken DHCP om hun IP configuratie te krijgen, de hostname en de domainname kunnen ook door DHCP gezet werden. Een laptop die in verschillende netwerken gebruikt wordt kan dus onderdeel zijn van verschillende IP-netwerken.
+
+Op een Debian systeem wordt de naam van de machine opgeslagen in \texttt{/etc/hostname}\index{/etc/hostname} de nette manier om de naam van je machine te wijzigen is met \texttt{hostnamectl}\index{hostnamectl}\index{commando!hostnamectl}, vervang in het onderstaande voorbeeld \textbf{NEW\_HOSTNAME} door de gewenste machine naam.
+\begin{lstlisting}
+$ sudo hostnamectl set-hostname NEW_HOSTNAME
+\end{lstlisting}
+De naam in \texttt{/etc/hostname} is nu gewijzigd en ook het \texttt{hostname} commando zal nu de nieuwe naam als output hebben.
+
+De domainnaam in een steeds wisselend netwerk is lastiger. Debian heeft de keuze gemaakt om het FQDN in \texttt{/etc/hosts}\index{/etc/hosts} op te nemen. Voor systemen die initieel DHCP gebruikten tijdens de installatie wordt het FQDN opgeslagen in een regel die begint met 127.0.1.1:
+\begin{lstlisting}
+127.0.1.1 FQDN shorthostname
+\end{lstlisting}
+De shorthostname is de naam die in \texttt{/etc/hostname} staat.
+

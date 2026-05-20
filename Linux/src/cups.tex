@@ -1,0 +1,8 @@
+CUPS\index{CUPS}, of wel de Common Unix Printing System\index{Common Unix Printing System} is een open source print systeem waarvan de code primair ontwikkeld wordt door Apple.
+
+CUPS is de vervanger van het oude LPD\index{lpd} protocol. LPD staat voor Line Printing Daemon en was de oorspronkelijke printserver voor Unix-achtige systemen. CUPS heeft dit voor Linux systemen grotendeels vervangen. Het voordeel van CUPS is dat het het IPP\index{IPP} (Internet Printing Protocol\index{Internet Printing Protocol}) ondersteunt.
+
+IPP (\url{https://www.pwg.org/ipp/}) is een poging om printers te kunnen aanbieden zonder dat er een specifieke driver voor de printer ge\"installeerd moet worden. Door een standaard document format te ondersteunen en een vast protocol te gebruiken kunnen zelfs mobiele devices gebruikt worden als client voor een printer zonder dat er op de mobiele telefoon de driver voor de specifieke printer aanwezig is.
+
+CUPS draait standaard op port 631 en kan geconfigureerd worden via configuratie bestanden of via een webserver die draait op http://127.0.0.1:631/. Opdrachten van buitenaf kunnen naar een CUPS server gestuurd worden naar port 631 op de externe interface. De CUPS configuratie kan gevonden worden in de \texttt{/etc/cups} directory.
+

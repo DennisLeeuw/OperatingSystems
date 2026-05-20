@@ -1,0 +1,17 @@
+PHP\index{PHP}\index{scripting!PHP} is \textbf{de} programmeer taal van het Internet (geworden). PHP draait op de webserver en genereert de output die door webservers aan de aanvrager gegeven wordt. Je kan PHP echter ook op de commandline gebruiken zonder web output.
+
+Een PHP-script dat je op de commandline kan gebruiken:
+\lstinputlisting[language=PHP]{php/helloworld.php}
+
+Om het op te starten hebben we de PHP runtime engine nodig:
+\begin{lstlisting}[language=bash]
+$ php helloworld.php
+\end{lstlisting}
+
+Maar PHP is eigenlijk bedoelt voor op het web, dat betekent dat er een webpagina moet komen met daarop Hello, World!:
+\lstinputlisting[language=PHP]{php/helloworld_web.php}
+
+Je kan dat ook op de commandline testen:
+\begin{lstlisting}[language=bash]
+$ php helloworld_web.php
+\end{lstlisting}

@@ -1,0 +1,8 @@
+Historisch gezien gebruikten de verschillende Linux distributies verschillende manieren om de netwerk settings op te slaan. Gelukkig deden ze dat allemaal wel in platte tekstbestanden zodat het vaak redelijk makkelijk is om de benodigde bestanden terug te vinden.
+
+Met de opkomst van de grafische interface en het gebruik van Linux op de desktop/laptop kwamen er andere eisen. Men wilde een simpele tool die via de grafische interface de gebruiker de mogelijkheid gaf om zijn netwerk te beheren. Om niet wederom allemaal hetzelfde wiel uit te vinden werd NetworkManager bedacht. E\'en dienst die het beheren van netwerken afhandeld, waar elke interface zijn eigen grafische applicatie omheen kon schrijven. Naast IP-adressen, WiFi doet NetworkManager ook het volautomatische beheer van de DNS nameserver configuratie en waar nodig zet het ook de default gateway. Dat is wat NetworkManager is, een tool die netwerken simpel maakt. EN dat is prima voor desktop omgevingen.
+
+Helaas is het niet de ideale tool voor servers, die vaste verbindingen willen hebben. Verbindingen die voor WiFi niet altijd automatisch het sterkste netwerk pakken, maar een bepaalde link instand houden. En voor systeembeheerders die elke configuratie van hun systeem in eigen hand willen houden (al dan niet via een geautomatiseerd proces).
+
+In dit document zullen we beginnen met NetworkManager voor degenen die een grafische interface gebruiken. Daarna behandelen we de configuratie van het netwerk via platte configuratie bestanden voor degenen die geen grafische interface gebruiken.
+

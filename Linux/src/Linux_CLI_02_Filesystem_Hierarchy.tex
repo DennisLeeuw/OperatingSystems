@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Het Filesysteem}
+\date{\today\\v.1.0.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: ls
+% Provides: fhs, ps (short)
+\chapter{Everything is a file}
+\input{src/EverythingIsAFile}
+\section{Bestandstypen}
+\input{src/bestandstypen}
+\chapter{FHS - Filesystem Hierarchy Standard}
+\input{src/FHS}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

@@ -1,0 +1,14 @@
+Op het Linux systeem hebben we vele kleine commando's die \'e\'en ding goed doen, door de data van het ene commando door te geven aan het andere commando kunnen we complexe dingen doen. Data doorgeven van het ene commando aan het andere doen we met het pipe-character\index{pipe}. Op je toetsenbord is dat het | teken. Met \texttt{apt-cache}\index{apt-cache}\index{commando!apt-cache} kunnen we door de package database van Debian zoeken naar tools die we zouden willen gebruiken. Een packet dat je misschien zou willen gebruiken heet \texttt{ncal}. We gaan eerst de informatie van \texttt{ncal} opvragen:
+
+\begin{lstlisting}[language=bash]
+$ apt-cache show ncal
+\end{lstlisting}
+
+Door de output van \texttt{apt-cache} via \texttt{pipe} door te sturen naar een ander commando kunnen we de output veranderen. We kunnen de output bijvoorbeeld doorsturen naar \texttt{tr}, een commando dat translaties (veranderingen) doet:
+
+\begin{lstlisting}[language=bash]
+$ apt-cache show ncal | tr '[a-z]' '[A-Z]'
+\end{lstlisting}
+
+Bij deze laatste variant zijn alle kleine letters zijn vervangen door hoofdletters. De output van het \texttt{apt-cache} commando is aangenomen door het \texttt{tr}\index{tr}\index{commando!tr} (translate) commando en die heeft de reeks a-z vervangen door A-Z. Dus elke a is een A geworden, elke b een B, etc.
+ 

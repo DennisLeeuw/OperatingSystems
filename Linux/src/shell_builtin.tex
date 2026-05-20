@@ -1,0 +1,10 @@
+Het \texttt{cd} commando wordt gebruikt om van directory te wisselen. Met \texttt{which} kunnen we zien waar een commando zich bevindt. Gebruiken we nu
+\begin{lstlisting}
+$ which cd
+\end{lstlisting}
+Dan komen we tot de ontdekking dat we geen resultaat terug krijgen. Het commando bestaat en toch is het niet te vinden in ons PATH. Met \texttt{cd} en nog een paar commando's is wat speciaals aan de hand. De shell heeft een aantal ingebouwde (builtin) commando's. We kunnen met \texttt{type} zien of het een builtin commando is:
+\begin{lstlisting}
+$ type cd
+\end{lstlisting}
+Via \texttt{man} kan je de \texttt{bash-builtins} pagina opvragen om te zien welke ingebouwde commando's bash heeft.
+

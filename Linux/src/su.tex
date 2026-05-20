@@ -1,0 +1,25 @@
+Met het commando \texttt{su}\index{su} (switch user\index{switch user}) kan je een werken als een andere gebruiker, mits je het wachtwoord weet van die gebruiker.
+
+Om ook alle omgevingsvariabelen van die gebruiker mee te krijgen moet je aan \texttt{su} het min-teken(-) meegeven. Dat ziet er dan zo uit:
+\begin{lstlisting}[language=bash]
+$ su - mies
+\end{lstlisting}
+
+De kans dat mies bestaat op ons systeem is niet zo groot. De gebruiker waarvan we zeker weten dat deze wel bestaat is onze root gebruiker:
+\begin{lstlisting}[language=bash]
+$ su -
+\end{lstlisting}
+We hebben bij de switch naar root niet opgegeven dat we de root gebruiker willen worden. Als er bij \texttt{su} geen naam wordt opgeven gaat \texttt{su} ervan uit dat je root wil worden. Met het \texttt{exit} commando kom je weer terug naar je eigen omgeving.
+
+Voor het installeren van software moet je root zijn. Een gewone gebruiker mag dat niet. We gaan nu eenmalig het \texttt{sudo} packet installeren als root gebruiker, zodat we hierna \texttt{sodu} kunnen gebruiken.
+
+\begin{lstlisting}[language=bash]
+$ su -
+# apt-get install sudo
+# usermod -a -G sudo dennis
+\end{lstlisting}
+We hebben het sudo-packet ge\"installeerd en de gebruiker (dennis, die je natuurlijk weer vervangen hebt door je eigen gebruikersnaam) toegevoegd (-a is append) aan de groep sudo (-G sudo) die rechten heeft om \texttt{sudo} te gebruiken.
+
+Als we met \texttt{exit} de omgeving van root verlaten en weer terug zijn in ons eigen account dan typen we nog een keer \texttt{exit} zodat we uitgelogd zijn. Als we daarna weer inloggen kunnen we met \texttt{id} zien dat we nu een extra (sudo) groep hebben waarvan we lid zijn.
+
+

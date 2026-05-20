@@ -1,0 +1,8 @@
+Omdat daemons op de achtergrond draaien en geen direct contact met een gebruiker of met root hebben zullen ze op een andere manier moeten laten weten of het goed met ze gaat, wat ze aan het doen zijn en of de beheerder misschien moet ingrijpen omdat er iets fout gaat. Daemons laten ons weten wat er aan de hand is door hun berichten te loggen\index{logging}\index{loggen}. Loggen is het wegschrijven van de berichten naar een logbestand.
+
+Traditioneel werden logs weggeschreven in de \texttt{/var/log} directory. Een daemon kan zelfstandig zijn eigen log wegschrijven naar een bestand, of de daemon kan gebruik maken van een log-server\index{log-server}. Het voordeel van een log-server is dat de daemon alleen de API van de log-server hoeft te kennen. Alle andere logica rond het loggen wordt afgehandel door de log-server. Voor meer informatie over de log-server zie de sectie over syslog (\ref{sec:syslog}).
+
+Op systemen waar systemd gebruikt wordt als init wordt de logging afgehandeld door \texttt{systemd-journald}. Ook dit is een log-server, maar deze schrijft de logbestanden niet als plain-text files weg naar disk. In de \texttt{/var/log} directory vind je een \texttt{journal} directory waarin in een binair formaat de log journals worden weggeschreven. Met het \texttt{journalctl} commando kunnen deze logs gelezen worden.
+
+In dit hoofdstuk zullen we beide principes behandelen, ieder in zijn eigen sectie.
+

@@ -1,0 +1,11 @@
+Herstel de master boot record (MBR)
+\begin{enumerate}
+\item Boot van een Windows CD (installatie CD)
+\item Settings app -> Update \& Security -> Recovery -> Advanced Startup
+\item Troubleshoot -> Advanced Options -> Command Prompt 
+\item \texttt{bootrec /RebuildBcd}
+\item \texttt{bootrec /fixMbr}
+\item \texttt{bootrec /fixboot}
+\item \texttt{exit}
+\item Verwijder CD en reboot.
+\end{enumerate}

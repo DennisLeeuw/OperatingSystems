@@ -1,0 +1,66 @@
+Op een Linux systeem kunnen er vele directories zijn en is het van belang dat je op een simpele manier bestanden terug kan vinden. Om te zoeken naar bestanden of directories is er het commando \texttt{find}. Om een idee te krijgen hoe \texttt{find} werkt typen we:
+
+\begin{lstlisting}[language=bash]
+$ find ~ -name "Muziek" -print
+\end{lstlisting}
+
+Bij mij op het systeem was het antwoord
+\begin{lstlisting}[language=bash]
+/home/dennis/LinuxCursus/Muziek
+\end{lstlisting}
+
+Bij jou is dennis natuurlijk weer vervangen door je eigen gebruikersnaam. Print is de standaard functie van \texttt{find}, en daarom vonden de programmeurs van \texttt{find} dat als je geen opdracht meegeeft dat \texttt{find} dan ook print doet. Dus korter kan het zo:
+\begin{lstlisting}[language=bash]
+$ find ~ -name "Muziek"
+\end{lstlisting}
+
+Die \textasciitilde is makkelijk als je in je home-directory wilt zoeken, maar wat als je in bijvoorbeeld \texttt{/etc/} staat en in die directory wilt zoeken? Daar is ook over nagedacht. We hebben al '..' gezien als een aanduiding voor een lager gelegen directory, maar zo is er ook de '.' als we 'deze'-directory bedoel. En met deze bedoelen we de directory waarin we nu staan. Dus we kunnen ook het volgende doen:
+
+\begin{lstlisting}[language=bash]
+$ find . -name "Muziek"
+\end{lstlisting}
+
+En voor wie niets tegen typen heeft mag je natuurlijk ook de hele directory opgeven
+\begin{lstlisting}[language=bash]
+$ find /home/dennis/ -name "Muziek"
+\end{lstlisting}
+
+Met -name geven we op dat we naar een bestandsnaam zoeken en een bestandsnaam kan ook een directory zijn. Als we onderscheidt willen maken tussen bestanden en directories kan kunnen we een -type meegeven:
+\begin{lstlisting}[language=bash]
+$ find . -type d -name "Muziek"
+\end{lstlisting}
+
+Zal dezelfde output geven want type d is een directory, maar als we doen
+\begin{lstlisting}[language=bash]
+$ find . -type f -name "Muziek"
+\end{lstlisting}
+
+dan vinden we niets, want het type f is een regulier bestand en Muziek is een directory. Om dat te testen doen we het volgende
+\begin{lstlisting}[language=bash]
+$ touch ~/LinuxCursus/Documenten/leeg_bestand.txt
+$ find . -type f -name "leeg_bestand.txt"
+\end{lstlisting}
+
+Met \texttt{touch} kan je een nieuw leeg bestand aanmaken en dat hebben we gedaan en daarna hebben we \texttt{find} naar dat nieuwe bestand laten zoeken. Nu lijkt dit een wat onzinnige actie omdat we al weten waar het bestand is, maar het geeft ons een optie om een andere functie van \texttt{find} te demonstreren, namelijk het zoeken naar lege bestanden op het systeem:
+\begin{lstlisting}[language=bash]
+$ find . -size 0
+\end{lstlisting}
+de -size optie geldt alleen voor bestanden, de -empty optie laat naast lege bestanden ook lege directories zien
+\begin{lstlisting}[language=bash]
+$ find . -empty
+\end{lstlisting}
+
+Het \texttt{find} commando kent nog veel meer opties zoals zoeken naar de datum en tijd waarop een bestand is aangemaakt of een moment later of eerder dan een bepaalde datum en tijd. De man-page van \texttt{find} documenteert al deze verschillende opties en op Internet is heel veel uitleg te vinden hoe je \texttt{find} met al deze opties kan gebruiken. Een laatste functie van \texttt{find} willen je nog meegeven. De kan behalve met -print \texttt{find} ook andere dingen laten doen dan de gevonden elementen printen, je kan \texttt{find} ook vertellen om een actie uit te voeren, zoals het deleten van de gevonden elementen:
+
+\begin{lstlisting}[language=bash]
+$ find . -size 0 -delete
+\end{lstlisting}
+een \texttt{ls} van \texttt{LinuxCursus/Documenten/} zal laten zien dat het bestand \texttt{leeg\_bestand.txt} niet meer bestaat.
+
+Pas wel op, dit kan gevaarlijke situaties opleveren:
+\begin{lstlisting}[language=bash]
+$ find LinuxCursus/ -empty -delete
+\end{lstlisting}
+
+Dit commando zoekt in de LinuxCursus naar alle directories en bestanden die leeg zijn. Bestanden hadden we niet meer, maar er stonden nog wel twee directories in (Documenten en Muziek), beide directories waren leeg en werden door \texttt{find} dan ook keurig verwijderd van het systeem. Toen kwam \texttt{find} nog de directory LinuxCursus tegen, en ja die was inmiddels ook leeg, dus heeft \texttt{find} die ook weggegooid!
+

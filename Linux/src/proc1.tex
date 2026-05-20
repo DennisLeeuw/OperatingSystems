@@ -1,0 +1,6 @@
+Nadat de kernel in het geheugen geladen is zal deze gestart worden. De Linux kernel zorgt ervoor dat de beschikbare hardware klaar is voor gebruik en dat er processen gestart kunnen worden. Het eerste proces dat de kernel start is \texttt{systemd}\index{systemd}. Vroeger was dit \texttt{init}\index{init} en dat kan je op vele ander Unix-achtige besturingssystemen nog tegen komen, maar de meeste Linux distributies zijn over naar \texttt{systemd}.
+
+\texttt{systemd} is het proces dat ervoor zorgt dat alle ander processen gestart worden. De \texttt{systemd} daemon heeft proces nummer 1. Het is de eerste daemon die start bij het opstarten van het systeem en de laatste die afgesloten wordt bij het afsluiten van het systeem.
+
+Het proces met nummer 1 wordt ook wel \textquote{The mother of all processes} genoemd. Nadat de kernel klaar is met opstarten tijdens het boot-proces start het dit eerste proces op. Proces nummer 1 is daarna verantwoordelijk voor het verdere opstart proces van het systeem. Het is dan ook proces 1 die bepaalt of er bijvoorbeeld een grafische interface wordt gestart, maar ook welke functies een machine kan aanbieden nadat het opgestart is. Is de machine een mail-server of een web-server, of misschien wel helemaal geen server.
+

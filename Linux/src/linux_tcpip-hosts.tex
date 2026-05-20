@@ -1,0 +1,12 @@
+DNS settings kunnen we lokaal overrullen met het \texttt{/etc/hosts} bestand. Standaard bevat het maar een paar waarden:
+\begin{lstlisting}[language=bash]
+127.0.0.1	localhost
+127.0.1.1	yourhostname.yourdomainname	yourhostname
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+\end{lstlisting}
+Door een IP adres met een FQDN toe te voegen kun je een FQDN naar een IP-adres sturen.
+

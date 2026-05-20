@@ -1,0 +1,13 @@
+Informatie over de kernel die actief is kan verkregen worden met het \texttt{uname}\index{uname}\index{commando!uname} commando. \texttt{uname} heeft verschillende opties (zie de manual-page). De belangrijkste optie voor ons is de \texttt{-r} optie, want die verteld het release nummer van de kernel:
+\begin{lstlisting}[language=bash]
+$ uname -r
+4.19.0-13-amd64
+\end{lstlisting}
+in de release is het deel voor het eerste streepje (-) het versie nummer van de kernel-broncode die gebruikt is. De rest is afkomstig van de bouwers van de distributie en die informatie kan verschillen per distributie bouwer.
+
+Met de \texttt{-v} optie kan je ook de datum achterhalen waarop deze kernel gecompileerd is:
+\begin{lstlisting}[language=bash]
+$ uname -v
+#1 SMP Debian 4.19.160-2 (2020-11-28)
+\end{lstlisting}
+in dit geval dus 28 november 2020.

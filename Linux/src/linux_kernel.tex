@@ -1,0 +1,13 @@
+De kernel\index{kernel}, Linux, bestaat uit een modulaire kernel. Er is een stuk basis software die geladen wordt tijdens het opstarten en deze software kan uitgebreid worden met modules\index{modules}. Modules voegen extra functionaliteit toe, zoals bij voorbeeld netwerk-drivers. De reden dat er gekozen voor een modulair design is dat de basis kernel daardoor klein kan zijn en minder geheugen inneemt. Alleen de drivers of andere functionaliteit die echt nodig is wordt geladen.
+
+De basis kernel ook bekend als \texttt{vmlinuz}\index{vmlinuz} kan gevonden worden in de \texttt{/boot/}\index{/boot/} directory, in het verleden werd de kernel in de \texttt{/} directory gezet en kan daar op sommige systemen nog gevonden worden. In de \texttt{/boot/} directory kan je ook bestanden vinden die beginnen met vmlinuz en waarna er een serienummer volgt, zo kunnen er meerdere versies van de kernel staan, waaruit eventueel via de bootloader gekozen kan worden.
+
+Naast het bestand \texttt{vmlinuz} staan er nog een paar bestanden die bij de kernel horen:
+\begin{description}
+\item[config] is de configuratie van de kernel zoals deze gebruikt is tijdens het compilen van de kernel. Het beschrijft o.a. welke stukken van de kernel als module gebouwd moeten worden. Dit document is niet belangrijk voor het opstarten van het systeem.
+\item[initrd.img] Ook de kernel heeft tijdens het opstarten modules nodig, denk daarbij aan de netwerk-drivers. De \texttt{initrd.img} bevat deze drivers en deze image wordt in RAM geladen zodat de modules snel beschikbaar zijn (ipv. dat ze van een trage harddisk moeten komen)
+\item[System.map] bevat een overzicht van welke functies of variabelen zich op welke lokatie bevinden in de kernel. Dit bestand wordt gebruikt om lookups te doen als er een kernel oops of kernel panic zich voordoet.
+\end{description}
+
+Als de kernel klaar is met laden, dan moet deze de controle overgeven aan wat vroeger \texttt{init} heette. Dit was het eerste proces dat opgestart werd en \texttt{init} was verantwoordelijk voor het opstarten van andere processen, waaronder het login-proces. Tegenwoordig is op de meeste GNU/Linux systemen de functie van init overgenomen door \texttt{systemd}.
+

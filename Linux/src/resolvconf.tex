@@ -1,0 +1,16 @@
+De gegevens over welke DNS server(s) er gebruikt worden zijn opgeslagen in het \texttt{/etc/resolv.conf}\index{/etc/resolv.conf} bestand:
+\begin{lstlisting}[language=bash]
+search made-it.com
+nameserver 192.168.42.254
+nameserver 192.168.42.253
+\end{lstlisting}
+Belangrijkste regels zijn die regels die beginnen met \texttt{nameserver} die vertellen ons namelijk welke nameservers er op ons netwerk gebruikt worden.
+
+Om te testen dat dit werkt gebruiken we \texttt{host}\index{host}\index{commando!host}:
+\begin{lstlisting}[language=bash]
+$ host `hostname`
+\end{lstlisting}
+Als het mee zit krijgen we van DNS terug wat ons IP adres is. Controleer dit met wat je vond met het \texttt{ip} commando.
+
+Het \texttt{hostname} commando geeft allen de systeemnaam terug en toch krijgen we bij het IP-adres de FQDN te zien. De regel met \texttt{search} in \texttt{/etc/resolv.conf} is daarvoor verantwoordelijk. Het zegt namelijk dat als er alleen om een systeemnaam gevraagd wordt dat er dan gezocht (search) moet worden in het domain dat bij \texttt{search} staat.
+

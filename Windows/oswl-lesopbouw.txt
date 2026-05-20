@@ -1,0 +1,7 @@
+Alle lessen hebben de volgende opbouw (2x45 minuten is 90 minuten):
+Begin met herhaling van de vorige les (zie samenvatting vorige les ~5 minuten)
+Daarna de theorie van deze les (ongeveer 15-20 minuten)
+Daarna samen door een opdracht, laten zien waar je wat vindt, commandline oefening, etc. (ongeveer 10-15 minuten)
+Daarna zelfstandig of in groeps verband een of meerdere opdrachten maken (45 minuten)
+Samenvatting en afronding van de les (5-15 minuten), links naar extra materiaal, huiswerk, documentatie etc.
+

@@ -1,0 +1,21 @@
+We moeten natuurlijk eerst weten welke netwerk devices er op ons systeem aanwezig zijn, voordat we een verbinding met het netwerk kunnen opbouwen.
+
+Een overzicht van alle netwerk interfaces vinden we met:
+\begin{lstlisting}[language=bash]
+$ nmcli device show
+\end{lstlisting}
+
+Het TYPE veld vertelt ons wat voor type netwerk het is. De meeste voorkomende opties zijn
+\begin{description}
+\item[wifi] Draadloos netwerk via het WiFi protocol
+\item[ethernet] Bedraad netwerk via het Ethernet protocol
+\item[loopback] Ingebouwd netwerk voor onze eigen host (127.0.0.0)
+\end{description}
+
+Het DEVICE veld vertelt ons de naam van de interface. De eerste twee letters vertellen ons meer over het type interface:
+\begin{description}
+\item[wl] WaveLAN ofwel WiFi
+\item[en] Ethernet
+\item[lo] Loopback
+\end{description}
+

@@ -1,0 +1,19 @@
+Om de rechten op een bestand te wijzigen is er het commando \texttt{chmod}\index{chmod}\index{commando!chmod}. Je kan \texttt{chmod} gebruiken om de rechten op bestanden te wijzigen door gebruik te maken van read, write en execute of door gebruik te maken van de decimale waarden van de rechten. Een voorbeeld van het gebruik van de decimale waarden zou voor de directory \textbf{samen} er zo uit kunnen zien:
+\begin{lstlisting}[language=bash]
+$ sudo chmod 777 /home/samen
+\end{lstlisting}
+We hebben nu de eigenaar, de groep en de wereld alle rechten gegeven, dus de beide gebruikers in de groep \textbf{samen} kunnen nu bij alle documenten die ze in deze directory aanmaken.
+
+Helaas hebben we ook alle rechten gegeven aan Other. Dat betekent dat de hele wereld bij alle documenten kan. We kunnen met chmod ook rechten afnemen. Gebruik eens:
+\begin{lstlisting}[language=bash]
+$ sudo chmod o-x /home/samen
+\end{lstlisting}
+Na een \texttt{ls -l} zal je zien dat van other (o) de execute-rechten (x) verdwenen zijn. Dat kunnen we ook met meerdere rechten doen:
+\begin{lstlisting}[language=bash]
+$ sudo chmod g-w,o-rw /home/samen
+\end{lstlisting}
+We ontnemen hier van other de read en write rechten en van de group rechten verwijderen we de schrijfrechten. Het plus-teken kunnen we gebruiken om rechten toe te kennen:
+\begin{lstlisting}[language=bash]
+$ sudo chmod g+w /home/samen
+\end{lstlisting}
+zorgt ervoor dat de groep weer schrijfrechten heeft.

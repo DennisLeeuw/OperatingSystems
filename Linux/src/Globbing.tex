@@ -1,0 +1,25 @@
+Globbing is het gebruiken van wildcards\index{wildcards}. Wildcards zijn bijvoorbeeld de asterisk (*) en het vraagteken (?). Een asterisk staat voor geen of meer characters en een vraagteken staat voor \'{e}\'{e}n character. Zo kunnen we ontbrekende characters invullen of aanvullen als we niet meer helemaal zeker weten hoe een bestand heet. Stel dat we weten dat we een document gemaakt hebben met de naam \texttt{Plaatje} maar dat we niet meer weten of dat een jpg, png of gif plaatje is. Dan kunnen we een overzicht van alle bestanden in een directory opvragen met:
+\begin{lstlisting}[language=bash]
+$ ls Plaatje\.*
+\end{lstlisting}
+We krijgen dan de bestanden met een willekeurige extensie terug.
+
+Globbing is een functie die door de shell wordt uitgevoerd. De shell vervangt dus eerst de wildcards door wat er op het bestandssysteem staat en voert dat uiteindelijk aan \texttt{ls}. Als je quotes om het argument zet dan gaat \texttt{ls} opzoek naar een bestand dat \verb|Plaatje.*| heet. Er verschijnt dan keurig de melding dat dat bestand niet bestaat.
+
+Zo kunnen we ook zoeken op de bestandsnamen waarvan we niet meer zeker weten of we het met een hoofdletter of kleine letter hebben geschreven door gebruikt te maken van het vraagteken:
+\begin{lstlisting}[language=bash]
+$ ls ?laatje.*
+\end{lstlisting}
+
+Het toeval wil dat we ooit het recept van een vriend hebben opgeschreven over hoe we huzarensalade moeten maken dus kregen we van het laatste commando terug:
+\begin{lstlisting}[language=bash]
+plaatje.jpg  Plaatje.png Slaatje.txt
+\end{lstlisting}
+
+Als we alleen de bestandsnamen die echt het plaatje bevatten willen vinden dan zullen we gebruik moeten maken van een ander optie die de shell ons biedt, namelijk de blokhaken (\big[\big]). In shell-globbing betekenen de blokhaken een reeks. Een reeks kan zijn \big[1234567890\big], of \big[abcdefg\big], wat trouwens simpeler geschreven kan worden als \big[0-9\big] en \big[a-g\big], maar een reeks mag ook zo simpel zijn als \big[pP\big], dus de hoofdletter P en de kleine letter p.
+\begin{lstlisting}[language=bash]
+$ ls [Pp]laatje.*
+\end{lstlisting}
+en zo krijgen we precies terug wat we willen.
+
+Reeksen in globbing zijn heel handig. Je kan bijvoorbeeld een reeks maken [a-zA-Z0-9] zodat je 3 reeksen combineert en zo alles hebt dat geen leesteken bevat. Als je ook bestandsnamen hebt die een spatie kan bevatten maak je er \big[\textbackslash~a-zA-Z-0-9\big] van. Let op het escape (\textbackslash) character voor de spatie. Zonder dat character zou de shell aan ls twee argumenten meegeven, want er staat een spatie en spaties (white-space) scheiden argumenten. Dus ls krijgt de opdracht om een list te doen van '\big[' en van 'a-zA-Z0-9\big]' en dat is niet wat we willen. We willen dat onze reeks \'{e}\'{e}n argument is, vandaar dat we de spatie \textquote{escapen} zoals dat heet. Door het escape-character behandelt de shell de spatie niet als scheidingsteken van argumenten maar als onderdeel van de reeks.

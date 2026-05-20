@@ -1,0 +1,112 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux Basic Networking}
+\date{\today\\v.1.1.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_basic_networking}
+\subsection{Voorkennis}
+\input{src/voorkennis_basic_networking}
+
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% requires: ls
+% provides: NetworkManager, ip
+
+\chapter{Introductie}
+\input{src/linux_network-intro}
+
+\chapter{Netwerk settings bekijken}
+
+\section{TCP/IP: ip-adressen}
+\input{src/linux_tcpip-ip.tex}
+\subsection{Testen van IP verbindingen}
+\input{src/linux_tcpip-ip-ping.tex}
+
+\section{TCP/IP: Services}
+\subsection{protocols en services}
+\input{src/linux_tcpip-protocols.tex}
+%\subsection{services}
+%\input{src/linux_tcpip-services.tex}
+\subsection{Het gebruik van poorten}
+\input{src/linux_tcpip-ss.tex}
+
+\section{TCP/IP: host- en domainnames}
+\subsection{De host naam}
+\input{src/linux-hostname.tex}
+\subsection{DNS-servers en de domeinnaam}
+\input{src/linux_tcpip-resolv-conf.tex}
+\subsection{De hosts file}
+\input{src/linux_tcpip-hosts.tex}
+\subsection{Testen van DNS}
+\input{src/linux_tcpip-host.tex}
+
+\chapter{Netwerk settings veranderen}
+\input{src/linux_network-settings}
+
+\section{NetworkManager}
+\input{src/linux_NetworkManager}
+\subsection{NetworkManager: Devices}
+\input{src/linux_NetworkManager-devices}
+\subsection{NetworkManager: Ethernet}
+% Iets over Ethernet: /etc/ethertypes
+\input{src/linux_NetworkManager-ethernet}
+\subsection{NetworkManager: WiFi}
+\input{src/linux_NetworkManager-wifi}
+\subsection{NetworkManager: IPv4}
+\input{src/linux_NetworkManager-ipv4}
+
+\section{Debian: network configuration files}
+\input{src/debian_network}
+\subsection{Ethernet interfaces}
+\input{src/debian_network_devices}
+\subsection{Nameservers}
+\input{src/debian_network_nameservers}
+
+\chapter{Vragen en opdrachten}
+\section{Opdracht: Interface configuratie}
+\input{src/linux_network-opdracht_ifconfig}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

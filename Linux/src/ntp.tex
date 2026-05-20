@@ -1,0 +1,7 @@
+Het Network Time Protocol\index{Network Time Protocol} haalt de datum en tijd op vanaf servers op het Internet die direct of indirect verbonden zijn met een atoomklok. Via deze methode kunnen alle systemen op aarde dezelfde referentie tijd gebruiken. Het \texttt{systemd} systeem heeft zijn eigen implementatie van een NTP\index{NTP}-server. De daemon heet \texttt{systemd-timesyncd}\index{systemd-timesyncd}.
+
+Controlleer of je systeem gebruik maakt van deze NTP-server:
+\begin{lstlisting}
+systemctl status systemd-timesyncd
+\end{lstlisting}
+

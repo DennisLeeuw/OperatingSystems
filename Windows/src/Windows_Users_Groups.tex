@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt,twoside,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Windows: Gebruikers en Groepen}
+\date{\today\\
+0.0.0
+\vfill
+\raggedright
+\copyright\ 2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% requires: 
+% provides: 
+\section{Gebruikers}
+\input{src/windows-gebruikers}
+\subsection{Settings: Accounts}
+\input{src/windows-settings_gebruikers}
+\subsection{Computer Management: Local Users and Groups}
+\input{src/windows-computer_management-users}
+
+\section{Groepen}
+\input{src/windows-groepen}
+\subsection{Computer Management: Local Users and Groups}
+\input{src/windows-computer_management-groups}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

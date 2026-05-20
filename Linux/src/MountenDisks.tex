@@ -1,0 +1,20 @@
+Een disk of partitie op een disk wordt gemount op het bestandssysteem. Om dit duidelijk te maken moeten we wat dieper in
+het systeem duiken en een paar dingen doen die we pas later in dit boek uitleggen. Dus type nauwkeurig het volgende
+commando over:
+
+\begin{lstlisting}[language=bash]
+$ mount | grep ' / '
+\end{lstlisting}
+
+Voor en achter de / staat een enkele spatie. Dit geeft iets terug als:
+\begin{lstlisting}[language=bash]
+/dev/sda1 on / type ext4 (rw,relatime,errors=remount-ro)
+\end{lstlisting}
+
+Wat dit betekent is dat de eerste partitie op de harddisk die het systeem kent als sda gekoppeld (gemount) is op /.
+USB-disks kunnen op dezelfde manier gekoppeld worden aan het systeem. De directory die daarvoor gereserveerd is is
+/media/. In de /media/ directory zijn er directories per gebruiker waar gebruikers hun USB-disks kunnen mounten. Later
+zullen we hier uitgebreider op terug komen.
+
+/mnt is de directorie die van oudsher aanwezig is om lokaal media op te mounten en zou nu alleen nog door de beheerder
+gebruikt moeten worden voor het tijdelijk mounten van disks.

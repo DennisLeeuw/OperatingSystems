@@ -1,0 +1,32 @@
+Om data op een computer te structureren is het handig om bestanden te verdelen over directories\index{Directories}. Directories zijn ook bekend als mappen\index{Mappen} en folders\index{Folders}. Wij zullen alleen nog spreken van directories omdat dat binnen de Unix-wereld de meest gebruikte term is.
+
+Een directory maak je aan met het commando \texttt{mkdir}\index{mkdir}\index{Directories!mkdir}:
+\begin{lstlisting}[language=bash]
+$ mkdir LinuxCursus
+\end{lstlisting}
+Met \texttt{ls} kan je controleren of de directory ook daadwerkelijk aangemaakt is.
+
+Je kan ook meerdere directories tegelijk aanmaken door ze als een lijst op te geven, gescheiden door spaties:
+\begin{lstlisting}[language=bash]
+$ mkdir Aap Noot Mies
+\end{lstlisting}
+
+Soms wil je ook een heel pad gelijk aanmaken met:
+\begin{lstlisting}[language=bash]
+$ mkdir Boom/Roos/Vis/Vuur
+\end{lstlisting}
+gaat dat niet lukken, want de Boom directory bestaat niet. Gelukkig kan je aan \texttt{mkdir} en optie meegeven die vertelt dat \texttt{mkdir} ook alle onderliggende directories moet aanmaken:
+\begin{lstlisting}[language=bash]
+$ mkdir -p Boom/Roos/Vis/Vuur
+\end{lstlisting}
+Gebruik \texttt{ls} om te controleren dat alle directories aanwezig zijn.
+
+Tot slot wil je ook instaat zijn om directories weg te gooien. Met \texttt{rmdir}\index{rmdir}\index{Directories!rmdir} kan dit als de directory leeg is.
+\begin{lstlisting}[language=bash]
+$ rmdir Aap Noot Mies
+\end{lstlisting}
+gooit keurig alle aangemaakte directies weg. Controleer dit met \texttt{ls}. Maar doen we:
+\begin{lstlisting}[language=bash]
+$ rmdir Boom
+\end{lstlisting}
+dan krijgen we een error melding, want de \texttt{Boom} directory is niet leeg. We zullen dus eerst alle andere subdirectories moeten weggooien, te beginnen met \texttt{Vuur}, dan \texttt{Vis}, dan \texttt{Roos} en tot slot kunnen we pas \texttt{Boom} weggooien. Gebruik \texttt{rmdir} om alle directories \textbf{behalve} Boom te verwijderen. De \texttt{Boom} directory moet dus blijven bestaan. 

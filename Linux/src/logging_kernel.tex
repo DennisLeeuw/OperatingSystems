@@ -1,0 +1,18 @@
+De kernel wil ons soms ook wat berichten overbrengen. Zeker tijdens het opstarten van het systeem produceert de kernel vele berichten. De Linux kernel gebruikt een ringbuffer voor deze berichten. Een ringbuffer is een FIFO, First In, First Out, buffer, wat betekend dat berichten in de buffer worden opgeslagen tot de buffer vol is, nieuwere berichten drukken dan de oudste berichten uit de buffer. De standaard buffer grote is 
+
+\texttt{dmesg}\index{dmesg}\index{commando!dmesg} is het commando om deze berichten uit te kunnen lezen. De bootberichten zijn zo belangrijk dat de meeste Linux distributes de ringbuffer na het opstarten leeglezen en deze opslaan als \texttt{/var/log/boot.log} of \texttt{/var/log/boot}. Want ook na het opstarten blijft de kernel naar deze ringbuffer schrijven en nieuwere berichten drukken dan uiteindelijk de berichten die gegenereerd zijn tijdens het opstarten uit de buffer.
+
+Een belangrijke optie voor \texttt{dmesg} is de \texttt{-T} optie. De standaard timestamp in de \texttt{dmesg} output is niet lekker leesbaar, met \texttt{-T} krijgen een output die wel goed leest:
+\begin{lstlisting}[language=bash]
+$ sudo dmesg -T
+[Wed Mar 17 12:41:28 2021] CPU2: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU1: Core temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU5: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU4: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU7: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU6: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU0: Core temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU3: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU1: Package temperature/speed normal
+[Wed Mar 17 12:41:28 2021] CPU0: Package temperature/speed normal
+\end{lstlisting}

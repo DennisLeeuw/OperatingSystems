@@ -1,0 +1,25 @@
+Via NetworkManager kunnen we specifieke ethernet settings zetten op een interface.
+
+We beginnen met het maken van een nieuwe interface. We geven de interface een eigen naam:
+\begin{lstlisting}[language=bash]
+$ sudo nmcli con add con-name "localethernet" type 802-3-ethernet
+\end{lstlisting}
+
+Van de vele settings die er mogelijk zijn geven we een paar voorbeelden.
+
+Normaal gesproken wordt er op een ethernet link onderhandeld tussen de switch en de machine welke snelheden er gebruikt kunnen worden en of er half- of full-duplex mogelijk is. De parameter die hiervoor gebruikt wordt is \texttt{802-3-ethernet.auto-negotiate}. We kunnen deze op \textbf{false} zetten als we zelf willen bepalen hoe de verbinding eruit komt te zien.
+\begin{lstlisting}[language=bash]
+$ sudo nmcli con modify "localethernet" 802-3-ethernet.auto-negotiate <BOOLEAN>
+\end{lstlisting}
+
+Met de \texttt{802-3-ethernet.speed} parameter kunnen we de snelheid van de interface zetten in Mbits/s. Standaard is deze waarde unset (0), zodat hij onderhandeld (auto-negotiate) kan worden. Zetten we deze op een bepaalde waarde dan zal die waarde meegegeven worden in de negotiate, als auto-negotiate op \textbf{true} staat. Is auto-negotiate \textbf{false} is de snelheid de opgegeven snelheid.
+\begin{lstlisting}[language=bash]
+$ sudo nmcli con modify "localethernet" 802-3-ethernet.speed <INT>
+\end{lstlisting}
+
+Half- of full-duplex in ethernet betekent dat er twee of vier-draden tegelijk gebruikt kunnen worden. Half-duplex is dat er of gezonden of ontvangen kan worden, dus of de transmit(TX) of de receive(RX) draden worden gebruikt. Full-duplex betekent dat er tegelijktijd gezonden en ontvangen kan worden, de transmit(TX) en de receive(RX) draden worden tegelijkertijd gebruikt. Is deze setting \textbf{unset}, dan bepaald auto-negotiate de uitkomst, is er \textbf{half} of \textbf{full} gezet dan wordt deze waarde aangenomen.
+\begin{lstlisting}[language=bash]
+$ sudo nmcli con modify "localethernet" 802-3-ethernet.duplex <STRING>
+\end{lstlisting}
+Om de setting op \textbf{unset} te zetten verwijder hem uit het profiel.
+

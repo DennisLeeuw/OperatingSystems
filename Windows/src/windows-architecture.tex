@@ -1,0 +1,41 @@
+Om een idee te krijgen hoe een Windows systeem in elkaar steekt is er hieronder een in een stack globaal weergeven hoe een Windows systeem eruit ziet.
+\begin{center}
+ \begin{tabular}{ | p{9.8cm} p{3cm} | }
+ \hline
+ \cellcolor{gray!25}
+	    \rule[-2em]{0pt}{4.5em}\begin{tabular}{ | p{1.5cm} | p{1.5cm} | p{1.5cm} |  p{1.5cm} | p{1.5cm} | }
+            \hline
+		    \cellcolor{orange!25}System processes & \cellcolor{cyan!25}Service processes & \cellcolor{yellow!25}Desktop apps & \cellcolor{green!25}UWP apps & \cellcolor{blue!25}Windows Store Apps \\ 
+            \hline
+            \end{tabular}
+	&
+	\cellcolor{gray!25}System Apps / Services \\
+ \hline
+ \cellcolor{gray!25}
+	    \rule[-1.5em]{0pt}{3.5em}\begin{tabular}{ | p{6.5cm} | p{2.3cm} | }
+	    \hline
+	    \cellcolor{yellow!25}.NET / Win32 API & \cellcolor{blue!25}Windows RT APIs \\ 
+            \hline
+            \end{tabular}
+	&
+	\cellcolor{gray!25}System APIs \\
+ \hline
+ \cellcolor{gray!25}
+	    \rule[-2.75em]{0pt}{6em}\begin{tabular}{ | p{4.4cm} | p{4.4cm} | }
+            \hline
+	    \multicolumn{2}{|c|}{\cellcolor{red!25}{}Executive services} \\ 
+            \hline
+	    \multicolumn{2}{|c|}{\cellcolor{red!25}{}Object Manager} \\ 
+            \hline
+	    \cellcolor{magenta!25}\hfill Kernel mode drivers \hfill \mbox{} &
+	    \cellcolor{olive!25}\hfill Kernel \hfill \mbox{} \\
+            \hline
+	    \multicolumn{2}{|c|}{\cellcolor{olive!25}{}Hardware Abstraction Layer} \\ 
+            \hline
+            \end{tabular}
+	&
+	\cellcolor{gray!25}Operatingsystem kernel \\
+ \hline
+\end{tabular}
+\end{center}
+

@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux Storage}
+\date{\today\\v.0.1.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_storage}
+\section{Voorkennis}
+\input{src/voorkennis_storage}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% requires: CLI access, kernel knowledge, major:minor nummers, weten wat een filesysteem is, kennis van UEFI, grep
+% provides: lsblk
+\chapter{Block devices}
+\input{src/linux_blkdev}
+
+\chapter{Disks}
+\input{src/linux_disks}
+\section{lsblk}
+\input{src/linux_lsblk}
+\section{partitioning}
+\input{src/disks-partition}
+\subsection{fdisk}
+\input{src/disks-partition-fdisk}
+\subsection{cfdisk}
+\input{src/disks-partition-cfdisk}
+\subsection{sfdisk}
+\input{src/disks-partition-sfdisk}
+\subsection{parted}
+\input{src/disks-partition-parted}
+\section{Opdracht}
+\input{src/linux_disks_opdracht}
+
+\chapter{Filesystems}
+\input{src/linux_fs}
+\section{Soorten bestandssystemen}
+\input{src/linux_fs-types}
+\section{Formateren}
+\input{src/linux_fs-mk}
+\section{Opdracht}
+\input{src/linux_fs_opdracht}
+
+\chapter{Mounten van disks}
+\input{src/linux_fsmount}
+\section{Mountpoints}
+\input{src/linux_mountpoints}
+\input{src/linux_mountpoints_mnt}
+\input{src/linux_mountpoints_media}
+\section{mount}
+\input{src/linux_mount}
+\section{umount}
+\input{src/linux_umount}
+\section{Veilig verwijderen}
+\input{src/linux_disks_saferm}
+\section{Opdracht}
+\input{src/linux_mnt_opdracht}
+
+\chapter{Virtuele bestandssystemen}
+\section{kernel filesystems}
+\subsection{/proc}
+\subsection{/dev}
+\input{src/linux_blkdev_kernel-dev}
+\subsection{/sys}
+\input{src/linux_blkdev_kernel-sys}
+\section{tmpfs: /tmp, /run}
+\subsection{/run}
+\subsection{/tmp}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

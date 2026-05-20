@@ -1,0 +1,94 @@
+Zorg dat je in de directory LinuxCursus staat en type:
+
+\begin{lstlisting}[language=bash]
+$ touch hello.txt
+\end{lstlisting}
+
+Na de Enter lijkt er helemaal niets te gebeuren. Dit is met de meeste Linux commando's het geval. Als het goed gegaan is dan laten ze niets weten, een beetje als \textquote{geen nieuws, is goed nieuws}. Doen we een \texttt{ls} dan zien we dat er een bestand is aangemaakt dat hello.txt heet.
+
+Met \texttt{touch}\index{touch} kunnen we dus bestanden aanmaken\index{bestanden maken!leeg}\index{lege bestanden maken}, dit zijn lege bestanden. Type maar eens:
+
+\begin{lstlisting}[language=bash]
+$ cat hello.txt
+\end{lstlisting}
+
+dan zal je zien dat er weer niets op je scherm verschijnt. En dat is goed! Het \texttt{cat}\index{cat} commando plaatst de inhoud van een bestand op het scherm en daar we een leeg bestand hebben opgevraagd is wat er op het scherm komt dus niets en omdat dat succesvol is verlopen hoeft \texttt{cat} ook geen foutmelding te laten zien en met de wetenschap dat geen nieuws, goed nieuws is is \texttt{cat} klaar.
+
+In een vorig hoofdstuk hebben we met \texttt{echo} tekst naar het scherm geschreven en nu hebben we met \texttt{cat} een bestand op het scherm afgebeeld. Vanuit Linux gezien is dat niet helemaal correct geformuleerd. Zowel \texttt{echo} als \texttt{cat} schrijven naar de \textquote{standaard output}\index{stanaard output} en in de terminal is het scherm de standaard output. De standaard output wordt afgekort als stdout\index{stdout}.
+
+We kunnen de stdout ook omleiden\index{omleiden!stdout}\index{stdout!omleiden} (redirect\index{redirect!stdout}\index{stdout!redirect}) naar bijvoorbeeld een bestand:
+
+\begin{lstlisting}[language=bash]
+$ echo 'Ik werk met Linux' > hello.txt
+\end{lstlisting}
+
+We zien nu dat de zin die we met echo afbeelden niet meer op het scherm verschijnt. Hij is verdwenen en er lijkt weer helemaal niets gebeurd te zijn. Als we nu
+
+\begin{lstlisting}[language=bash]
+$ cat hello.txt
+\end{lstlisting}
+
+doen dan zien we waar onze zin is gebleven. Hij is in hello.txt terecht gekomen. We hebben de stdout van \texttt{echo} in hello.txt gestopt.
+
+Laten we dat nog eens doen:
+
+\begin{lstlisting}[language=bash]
+$ echo 'Hello World!' > hello.txt
+\end{lstlisting}
+
+Doen we een \texttt{cat} van hello.txt dan zien we dat onze eerste zin verdwenen is en er alleen nog 'Hello World!' in hello.txt zit. We hebben kennelijk ons bestand overschreven met een nieuwe inhoud. We kunnen ook tekst toevoegen aan een bestand:
+
+\begin{lstlisting}[language=bash]
+$ echo 'Ik werk met Linux' >> hello.txt
+\end{lstlisting}
+
+door gebruik te maken van het dubbele groter dan teken voegen we een regel toe aan het eind van het bestand. De oude regel zie je met \texttt{cat} als eerste en daaronder komt onze nieuwe regel.
+
+Zou er als we een stdout hebben ook een standaard input\index{standaard input} (stdin\index{stdin}) zijn en kunnen we daar dan van lezen? Ja, die is er! Als je
+typt:
+
+\begin{lstlisting}[language=bash]
+$ cat < hello.txt
+\end{lstlisting}
+
+dan vertellen we eigenlijk dat \texttt{cat} de standaard invoer (stdin)\index{redirect!stdin}\index{stdin!redirect}\index{omleiden!stdin}\index{stdin!omleiden} op het scherm moet afbeelden. Dit is meer typen dan alleen \texttt{cat hello.txt} dus dit gaan we zo nooit gebruiken. Hoe we standaard input wel kunnen gebruiken is door bijvoorbeeld aan de shell te vertellen dat hij vanaf de standaard input moet lezen tot hij een markering tegen komt en daarna moet stoppen.
+\begin{lstlisting}[language=bash]
+$ cat <<EOF
+> Hallo beste mensen
+> dit is een stukje tekst
+> dat uit meerdere regels bestaat
+> EOF
+\end{lstlisting}
+Je ziet dat dan standaard invoer afgebeeld wordt op het scherm zodra deze de EOF tegen komt. We hebben met \texttt{<<EOF} tegen cat gezegd dat hij van standaard input moet blijven lezen tot hij de letters EOF\index{EOF} (End Of File\index{End Of File}) tegen komt. Daarna doet \texttt{cat} nog steeds waar het goed in is, namelijk het afbeelden op de standaard output. We kunnen natuurlijk ook de standaard output van \texttt{cat} omleiden naar een bestand:
+\begin{lstlisting}[language=bash]
+$ cat <<EOF >hello.txt
+> Hallo beste studenten
+> dit is een stukje tekst
+> dat uit meerdere regels bestaat
+> EOF
+\end{lstlisting}
+We vertellen \texttt{cat} dus dat hij moet lezen van standaard input totdat hij EOF tegen komt en dat zijn standaard output geredirect moet worden naar het bestand hello.txt. Nadat wij de EOF hebben ingetypt verschijnt de tekst niet op het scherm, maar zit in hello.txt wat we met \texttt{cat} kunnen controleren.
+
+Naast de standaard input en standaard output is er ook nog standaard error\index{standaard error} (stderr\index{stderr}), waar de foutmeldingen naartoe gaan.
+Laten we eens een fout maken door een niet bestaan bestand aan \texttt{cat} te geven:
+
+\begin{lstlisting}[language=bash]
+$ cat Hello.txt
+\end{lstlisting}
+
+Je krijgt nu een foutmelding dat Hello.txt niet bestaat. Linux is case-sensitive dus hello.txt is niet hetzelfde als Hello.txt. De standaard output, input en error zijn genummerd in Linux. Stdin is 0\index{stdin!0}\index{0!stdin}, stdout is 1\index{stdout!1}\index{1!stdout} en stderr is 2\index{stderr!2}\index{2!stderr}. Nu we dit weten zouden we het volgende kunnen doen:
+
+\begin{lstlisting}[language=bash]
+$ cat Hello.txt 2> Hello_error.txt
+\end{lstlisting}
+
+We zien nu geen foutmelding meer op ons scherm en hebben de stderr omgeleid\index{stderr!omleiden}\index{omleiden!stderr} (redirect\index{redirect!stderr}\index{stderr!redirect}) naar het bestand Hello\_error.txt. Doen we nu een
+\begin{lstlisting}[language=bash]
+$ cat Hello_error.txt
+\end{lstlisting}
+dan zien we dat de foutmelding daar is opgeslagen.
+
+Deze vormen van het redirecten (omleiden) van data stromen gebeurt in Linux heel vaak. Programma's schrijven bijvoorbeeld de fouten die ze tegen komen naar een log bestand. Dit doen ze door de stderr te redirecten en de error regels toe te voegen aan het bestand, bijvoorbeeld 2>>error.log. Als ze dit doen met een datum- en tijdmelding dan kan je heel makkelijk problemen opzoeken.
+
+Wij hebben nu geleerd om bestanden aan te maken en om invoer en uitvoer te redirecten.
+

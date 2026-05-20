@@ -1,0 +1,13 @@
+Er zijn van die momenten dat je naast dat je wilt weten hoeveel diskruimte er vrij is ook wilt weten wie nu eigenlijk de grootste gebruiker is. Om dit te bepalen moeten we het disk gebruik, ofwel, disk usage, bepalen met behulp van het \texttt{du} commando. Als je \texttt{du} opstart zonder opties geeft het een opsomming van de grootte van de bestanden in de directory waarin je staat. Daar zou je natuurlijk ook gewoon \texttt{ls -l} voor kunnen gebruiken, daar hebben we \texttt{du} niet voor nodig. \texttt{du} wordt handig met de optie \texttt{-s} die een optelling doet van alle bestanden in een directory. Een tweede handige optie is de \texttt{-h} optie die de optelling terug geeft in een human readable format. Met deze opties kunnen we bepalen hoe groot bijvoorbeeld een home-directory van een gebruiker is.
+
+\begin{lstlisting}[language=bash]
+$ du -hs /home/dennis/
+732G	/home/dennis/
+\end{lstlisting}
+
+Als je wilt zien wie de grootste gebruiker op je systeem is dan is het handig om een wildcard te gebruiken:
+\begin{lstlisting}[language=bash]
+$ sudo du -hs /home/*
+732G	/home/dennis
+16K	/home/hcftpuser
+\end{lstlisting}

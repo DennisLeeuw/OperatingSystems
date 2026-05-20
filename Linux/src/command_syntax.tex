@@ -1,0 +1,16 @@
+Commando's of opdrachten aan de shell hebben een vaste vorm (syntax). De syntax ziet er zo uit:
+
+\begin{lstlisting}[language=bash]
+commando<spatie>optie(s)<spatie>argument(en)
+\end{lstlisting}
+
+De spaties zorgen ervoor dat de shell weet wanneer een volgend deel begint, voor de eerste spatie staat het commando, daarna volgen er geen of enkele opties en tot slot zijn er geen of enkele argumenten. Bijna alle commando's houden deze syntax aan, hoewel er ook uitzonderingen zijn.
+
+Opties zorgen ervoor dat een commando zich anders gaat gedragen, dan zonder opties. Zoals bij het \texttt{ls} commando, waar zonder opties het alle bestanden in een directory laat zien, maar met de \texttt{-l} optie zorgt voor meer informatie over de bestanden in de directory.
+
+Argumenten vertellen een commando waarop de actie uitgevoerd moet worden. Een argument kan een bijvoorbeeld een bestand zijn:
+\begin{lstlisting}[language=bash]
+$ cd ~
+$ ls -l .bash_history
+\end{lstlisting}
+Bij het \texttt{cd} commando is de tilde (\textasciitilde) het argument en bij het \texttt{ls -l .bash\_history} commando is \texttt{-l} de optie en het bestand \texttt{.bash\_history} is het argument. Dit laatste commando toont de informatie over het \texttt{.bash\_history} bestand.

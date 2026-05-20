@@ -1,0 +1,111 @@
+Om een handeling een bepaald aantal keren uit te voeren kunnen we gebruik maken van \texttt{for}. Met behulp van \texttt{for} kunnen we een loop doorlopen. Het \texttt{for} commando heeft twee hulpcommando's nodig, namelijk \texttt{do}\index{Shell scripting!do} en \texttt{done}\index{Shell scripting!done}. Na het \texttt{for} commando komt de conditie waaraan we moeten voldoen en tussen \texttt{do} en \texttt{done} staat de loop die doorlopen wordt. Laten we beginnen met een voorbeeld:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# License: GPLv3
+# Tel van 1 tot 10
+
+list="1 2 3 4 5 6 7 8 9 10"
+
+for i in ${list}
+do
+	echo $i
+done
+
+#END
+\end{lstlisting}
+In dit script wordt op basis van een lijstje getallen elk getal \'e\'en voor \'e\'en aan de variabele i toegekend, dit is de conditie waaraan de \texttt{for} loop moet voldoen. Zolang er nog een parameter (getal) is wordt de loop tussen \texttt{do} en \texttt{done} doorlopen.
+
+Tussen de commando's die het begin (\texttt{do}) en het einde van de loop (\texttt{done}) aangeven staan de commando's die in de loop uitgevoerd moeten worden. In ons geval is dat maar \'e\'en commando namelijke echo \$i.
+
+Wat je misschien opgevallen is is dat de shell automatische weet dat hij de getallen 1 tot en met 10 als losse waarden moet beschouwen en deze aan de variabele i moet toekennen. We zouden het script kunnen herschrijven met quotes en zien wat er dan gebeurd:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# License: GPLv3
+# Tel van 1 tot 10
+
+list="'1 2' 3 4 '5 6' 7 8 '9 10'"
+
+for i in ${list}
+do
+	echo $i
+done
+
+#END
+\end{lstlisting}
+Neem dit script over, let goed op de enkele quotes, en start het script. Ook hier geldt dus wat de enkele quotes (ticks) ervoor zorgen dat spaties niet meer gebruikt worden als scheidingsteken.
+
+De vraag die hopelijk nu ontstaan is is waarom gebruikt de shell een spatie als scheidingsteken? Dat komt omdat de shell een interne variabele kent die \texttt{IFS}\index{IFS}\index{Internal Field Separator} heet en dat staat voor Internal Field Separator (interne veld scheider). Deze variabele bepaalt hoe de shell met velden omgaat. Standaard gebruikt de shell, spaties, tabs en de nieuwe regel (enter) als scheidingstekens. Ik kan het bovenstaande script dan ook herschrijven met nieuwe regels zonder dat de werking veranderd:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# License: GPLv3
+# Tel van 1 tot 10
+
+list="1
+2
+3 4
+5
+6 7
+8
+9 10"
+
+for i in ${list}
+do
+	echo $i
+done
+
+#END
+\end{lstlisting}
+Het is minder goed leesbaar, maar voor de werking maakt het niet uit. We kunnen de IFS ook aanpassen. We maken nu een nieuw script waarin we het scheidingsteken (\texttt{IFS}) naar een newline (nieuwe regel) zetten en de \texttt{list} variabele ophakken in twee stukken:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# License: GPLv3
+# Tel van 1 tot 10
+
+# Set the IFS variable to newline
+IFS=$'\n'
+
+list="1 2 3 4 5
+6 7 8 9 10"
+
+# Count from 1 to 10 ... or not
+for i in ${list}
+do
+	echo $i
+done
+
+#END
+\end{lstlisting}
+De uitvoer zal er dan zo uitzien
+\begin{lstlisting}[language=bash]
+$ ./script_for_IFS.sh 
+1 2 3 4 5
+6 7 8 9 10
+\end{lstlisting}
+Alleen de newline scheidt dan nog de delen en de spaties worden niet meer gezien als scheidingsteken.
+
+Je kan de \texttt{IFS} naar elk willekeurig character zetten:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+
+IFS="n"
+zin="Dit is een zin en daarin komt vaak de n voor"
+for i in $zin
+do
+	echo $i
+done
+\end{lstlisting}
+De n is nu het scheidingsteken geworden en dat betekent dat de uitvoer van dit script er zo uit komt te zien:
+\begin{lstlisting}[language=bash]
+$ ./testscriptIFS.sh
+Dit is ee
+ zi
+ e
+ daari
+ komt vaak de
+ voor
+\end{lstlisting}
+Je ziet dat alle n-en zijn verdwenen en dat de zin is opgehakt op de plek waar de n stond.

@@ -1,0 +1,13 @@
+Als applicaties berichten loggen naar bestanden dan worden de log bestanden steeds langer en daarmee het systeem steeds trager. Dat is niet handig. Eens in de zoveel tijd moet een log-bestand dan ook geleegd worden, maar we willen de oude logs niet kwijt raken. Het proces dat ervoor zorgt dat logs op de juiste manier behandeld worden zodat ze niet te groot worden heet log rotate\index{log rotate}.
+
+Er zijn verschillende manieren om het roteren van logs voor elkaar te krijgen. Natuurlijk kunnen we het handmatig doen. We moeten dan:
+\begin{enumerate}
+\item de daemon stoppen,
+\item het log-bestand verplaatsen naar een andere naam (bijvoorbeeld, logbestand.backup),
+\item een nieuw leeg log-bestand aanmaken met de juiste rechten,
+\item de daemon opstarten.
+\end{enumerate}
+Dit is een hoop werk en tijdens het werk staat de daemon uit. Tevens is het elke keer dezelfde handeling, dus een prima klus om te automatiseren.
+
+We kunnen een script schrijven dat dit doet en dat via cron laten draaien. Een andere optie is dat we een tool gebruiken die het voor ons regelt zoals bijvoorbeeld \texttt{logrotate}\index{logrotate}.
+

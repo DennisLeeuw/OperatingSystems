@@ -1,0 +1,8 @@
+Harddisks, SSDs, USB-sticks heten onder Linux block-devices. Het zijn opslag apparaten die hun data schrijven in blocks (sectoren). Vroeger hadden we IDE-harddisks en dat waren de eerste harddisks die ondersteunt werden door Linux. Deze harddisks kregen de device naam hd van harddisk gevolgt door een letter (a t/m z), dus hda was de eerste harddisk, hdb de tweede, etc. Later kwam er ook support voor SCSI en deze disken werden sd genoemd met een letter, daarmee werd sda de eerste SCSI harddisk en sdb de tweede.
+
+In de moderne Linux-kernels worden bijna alle harddisks aangestuurd door het SCSI-subsysteem. Dus alle harddisken beginnen met sd, ongeacht of het een echte SCSI-harddisk is.
+
+Voor SSDs is dit anders. Bij SSDs hang het af van de aansturing. Als ze worden aangestuurd via sata bus, dan vallen ze onder het SCSI-subsysteem. NVMe devices via PCIe beginnen met \texttt{nvme} en hebben hun eigen aansturing.
+
+USB-sticks en memory-cards vallen dan weer bijna allemaal onder het SCSI-subsysteem.
+

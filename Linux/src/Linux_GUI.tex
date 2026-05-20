@@ -1,0 +1,109 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux de grafische interface}
+%\subtitle{Linux voor MBO niveau 4 en het LPI Linux Essentials examen}
+%\subject{Een Praktische Gids}
+\date{\today\\v.1.0.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2022 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\input{src/OverDitDocument}
+\input{src/DocChanges_GUI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+\chapter{Inleiding}
+\input{src/Inleiding_serie}
+\input{src/Inleiding_GUI}
+
+\chapter{Werken met de Desktop}
+\input{src/GIWerkenMet}
+\section{Zoeken van bestanden of applicaties}
+\input{src/GIZoeken}
+\section{Systeem configuratie}
+\input{src/GISysConfig}
+\section{The Dash}
+\input{src/GIDash}
+\section{Bestandsbrowser}
+\input{src/filebrowser}
+
+\chapter{Installeren en updaten van software}
+\input{src/software}
+\section{Installeren van GIMP}
+\input{src/GIInstallatieGIMP}
+\section{Show applications}
+\input{src/GI_CentOS_ShowApplications}
+
+\chapter{Internet}
+\section{Webbrowsers}
+\input{src/GIWebbrowsers}
+\section{E-mail clients}
+\input{src/GIEMailClients}
+
+\chapter{Office Applicaties}
+\section{Office pakketten}\index{Office pakketten}
+\input{src/GIOffice}
+\section{Grafische applicaties}
+\input{src/GIGrafischeApps}
+\subsection{The GIMP}\index{GIMP}\index{The GIMP}
+\input{src/GIGIMP}
+\subsection{Inkscape}\index{Inkscape}
+\input{src/GIInkscape}
+\section{Scribus}\index{Scribus}
+\input{src/GIScribus}
+
+\chapter{Multimedia}
+\input{src/multimedia}
+\section{Muziekspelers}\index{muziekspelers}
+\input{src/muziekspelers}
+\section{VLC}\index{VLC}\index{Video LAN Client}
+\input{src/vlc}
+\section{KODI}\index{KODI}
+\input{src/kodi}
+
+\chapter{Naar de command line}
+\section{Terminal}
+\input{src/GI_CentOS_Terminal}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

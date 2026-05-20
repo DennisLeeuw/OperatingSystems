@@ -1,0 +1,7 @@
+De wereld is opgedeeld in tijdzones\index{tijdzone} en daarnaast heeft een land vaak nog regels met betrekking tot zomer- en wintertijd. De bestanden die de regels bevatten over wat de regels zijn per land of gebied zijn te vinden in \texttt{/usr/share/zoneinfo/}\index{zoneinfo}. Omdat de afspraak is dat configuratie bestanden in \texttt{/etc} staan is er een link vanuit \texttt{/etc/localtime}\index{localtime} naar de tijdzone die voor deze computer geldt in \texttt{/usr/share/zoneinfo/}.
+
+Om de tijdzone aan te passen gebruiken we het commando:
+\begin{lstlisting}
+sudo dpkg-reconfigure tzdata
+\end{lstlisting}\index{tzdata}
+

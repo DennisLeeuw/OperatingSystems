@@ -1,0 +1,101 @@
+\begin{theindex}
+
+  \item .NET, 4
+
+  \indexspace
+
+  \item API, 3
+  \item applicaties, 4
+  \item Application Programming Interface, 3
+  \item applications, 4
+  \item apps, 2
+
+  \indexspace
+
+  \item bestanden, 8
+
+  \indexspace
+
+  \item cd, 8
+  \item CLI, 6
+  \item cmd, 6
+  \item command line interface, 6
+  \item commando
+    \subitem cd, 8
+    \subitem del, 8
+    \subitem dir, 8
+    \subitem mkdir, 8
+    \subitem rmdir, 8
+
+  \indexspace
+
+  \item del, 8
+  \item desktop applications, 4
+  \item dir, 8
+  \item directories, 8
+  \item directory-tree, 9
+  \item DLL, 5
+  \item Dynamic Loadable Libraries, 5
+
+  \indexspace
+
+  \item files, 8
+  \item folders, 8
+
+  \indexspace
+
+  \item hardware, 2
+  \item home-directory, 8
+
+  \indexspace
+
+  \item layer, 2
+
+  \indexspace
+
+  \item mappen, 8
+  \item Microsoft store, 4
+  \item mkdir, 8
+
+  \indexspace
+
+  \item NT OS Kernel, 5
+
+  \indexspace
+
+  \item operating system, 2
+  \item OS, 2
+
+  \indexspace
+
+  \item PowerShell, 6
+  \item Program Files, 10
+
+  \indexspace
+
+  \item rmdir, 8
+  \item root directory, 9
+
+  \indexspace
+
+  \item stack, 2
+  \item System Services, 4
+
+  \indexspace
+
+  \item Universal Windows Platform, 4
+  \item user applications, 2
+  \item UWP, 4
+
+  \indexspace
+
+  \item Win32 API, 4
+  \item Windows Real Time Application Programming Interface, 5
+  \item Windows RT API, 4
+  \item windows store apps, 4
+  \item Windows Subsystem for Linux, 5
+  \item Windows System Services, 4
+  \item WinRT, 5
+  \item WSL, 5
+
+\end{theindex}

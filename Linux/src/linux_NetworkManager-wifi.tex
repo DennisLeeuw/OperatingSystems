@@ -1,0 +1,47 @@
+Om aan een WiFi netwerk te kunnen connecten moeten we eerst weten of een WiFi netwerk beschikbaar is met voldoende sterkte:
+\begin{lstlisting}[language=bash]
+$ nmcli device wifi list
+\end{lstlisting}
+
+Als het netwerk waaraan we willen connecten beschikbaar is met voldoende signaal sterkte dan kunnen we eraan connecten:
+\begin{lstlisting}[language=bash]
+$ nmcli device wifi connect <SSID_OR_BSSID> password <PASSWORD>
+\end{lstlisting}
+Dit maakt een profiel bestand aan in /texttt{/etc/NetworkManager/system-connections/} met de naam van het SSID of BSSID.
+
+Als je wilt connecten aan een verborgen (hidden) network gebruik dan de optie \texttt{hidden}:
+\begin{lstlisting}[language=bash]
+$ nmcli device wifi connect <SSID_OR_BSSID> password <PASSWORD> hidden yes
+\end{lstlisting}
+
+Als je meer dan 1 WiFi interface hebt en met een specifieke WiFi interface wilt verbinden, geef dan de interface naam op:
+\begin{lstlisting}[language=bash]
+$ nmcli device wifi connect <SSID_OR_BSSID> password <PASSWORD> ifname <WLANIF>
+\end{lstlisting}
+
+Met het show commando kunnen we een overzicht krijgen van onze verbindingen:
+\begin{lstlisting}[language=bash]
+$ nmcli connection show
+\end{lstlisting}
+De laatste kolom vertelt ons aan welke interface een SSID of BSSID verbonden is.
+
+Om de verbinding af te sluiten gebruiken we:
+\begin{lstlisting}[language=bash]
+$ nmcli device disconnect ifname <WLANIF>
+\end{lstlisting}
+
+Om een netwerk te activeren die we eerder hebben geconfigureert gebruiken we het bestaande profiel (naam of UUID):
+\begin{lstlisting}[language=bash]
+$ nmcli connection up <NAME_OR_UUID>
+\end{lstlisting}
+
+Willen we een profiel weggooien, dus een netwerk volledig vergeten, dan is het \texttt{delete} commando je vriend:
+\begin{lstlisting}[language=bash]
+$ nmcli connection delete <NAME_OR_UUID>
+\end{lstlisting}
+
+En tot slotte kunnen we WiFi ook volledige uit zetten:
+\begin{lstlisting}[language=bash]
+$ nmcli radio wifi off
+\end{lstlisting}
+

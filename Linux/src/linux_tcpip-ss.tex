@@ -1,0 +1,36 @@
+Het \texttt{ss} commando is de vervanger van \texttt{netstat}. Met dit commando kunnen we zien welke poorten er op ons systeem gebruikt worden. De meeste opties van \texttt{netstat} werken ook bij \texttt{ss}, wat handig is voor degenen die al vertrouwd zijn met \texttt{netstat}.
+
+De belangrijkste opties voor \texttt{ss} zijn:
+\begin{description}
+\item[-n] vervang IP-adressen niet door namen, dit scheelt een hoop snelheid
+\begin{lstlisting}[language=bash]
+$ ss -n
+\end{lstlisting}
+
+\item[-t] Laat alle TCP poorten zien
+\begin{lstlisting}[language=bash]
+$ ss -t
+\end{lstlisting}
+
+\item[-u] Laat alle UDP poorten zien
+\begin{lstlisting}[language=bash]
+$ ss -u
+\end{lstlisting}
+
+\item[-l] Laat alle Listening poorten zien
+\begin{lstlisting}[language=bash]
+$ ss -l
+\end{lstlisting}
+
+\item[-p] Laat alle gebruikte poorten zien met het erbij behorende proces. Dit kunnen we alleen zien als de root-gebruiker
+\begin{lstlisting}[language=bash]
+$ sudo ss -p
+\end{lstlisting}
+
+\end{description}
+
+Natuurlijk kunnen we opties combineren, zo kunnen we alle luisterende poorten laten zien op TCP, met hun bijbehorende processen zonder resolving door aan \texttt{ss} de volgende opties meet te geven:
+\begin{lstlisting}[language=bash]
+$ sudo ss -tlnp
+\end{lstlisting}
+

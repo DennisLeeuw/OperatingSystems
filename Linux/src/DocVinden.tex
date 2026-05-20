@@ -1,0 +1,27 @@
+%\begin{figure}
+%\includegraphics[width=0.4\linewidth]{linuxreader-img028.png}
+%	\caption{Het zoeken van informatie}
+%\end{figure}
+
+Om uit te vinden welk commando je kan gebruiken om iets op het systeem te bereiken kan je \texttt{apropos}\index{apropos}\index{Zoeken!apropos} gebruiken. Type eens (Let op de quotes!):
+\begin{lstlisting}[language=bash]
+$ apropos 'make directories'
+\end{lstlisting}
+je vindt dan het \texttt{mkdir} commando. Het nadeel van dit zoek systeem is dat het heel specifiek is.
+
+\begin{lstlisting}[language=bash]
+$ apropos 'make directory'
+\end{lstlisting}
+doet niets. Als je het dus niet meteen vindt probeer dan enkelvoud- en meervoudsvormen.
+
+Heb je een commando gevonden waarvan je denkt dat het is wat je nodig hebt probeer dan \texttt{whatis}\index{whatis}:
+
+\begin{lstlisting}[language=bash]
+$ whatis mkdir
+\end{lstlisting}
+
+Dit geeft een korte beschrijving van een commando. Voor de volledige manual gebruiken we het natuurlijk \texttt{man}:
+\begin{lstlisting}[language=bash]
+$ man mkdir
+\end{lstlisting}
+

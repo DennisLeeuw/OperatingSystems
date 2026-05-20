@@ -1,0 +1,15 @@
+Elke gebruiker is ook lid van minimaal 1 groep, de primaire groep zoals opgegeven in \texttt{/etct/passwd}. Op sommige systemen is dat de groep \textbf{users} op andere systemen is dat een andere groep. Om te zien van welke groepen je lid bent kan je \texttt{id}\index{id}\index{commando!id} gebruiken.
+\begin{lstlisting}[language=bash]
+$ id
+\end{lstlisting}
+De output geeft weer dat je maar \'e\'en UID hebt en \'e\'en of meer GID's. Je kan dus lid zijn van meer groepen. De eerste groep is de standaard (default) groep waarvan je lid bent.
+
+In de output zie je ook dat elk UID en elke GID eigenlijk een nummer is. Computers kunnen alleen met getallen werken, terwijl wij mensen beter met namen om kunnen gaan. Vandaar dat het besturingssysteem steeds een vertaling maakt van naam naar getal.
+
+Zoek uit hoe je \texttt{id} alleen het nummerieke ID terug kunt laten geven en hoe je \texttt{id} alleen de naam van je primaire groep kan laten weergeven.
+
+De \textquote{database} met groep informatie vind je in \texttt{/etc/group}. Je kan de naam van bijvoorbeeld je primaire groep terug vinden door een \texttt{grep} te doen op :GID:, dus in het voorgaande voorbeeld zou dat betekenen:
+\begin{lstlisting}[language=bash]
+$ grep :1000: /etc/group
+\end{lstlisting}
+de dubbele punten om het id is om te voorkomen dat je bijvoorbeeld ook groep ID 10000 of 10001 terug krijgt.

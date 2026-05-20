@@ -1,0 +1,35 @@
+In het vorige hoofdstuk hebben we gezien dat we aan de variable aap een waarde 1 gaven, maar ook de waarde \textquote{Dag aap!}. Bij de ene gebruikten we geen quotes en bij de andere wel. Ook dit had te maken met het gebruik van spaties. Een slimmerik onder jullie zou kunnen zeggen, dan kan je ook een escape gebruiken en dat is helemaal waar, maar stel dat ik het escape-character letterlijk wil nemen en zodat die niet gebruikt wordt als escape, wat dan?
+
+Voer het volgende maar eens uit:
+\begin{lstlisting}[language=bash]
+$ aap=hello\ world
+$ echo $aap
+\end{lstlisting}
+
+en nu met quotes:
+\begin{lstlisting}[language=bash]
+$ aap="hello\ world"
+$ echo $aap
+\end{lstlisting}
+
+Nu we toch met variabelen aan het spelen zijn, dan kan je ook een variable in een variabele gebruiken zoals hier:
+\begin{lstlisting}[language=bash]
+$ mies="kees"
+$ aap="Hello\ $mies"
+$ echo $aap
+\end{lstlisting}
+
+Als we mies niet als variabele willen gebruiken dan kunnen we het dollar-teken escapen:
+\begin{lstlisting}[language=bash]
+$ aap="Hello\ \$mies"
+$ echo $aap
+\end{lstlisting}
+we hebben nu twee escapes in \'e\'en variabele.
+
+We kunnen enkele quotes gebruiken zodat we helemaal geen escapes meer nodig hebben en alles letterlijk wordt weergegeven:
+\begin{lstlisting}[language=bash]
+$ aap='Hello $mies'
+$ echo $aap
+\end{lstlisting}
+Als we aan aap een complete zin als waarde willen geven kunnen we elke spatie escapen, maar is het korter om enkele quotes te gebruiken.
+

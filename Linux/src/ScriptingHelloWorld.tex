@@ -1,0 +1,41 @@
+We gaan een bestand maken met de naam texttt{hello\_world.sh}\index{hello\_world.sh}. Het is een goeie gewoonte om een bestandsnaam te eindigen met een extensie die weergeeft wat voor type bestand het is. Dit is voor Linux niet noodzakelijk, maar voor ons gebruikers is het handig om te weten dat we te maken hebben met een shell-script en dus eindigen we de bestandsnaam met .sh.
+
+Om structuur in ons werk te houden maken we een directory scripts aan in onze home directoy.
+\begin{lstlisting}[language=bash]
+$ cd ~
+$ mkdir scripts
+$ cd scripts
+\end{lstlisting}
+Maak met \texttt{vi} het bestand hello\_world.sh aan en plaats in het bestand de volgende tekst:
+\begin{lstlisting}[language=bash]
+echo "Hello world!"
+exit 0
+\end{lstlisting}
+Sluit \texttt{vi} af. We hebben nu een bestand met 2 commando's. Regel 1 zegt beeld Hello World! op het scherm af en regel 2 zegt verlaat dit script. Linux leest echter geen extensies om te bepalen wat het moet doen, maar het leest de eerste twee characters van een bestand om te bepalen wat er met een bestand gedaan moet worden. Deze eerste twee characters van een bestand heten het magic number\index{magic number}.
+
+Het \texttt{file}\index{file}\index{commando!file} commando kan gebruikt worden om het magic nummer van een bestand te lezen en weer te geven wat voor soort bestand het is.
+\begin{lstlisting}[language=bash]
+$ file hello_world.sh
+hello_world.sh: ASCII text
+\end{lstlisting}
+We zien dat Linux nog denkt dat het om een text bestand gaat. Het ziet het niet als een shell script. Voeg nu boven de \texttt{echo} regel een regel toe zodat je script er zo uit komt te zien:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+echo "Hello world!"
+exit 0
+\end{lstlisting}
+Als je de editor verlaten hebt en weer een \texttt{file} doet van hello\_world.sh dan zal je zien dat Linux nu weet dat het om een shell-script gaat.
+
+Voor een script dat ge\"interpreteerd moet worden door een interpreter, dat kan een shell zijn, zijn de 2-character codes de she-bang\index{she-bang}: \#! of hexadecimaal 0x23 0x21. Achter de she-bang komt de interpreter die het script moet interpreteren. Als de shell deze character reeks tegen komt zal het de rest van de regel lezen om te bepalen aan welke interpreter (shell) het het script moet voeren. In ons voorbeeld wordt het script gegeven aan het programma /bin/bash en deze zal de twee opgegeven commando's uitvoeren.
+
+Eerst wordt door echo \texttt{Hello world!} op het scherm gezet en daarna sluit het script af. Het \texttt{exit}\index{exit}\index{commando!exit}\index{Shell scripting!exit} commando is niet noodzakelijk, als de shell geen commando's meer tegen komt zal het automatisch afsluiten. Het voordeel van \texttt{exit} is dat je er een exit code aan kan meegeven zodat je kan laten weten dat het script goed (0) of fout (1) ge\"eindigd is. Doe je dit niet dan is de exit code de error-code van het laatst uitgevoerde commando.
+
+Voer het script uit en geef direct daarna het commando
+\begin{lstlisting}[language=bash]
+$ echo $?
+\end{lstlisting}
+als je nu de regel met daarop \texttt{exit 0} vervangt door \texttt{exit 1} en dan weer het script draait en het commando
+\begin{lstlisting}[language=bash]
+$ echo $?
+\end{lstlisting}
+geeft dan zie welke invloed het exit commando heeft.

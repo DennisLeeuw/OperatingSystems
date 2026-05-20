@@ -1,0 +1,27 @@
+Computers zijn goed in het werken met nummers, maar slecht in namen. Dat geldt natuurlijk ook voor alles dat met het netwerk te maken heeft. Daarom zijn er twee bestanden die fungeren als vertaal tabellen tussen namen en nummers. De bestanden staan natuurlijk in de \texttt{/etc/} directory. Voor de TCP/IP protocollen is er \texttt{protocols} en voor de services is er \texttt{services}.
+
+Voor \texttt{protocols} staan er bijvoorbeeld de ons bekende TCP/IP protocollen icmp, tcp en udp in deze lijst (dit is een klein stukje uit de lange lijst): 
+\begin{lstlisting}[language=bash]
+icmp	1	ICMP	# internet control message protocol
+tcp	6	TCP	# transmission control protocol
+udp	17	UDP	# user datagram protocol
+\end{lstlisting}
+
+Het \texttt{services} bestand zit op een soortgelijke manier in elkaar. Deze lijst bevat de port-nummers en het bijbehorende protocol dat gebruikt wordt voor een service (hier volgt een klein stukje uit de lijst):
+\begin{lstlisting}[language=bash]
+echo	7/tcp
+echo	7/udp
+ssh	22/tcp		# SSH Remote Login Protocol
+telnet	23/tcp
+smtp	25/tcp	mail
+domain	53/tcp		# Domain Name Server
+domain	53/udp
+http	80/tcp	www	# WorldWideWeb HTTP
+pop3	110/tcp	pop-3	# POP version 3
+ntp	123/udp			# Network Time Protocol
+imap2	143/tcp	imap	# Interim Mail Access P 2 and 4
+\end{lstlisting}
+We zien in deze lijst dan DNS de port 53 gebruikt en zowel het TCP als het UDP protocol daarvoor gebruikt.
+
+Mocht je dus ooit niet meer weten welke service welk port-nummer gebruikt, of welk port-nummer welke service aanbiedt dan kan je dat in dit bestand snel even opzoeken.
+

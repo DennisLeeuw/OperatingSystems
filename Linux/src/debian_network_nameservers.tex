@@ -1,0 +1,13 @@
+De DNS-nameservers die gebruikt kunnen worden om domeinnamen te vertalen naar IP-adressen worden geconfigureerd in het \texttt{/etc/resolv.conf} bestand. Met \texttt{cat} kunnen we de inhoud van het bestand laten zien. De inhoud van het bestand zou er zo uit kunnen zien op je systeem:
+\begin{lstlisting}[language=bash]
+domain localdomain
+search localdomain
+nameserver 192.168.1.5
+\end{lstlisting}
+
+\begin{description}
+\item[domain] het DNS-domein waartoe ons systeem behoort
+\item[search] hier kunnen we een lijst opgeven van domeinen die doorzocht moeten worden als alleen een hostnaam opgeven om te resolven. Zo kan een hostname gezocht worden in verschillende domeinen.
+\item[nameserver] Het IP-adres achter de tekst \texttt{nameserver} is het IP-adres van een DNS-nameserver die we kunnen gebruiken om domeinnamen om te in IP-adressen of IP-adressen in domeinnamen. Deze regel kan meerdere keren voorkomen in het \texttt{resolv.conf} bestand met elke keer een ander IP-adres.
+\end{description}
+

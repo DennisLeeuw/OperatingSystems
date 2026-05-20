@@ -1,0 +1,15 @@
+Me stage heeft plaatsgevonden in 2018. De reden dat ik voor dit bedrijf gekozen heb is omdat het een overheidsinstantie is en graag wil leren hoe is om in zo'n bedrijf te werken, verder wil ik me ontwikkelen doormiddel het uitvoeren van wat ik heb geleerd op me school.
+
+Me werkzaamheden was het helpen van mensen met hun probleem binnen en buiten het bedrijf, ik zat op de Servicedesk.
+
+Wij krijgen onze technologische aparaten waaronder laptops computers als er iets stuk en niet zomaar te repareren valt. We vragen eerst of er nog garantie op de product is, zo ja sturen we de produkten naar op naar de leverancier. Zo niet dan kijk we er zelf naar.
+
+Ik had een werkende computer die hele tijd vast liep en rare geluide maakte. Ik heb zelf een stappenplan gemaakt om te controleren of de computer hardware of software problemen had.	
+    1. Zit de stroom goed op de voeding?
+    2. Zijn alle componenten goed aangesloten 
+    3. Is de product schoon (stofvrij) 
+    4. Handige Informatie opschrijven van de BIOS 
+
+Uiteindelijk was de fout dat er teveel stof in de roosters zat van de computer, stof kan computers slecht laten draaien en de lucht cirkulatie verminderen van binnen. Waardoor ze kunnen vastlopen.
+
+We gebruiken Topdesk. Dit is een melding registratie systeem. Hierin worden incidenten genoteerd en is er een stukje communicatie tussen de melder en de oplosser. De melder of een van de servicedesk medewerkers maken de melding. Daarna kijkt de oplosser naar de melding en stuurt een mail naar de des betreffende persoon. De oplosser belt vaak ook naar de melder om de probleem op te lossen en meld de melding af na afloop. De melder ontvangt een mail dat de melding is afgehandeld. 

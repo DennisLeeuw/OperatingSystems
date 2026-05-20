@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+           "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<meta name="GENERATOR" content="TtH 4.16">
+ <style type="text/css"> div.p { margin-top: 7pt;}</style>
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+ <style type="text/css"><!--
+ .tiny {font-size:30%;}
+ .scriptsize {font-size:xx-small;}
+ .footnotesize {font-size:x-small;}
+ .smaller {font-size:smaller;}
+ .small {font-size:small;}
+ .normalsize {font-size:medium;}
+ .large {font-size:large;}
+ .larger {font-size:x-large;}
+ .largerstill {font-size:xx-large;}
+ .huge {font-size:300%;}
+ --></style>
+ 
+ 
+<title>[intoc]</title>
+
+<div class="p"><!----></div>
+[intoc]
+
+<div class="p"><!----></div>
+
+
+
+<div class="p"><!----></div>
+
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+
+
+<div class="p"><!----></div>
+
+<h3 align="center">D. Leeuw </h3>
+
+<title>Linux Debian Installatie</title>
+    
+<h1 align="center">Linux Debian Installatie </h1>
+
+<h3 align="center">Dec 17, 2025
+<br />
+0.5.2<br />
+
+
+&#169;&nbsp;2020-2025 Dennis Leeuw<br />
+
+<a href="CC-BY-SA-NC.png">Figure</a>
+
+<div class="p"><!----></div>
+Dit werk is uitgegeven onder de Creative Commons BY-NC-SA Licentie en laat anderen toe het werk te kopi&#235;ren, distribueren, vertonen, op te voeren, en om afgeleid materiaal te maken, zolang de auteurs en uitgever worden vermeld als maker van het werk, het werk niet commercieel gebruikt wordt en afgeleide werken onder identieke voorwaarden worden verspreid.
+
+<div class="p"><!----></div>
+ </h3>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+ <a id="tth_sEc1"></a><h2>
+1&nbsp;&nbsp;Voorbereidingen</h2>
+
+     <a id="tth_sEc1.1"></a><h3>
+1.1&nbsp;&nbsp;Download ISO</h3>
+Download de Debian netwerk installatie ISO van <a href="https://www.debian.org/CD/netinst/"><tt>https://www.debian.org/CD/netinst/</tt></a> en selecteer daar de AMD64 image. Dit is de image die geschikt is voor Intel en AMD 64-bit processoren.
+
+<div class="p"><!----></div>
+     <a id="tth_sEc1.2"></a><h3>
+1.2&nbsp;&nbsp;Maak een VM</h3>
+Maak een virtuele machine met:
+
+<ul>
+<li> RAM: 2 GB
+<div class="p"><!----></div>
+</li>
+
+<li> Disk: 8 GB
+<div class="p"><!----></div>
+</li>
+
+<li> zorg dat de VM bij het Internet kan, dus zorg voor een netwerk met Internet verbinding
+<div class="p"><!----></div>
+</li>
+</ul>
+
+<div class="p"><!----></div>
+ <a id="tth_sEc2"></a><h2>
+2&nbsp;&nbsp;Debian installatie</h2>
+
+
+<ol type="1">
+<li> Selecteer de Grafische installatie interface in de Debian Installer Menu ().
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a id="tth_fIg1">
+</a> 	<div style="text-align:center">	<a href="debian_install_01.png">Figure</a>
+	
+<div style="text-align:center">Figure 1: Debian Installer Menu</div>
+	<a id="DebInstallMenu">
+</a>
+</div>
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+</li>
+
+<li> Selecteer daarna de <b>Engelse</b> taal. Bij problemen is de kans dat er iemand in het Engels het probleem al eens is tegengekomen vele malen groter dan in het Nederlands, dus wen je aan om in het Engels te werken met Linux.
+<div class="p"><!----></div>
+</li>
+
+<li> Bij Location kiezen we eerst other en daarna <b>Europe</b> en dan <b>Netherlands</b>.
+<div class="p"><!----></div>
+</li>
+
+<li> Voor de Locales laten we staan <b>en_US.UTF-8</b>.
+<div class="p"><!----></div>
+</li>
+
+<li> Voor de keyboard houden we <b>American English</b> aan, tenzij je een specifiek toetsenbord hebt.
+<div class="p"><!----></div>
+</li>
+
+<li> De volgende keuze die je moet maken is die voor een hostname, kortom hoe gaat je computer heten. Kies hiervoor <b>je achternaam met 01</b> eraan vast. Voor mij zou dat dus leeuw01 zijn. Let op! allemaal kleine letters.
+<div class="p"><!----></div>
+</li>
+
+<li> De keuze voor het domein waarin de machine zit is lastig omdat we geen domein hebben. Het makkelijkst is om hier voorlopig <b>localdomain</b> in te vullen. We kunnen dat later nog wijzigen.
+<div class="p"><!----></div>
+</li>
+
+<li> Nu moeten we een root wachtwoord kiezen. Het is verstandig om een sterk wachtwoord te kiezen, omdat de root gebruiker alles mag.
+<div class="p"><!----></div>
+</li>
+
+<li> Ook voor de gebruiker is het een goed plan om een sterk wachtwoord te kiezen. Gebruik een password manager om een wachtwoord te generen of om je gekozen wachtwoorden erin op te slaan.
+<div class="p"><!----></div>
+</li>
+
+<li> We houden de harddisk indeling simpel, dus kiezen we <b>Guided - Use entire disk</b> als onze optie voor de harddisk indeling zoals aangegeven in .
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a id="tth_fIg2">
+</a> 	<div style="text-align:center">	<a href="debian_install_partition.png">Figure</a>
+	
+<div style="text-align:center">Figure 2: Debian Disk Partitioning</div>
+	<a id="DebDiskPart">
+</a>
+</div>
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+</li>
+
+<li> We kiezen de enige harddisk die er is (/dev/sda)
+<div class="p"><!----></div>
+</li>
+
+<li> daarna kiezen voor <b>All files in one partition</b>.
+<div class="p"><!----></div>
+</li>
+
+<li> In het overzicht dat we te zien krijgen zien we dat er naast een bestandssysteem ook een swap-partitie aangemaakt is zoals weergeven in figuur .
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a id="tth_fIg3">
+</a> 	<div style="text-align:center">	<a href="Debian_Install_Partitioned.png">Figure</a>
+	
+<div style="text-align:center">Figure 3: Debian Disk Overview</div>
+	<a id="DebDiskParts">
+</a>
+</div>
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+</li>
+
+<li> Nadat we hebben gekozen voor <b>Yes</b> bij de vraag of we het zeker weten zal Debian beginnen met de installatie van het systeem.
+<div class="p"><!----></div>
+</li>
+
+<li> Na de installatie van het base system (een minimaal systeem), krijgen we de vraag of we nog meer software van andere CD's willen installeren, dat willen we niet selecteer: <b>No</b>
+<div class="p"><!----></div>
+</li>
+
+<li> Debian gaat nu opzoek naar updates en additionele software die ge&#239;nstalleerd kan worden. De repo's van Debian staan over de wereld verspreid, om geen data op te halen van bijvoorbeeld servers in de Verenigde Staten, maar alleen van servers in Nederland moeten we een keuze maken vanaf welke servers wij onze software willen ophalen. Kies <b>Netherlands</b>.
+<div class="p"><!----></div>
+</li>
+
+<li> Selecteer daarna <b>deb.debian.org</b>.
+<div class="p"><!----></div>
+</li>
+
+<li> We gebruiken geen proxy dus bij die vraag mag je <b>continue</b> geven.
+<div class="p"><!----></div>
+</li>
+
+<li> Debian gaat nu de databases ophalen van alle software die er voor Debian beschikbaar is en gaat daarna meteen je systeem updaten met de laatst beschikbare versies. Afhankelijk van hoe nieuw de ISO was waarvan je hebt geboot kan dit even duren. Je kan af en toe een vraag krijgen van de installer, lees de tekst dan goed door en bepaal of je het wel of niet wilt wat er gevraagd wordt, of vraag je docent!
+<div class="p"><!----></div>
+</li>
+
+<li> Als de update klaar is krijg je de keuze om nog extra software te installeren (zie ).
+
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+<a id="tth_fIg4">
+</a> 	<div style="text-align:center">	<a href="Debian_Install_Software_uit.png">Figure</a>
+	
+<div style="text-align:center">Figure 4: Debian Additional Software Choice</div>
+	<a id="DebSoft">
+</a>
+</div>
+<div class="p"><!----></div>
+We willen alleen de <b>Standard System Utilities</b>, dus die moet aan. De <b>rest moet uit</b> staan.
+<div class="p"><!----></div>
+</li>
+
+<li> Nadat Debian klaar is met de installatie kiezen we ervoor om GRUB te installeren in de <b>master boot record</b>
+<div class="p"><!----></div>
+</li>
+
+<li> We selecteren <b>/dev/sda</b> (zie )
+
+<div class="p"><!----></div>
+<a id="tth_fIg5">
+</a> 	<div style="text-align:center">	<a href="Debian_Install_Grub-device.png">Figure</a>
+	
+<div style="text-align:center">Figure 5: Debian Install Grub Device</div>
+	<a id="DebGrubDev">
+</a>
+</div>
+<div class="p"><!----></div>
+
+<div class="p"><!----></div>
+</li>
+
+<li> Als alles klaar is rebooten we het systeem.
+<div class="p"><!----></div>
+</li>
+</ol>
+
+<div class="p"><!----></div>
+Login als <tt>root</tt> met het root-wachtwoord dat je hebt aangemaakt tijdens de installatie. Installeer het sudo pakket:
+[language=bash]
+# apt-get update
+# apt-get install sudo
+
+
+<div class="p"><!----></div>
+Voeg daarna jezelf als gebruiker toe aan de sudo groep:
+[language=bash]
+# usermod -a -G sudo dennis
+
+Vervang <tt>dennis</tt> door je eigen gebruikersnaam; degene die je aangemaakt hebt bij de installatie.
+
+<div class="p"><!----></div>
+We loggen uit:
+[language=bash]
+# exit
+
+
+<div class="p"><!----></div>
+We loggen nu in als een gewone gebruikeri, de gebruiker die je aangemaakt hebt bij de installatie. Nadat je ingelogd bent type je op de prompt:
+[language=bash]
+
+
+<h2> Index 

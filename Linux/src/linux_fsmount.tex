@@ -1,0 +1,43 @@
+Binnen Unix-achtige systemen wordt een disk gekoppeld aan een directory, een zogenaamde mount. Hiermee wordt het bestandssysteem (filesystem) op de disk onderdeel van het totale bestandssysteem. Een gebruiker zal dus bijna nooit zien dat hij van de ene disk naar de andere gaat. Voor de gebruiker is het gewoon \'e\'en groot bestandssysteem.
+
+Als we het \texttt{findmnt}\index{findmnt} commando intypen dan krijgen we een overzicht van allerlei filesystems die aan ons bestandssysteem gekoppeld zijn. Om te zien welke partitie gebruikt wordt door de root van ons filesystem gebruiken we:
+\begin{lstlisting}[language=bash]
+$ findmnt /
+\end{lstlisting}
+De output zou er dan zo uit kunnen zien:
+\begin{lstlisting}[language=bash]
+TARGET SOURCE         FSTYPE OPTIONS
+/      /dev/nvme0n1p3 ext4   rw,relatime,errors=remount-ro
+\end{lstlisting}
+
+We zien hier dat de TARGET onze root-directory is. De SOURCE (dus de partitie) is partitie 3 (p3) op de nvme0n1 disk. Het bestandssysteem is ext4. De \texttt{--real} optie geeft alleen de werkelijke filesystems weer en laat de virtuele filesystems weg. Met die optie zou de output er ongeveer zo uit kunnen zien:
+\begin{lstlisting}[language=bash]
+TARGET      SOURCE         FSTYPE OPTIONS
+/           /dev/nvme0n1p3 ext4   rw,relatime,errors=remount-ro
+|-/home     /dev/nvme0n1p5 ext4   rw,relatime
+|-/boot/efi /dev/nvme0n1p2 vfat   rw,relatime,fmask=0077,dma...
+\end{lstlisting}
+
+De output van \texttt{/boot/efi} heb ik ingekord voor de leesbaarheid.
+
+We zien dat we 3 echte (real) mounts hebben en de rest (\texttt{/sys/}, \texttt{/proc/}, \texttt{/dev/}, \texttt{/run/} en \texttt{/tmp/}) zijn zogenaamde virtuele bestandssystemen. Het zijn bestandssystemen in geheugen en na een reboot moeten ze opnieuw gemaakt en gevuld worden. Ze liggen niet op een disk. We komen later terug op deze virtuele bestandssystemen.
+
+We zien dat onze partitie p3 gemount is op \texttt{/} met een \textit{ext4} bestandssyteem. Ook p5 heeft een \textit{ext4} bestandssysteem, maar p2 gebruikt \textit{vfat}. Echter bij het gebruik van het filesystem merken we daar bijna niets van.
+
+De vraag zou opgekomen kunnen zijn, hoe GNU/Linux weet waar het welke partitie moet mounten. Dat is een heel goeie vraag. Daarvoor is er een bestand in de \texttt{/etc} directory met de naam \texttt{fstab}. In dit bestand staat per partitie aangegeven welk filesystem het bevat en wat de mountpoint (directory) is waarop het terecht moet komen.
+
+Dit bestand kunnen we met \texttt{cat} bekijken en dat ziet er op mijn systeem zo uit:
+\begin{lstlisting}[language=bash]
+# <file system>               <mount point> <type> <options> <dump> <pass>
+# / was on /dev/nvme0n1p3 during installation
+UUID=dd353b28-4717-4e06-bfac-f63a4839cb93 /         ext4 defaults      0 1
+# /boot/efi was on /dev/nvme0n1p2 during installation
+UUID=F5E4-C274                            /boot/efi vfat umask=0077    0 1
+# /home was on /dev/nvme0n1p5 during installation
+UUID=25d98def-6dca-431f-8d02-7d579b881e72 /home     ext4 defaults      0 2
+# swap was on /dev/nvme0n1p4 during installation
+UUID=61ffd11f-f79b-4626-bdc1-c212aa386842 none      swap sw            0 0
+\end{lstlisting}
+
+We zien dat \texttt{fstab} inplaats van de naam van het device een UUID heeft staan. UUID staat voor Universally Unique IDentifier. Via het commando \texttt{blkid} kunnen we deze unieke strings opvragen. We krijgen dan van elke partitie het UUID te zien. Probeer maar uit op je eigen systeem en vergelijk de UUIDs met de waarden in \texttt{fstab}.
+

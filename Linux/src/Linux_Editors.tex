@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Editors}
+\date{\today\\
+1.1.0\\
+\vfill
+\raggedright
+\copyright\ 2020-2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_cli_editors}
+\subsection{Voorkennis}
+\input{src/voorkennis_cli_editors}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% Requires: fhs
+% Provides: vi, vim, nano, pico
+\section{Het gebruik van een editor}
+\input{src/editor}
+\subsection{vi, pico, nano}
+\input{src/editors}
+
+\section{nano}
+\input{src/nano}
+\subsection{Knippen en plakken}
+\input{src/nano_knippen_plakken}
+
+\section{vim}
+\input{src/vimIntro}
+\subsection{vim opstarten}
+\input{src/vimOpstarten}
+\subsection{Text invoer}
+\input{src/vimTextInvoer}
+\subsection{Text delete}
+\input{src/vimDelete}
+\subsection{Knippen en plakken}
+\input{src/vimKnippenPlakken}
+\subsection{Bewegen door een tekstbestand}
+\input{src/vimBewegen}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

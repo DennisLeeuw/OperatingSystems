@@ -1,0 +1,15 @@
+Met \texttt{lsusb}\index{lsusb}\index{commando!lsusb} kunnen we informatie opvragen over de USB-bus.
+
+\begin{lstlisting}[language=bash]
+$ lsusb
+Bus 001 Device 002: ID 8087:8000 Intel Corp. 
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 0781:5583 SanDisk Corp. Ultra Fit
+Bus 003 Device 056: ID 125f:dd1a A-DATA Technology Co., Ltd. 
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 002: ID 69a7:9803  
+Bus 002 Device 004: ID 04f2:b39a Chicony Electronics Co., Ltd 
+Bus 002 Device 003: ID 0bda:8761 Realtek Semiconductor Corp. 
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+\end{lstlisting}
+We zien hier ook veel overbodig informatie. Op Bus 3 device 2 en op Device 56 zit een USB-memory stick, maar dat moet je al kunnen herkennen aan de leveranciersnaam om dat eruit te halen. In de paragraaf over disken zullen we hier een betere methode voor laten zien. \texttt{lsusb} is wel handig als er bijvoorbeeld een digitale camera of printer aan het systeem hangt. Dan levert het vaak nuttige extra informatie op.

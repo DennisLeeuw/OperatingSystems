@@ -1,0 +1,122 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux Basis Systeembeheer}
+\date{\today\\v.0.4.2}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2021-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_Server}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+%\chapter{Inleiding}
+%\input{src/Inleiding_serie}
+%Management netwerk
+
+%\chapter{Debian installatie}
+%\input{src/debian_install.tex}
+
+% requires: BIOS knowledge, bootloader
+% provides: /boot/, grub, kernel, modules
+\chapter{Booting Linux en /boot/}
+\input{src/linux_boot}
+\section{GRUB Configuratie}
+\input{src/grub}
+\section{Kernel boot bestanden}
+\input{src/linux_kernel}
+
+% requires: 
+% provides: modules, lsmod, modprobe
+\chapter{Werken met modules}
+\input{src/linux_kernel_modules}
+
+% requires: kill, begrip van boot proces
+% provides: systemd, Unit-files, systemctl
+\chapter{Werken met daemons}
+\input{src/daemons.tex}
+\section{Het eerste proces}
+\input{src/proc1.tex}
+\section{Unit files}
+\input{src/systemd_unit}
+\section{systemctl}
+\input{src/systemctl}
+
+% requires:
+% provides: cron
+\chapter{Job scheduling}
+\include{src/job_scheduling}
+\section{cron}
+\input{src/cron}
+\section{at}
+
+% requires: tail
+% provides: syslog, rsyslog, systemd-journald, journalctl
+\chapter{Logging}
+\input{src/logging_intro}
+% provides: logrotate
+\section{Log rotation}\label{sec:logrotate}
+\input{src/logrotate}
+% provides: syslog, systemd-journald
+\section{syslog}\label{sec:syslog}
+\input{src/syslog}
+\input{src/rsyslog}
+% requires: logrotate systemd-journald
+\section{journalctl}\label{sec:journalctl}
+\input{src/journalctl}
+\subsection{prioriteit en facility}\label{sec:journalctl-prio_fac}
+\input{src/journalctl-prio_fac}
+
+% requires:
+% provides: ps, netstat, ss
+\chapter{Monitoring services}
+\input{src/service_monitoring}
+\section{Proces monitoring}
+\input{src/proces_monitoring}
+\section{Daemons en netwerken}
+\input{src/daemons_network}
+
+% requires: logging kennis, monitoring tools, kennis van daemons
+% provides: troubleshooting
+\chapter{Troubleshooting}
+\input{src/troubleshooting}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

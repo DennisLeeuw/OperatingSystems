@@ -1,0 +1,22 @@
+Om per partitie te kunnen zien wel bestandssysteem er gebruikt wordt gebruiken we de \texttt{-fs} optie. Omdat veel extra informatie oplevert hebben we voor dit boek een deel weggelaten zodat de tabel op een pagina past. Probeer het commando ook uit op je eigen systeem zodat je alle informatie ziet.
+\begin{lstlisting}[language=bash]
+$ lsblk -fs
+NAME  FSTYPE  LABEL                
+sda1  ext4                         
+|-sda                                                                                  
+sdb1  ext4    Debian 6.0.2.1 M-A 1 
+|-sdb iso9660 Debian 6.0.2.1 M-A 1 
+sdb2  iso9660 Debian 6.0.2.1 M-A 1 
+|-sdb iso9660 Debian 6.0.2.1 M-A 1 
+sdb5  swap    Debian 6.0.2.1 M-A 1 
+|-sdb iso9660 Debian 6.0.2.1 M-A 1 
+sdc1  vfat    ADATA UFD            
+|-sdc
+\end{lstlisting}
+We zien dat de partitie sda1 een ext4 bestandsysteem heeft en dat de partitie sdc1 vfat gebruikt.
+
+Om te zien welke bestandssystemen je systeem zou kunnen ondersteunen kan je het volgende doen:
+\begin{lstlisting}[language=bash]
+$ ls /usr/lib/modules/`uname -r`/kernel/fs
+\end{lstlisting}
+dit vraagt uit de directory met de release van de huidige kernel de lijst met bestandssysteem modules op.

@@ -1,0 +1,6 @@
+Op een GNU/Linux systeem is volgens de Filesystem Hierarchy Standard een \texttt{/media} directory aanwezig waarop removeable media gemount kunnen worden. Als er een CD-ROM-speler aanwezig is in het systeem, dan moet de subdirectory \texttt{cdrom} aanwezig zijn binnen \texttt{/media}.
+
+Als gebruikers toegang hebben tot het systeem en er removeable media in kunnen stoppen (denk aan desktop-systemen) dan kan op basis van de gebruikersnaam er een subdirectory met die gebruikersnaam aangemaakt zijn in \texttt{/media} zodat binnen die directory USB-sticks etc. gemount kunnen worden voor de gebruiker die de USB-stick in het systeem heeft gestoken. Dit wordt gedaan vanuit de grafische interface met de aanname dat degene die op de grafische interface werkt ook degene is die de stick in het systeem heeft gestoken.
+
+Op een server is deze directory van weinig waarde omdat er geen directe relatie is tussen degene die de disk in het systeem steekt en de ingelogde gebruiker. Een disk zal dan ook niet automatisch gemount worden. Dit moet de root-gebruiker doen, of een gebruiker met voldoende rechten.
+

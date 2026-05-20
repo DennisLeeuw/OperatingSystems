@@ -1,0 +1,19 @@
+Harddisks, SSDs, USB-sticks heten onder Linux block-devices. Het zijn opslag apparaten die hun data schrijven in blocks (sectoren). Vroeger hadden we IDE-harddisks en dat waren de eerste harddisks die ondersteunt werden door Linux. Deze harddisks kregen de device naam hd van harddisk gevolgt door een letter (a t/m z), dus hda was de eerste harddisk, hdb de tweede, etc. Later kwam er ook support voor SCSI en deze disken werden sd genoemd met een letter, daarmee werd sda de eerste SCSI harddisk en sdb de tweede.
+
+In de moderne Linux-kernels worden bijna alle block-devices aangestuurd door het SCSI-systeem. Dus alle disken beginnen met sd, ongeacht of het een echte SCSI-disk is.
+
+Met \texttt{lsblk}\index{lsblk}\index{commando!lsblk} krijg je een overzicht van de block-devices in je systeem.
+\begin{lstlisting}[language=bash]
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 931.5G  0 disk 
+|-sda1   8:1    0 931.5G  0 part /home/dennis
+sdb      8:16   1  28.7G  0 disk 
+|-sdb1   8:17   1  14.1G  0 part /
+|-sdb2   8:18   1     1K  0 part 
+|-sdb5   8:21   1  14.5G  0 part [SWAP]
+sdc      8:32   1  28.9G  0 disk 
+|-sdc1   8:33   1  28.9G  0 part
+\end{lstlisting}
+We zien dat we naast de sda, sdb en sdc disk ook nog disken hebben met een nummer er achter. Dat zijn de partities van de disk. De disk sdb heeft dus 3 partities.
+

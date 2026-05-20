@@ -1,0 +1,10 @@
+Harddisks, USB-sticks en andere opslagsystemen hangen in Linux onder het SCSI-subsystem, ongeacht of het een SCSI-apparaat is. Dus ook SATA-harddisken en SSDs zijn onder het SCSI subsystem terug te vinden. 
+
+\begin{lstlisting}[language=bash]
+$ lsscsi
+[0:0:0:0] disk ATA     Samsung SSD 860  1B6Q  /dev/sda 
+[6:0:0:0] disk SanDisk Ultra Fit        1.00  /dev/sdb 
+[7:0:0:0] disk ADATA   USB Flash Drive  1100  /dev/sdc
+\end{lstlisting}
+Hier zien we al duidelijker dat in dit systeem \'e\'en SSD zit en twee USB-sticks.
+

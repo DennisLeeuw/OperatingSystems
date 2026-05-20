@@ -1,0 +1,80 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Bestandsrechten}
+\date{\today\\v.1.0.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: fhs, ls, grep, users, groups
+% Provides: chown, chmod, access rights
+\chapter{Toegangsrechten op bestanden en directories}
+\input{src/bestandsrechten}
+\input{src/bestandsrechten_overzicht}
+\chapter{Bestandstypen}
+\input{src/file}
+\chapter{De eigenaar}
+\input{src/chown}
+\chapter{read, write and execute}
+\input{src/rwx}
+\input{src/chmod}
+\chapter{Het 4de-bit}
+\input{src/4th-bit}
+\section{SUID-bit}
+\input{src/suidbit}
+\section{SGID-bit}
+\input{src/sgidbit}
+\section{Sticky-bit}
+\input{src/stickybit}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

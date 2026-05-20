@@ -1,0 +1,27 @@
+De Linux kernel is modulair opgebouwd. Dit betekent dat de kernel na het opstarten met extra functionaliteit uitgebreid kan worden door extra modules te laden.
+
+De modules die bij de kernel horen kunnen gevonden worden in de directories onder \texttt{/lib/modules/}\index{/lib/modules/}. De modules die behoren bij de draaiende kernel kunnen gevonden worden via:
+\begin{lstlisting}[language=bash]
+$ ls /lib/modules/`uname -r`/kernel/
+\end{lstlisting}
+
+Modules kunnen on-the-fly geladen worden. Een overzicht van de reeds geladen modules kan verkregen worden met \index{lsmod}:
+\begin{lstlisting}[language=bash]
+$ lsmod
+\end{lstlisting}
+
+Om te zorgen dat onze kernel kan omgaan met het FAT bestandssysteem gaan we de fat-modules toevoegen aan de draaiende kernel\index{modprobe}. Dit mag natuurlijk alleen root doen.
+\begin{lstlisting}[language=bash]
+$ sudo modprobe fat
+\end{lstlisting}
+Bij geen error-melding is alles goed gegaan. Dit kunnen we controleren
+\begin{lstlisting}[language=bash]
+$ lsmod | grep fat
+\end{lstlisting}
+Na deze handeling zouden we bijvoorbeeld een USB-stick met een FAT bestandssysteem kunnen lezen.
+
+Het verwijderen van een module is zo simpel als aan \texttt{modprobe} vertellen met de \texttt{-r} optie dat het een module moet verwijderen
+\begin{lstlisting}[language=bash]
+$ sudo modprobe -r fat
+\end{lstlisting}
+

@@ -1,0 +1,42 @@
+\index{Manual pages!man-pages}
+De op het systeem aanwezig help van een Unix-achtig systeem is te vinden in de man-pages\index{man-pages}. De Manual is verdeeld in hoofdstukken die genummerd zijn:
+\index{Manual pages!Hoofdstukken}
+\begin{enumerate}
+\item Executable programs or shell commands
+\item System calls (functions provided by the kernel)
+\item Library calls (functions within program libraries)
+\item Special files (usually found in /dev)
+\item File formats and conventions eg /etc/passwd
+\item Games
+\item Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7)
+\item System administration commands (usually only for root)
+\item Kernel routines [Non standard]
+\end{enumerate}
+
+Voor gebruikers zijn de belangrijkste hoofdstukken die hoofdstukken die over de commando's gaan, hoofdstukken 1 en 8, en die over de configuratie bestanden, hoofdstuk 5. Om een beetje vertrouwd te raken met de man-pages gaan we de manual page over man bekijken. Type:
+
+\begin{lstlisting}[language=bash]
+$ man man
+\end{lstlisting}
+
+Met de pijltjes toetsten omhoog en naar beneden kan je door de pagina scrollen en met q verlaat je de manual-pagina. Scrollend door de pagina kom je ook de hierboven al genoemde hoofdstuk indeling tegen. Verder kom je kopjes tegen met alleen hoofdletters. Veel voorkomende koppen zijn:
+
+\index{Manual pages!Koppen}
+\begin{verbatim}
+NAME: naam van het commando met een korte uitleg
+SYNOPSIS: syntax van het commando
+DESCRIPTION: een beschrijving van het commando
+OPTIONS: welke opties kent het commando
+EXAMPLES: voorbeelden hoe het commando te gebruiken
+AUTHORS: wie heeft de manual-page geschreven
+SEE ALSO: doorverwijzingen naar andere documentatie
+\end{verbatim}
+
+Om snel te zoeken naar bepaalde stukken in een manual-page kan je de / gebruiken\index{Manual pages!Zoeken}. Als je een man-page open hebt staan en je typt
+
+\begin{lstlisting}[language=bash]
+/EXAMPLES
+\end{lstlisting}
+
+en deze kop bestaat in de pagina dan kom je meteen bij de examples terecht. Snel door de man-pages scrollen kan door gebruik te maken van PgUp en PgDn toetsen.
+

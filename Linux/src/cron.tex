@@ -1,0 +1,22 @@
+De job scheduler \texttt{cron}\index{cron} kan taken uitvoeren per gebruiker, maar kan ook centraal aangestuurd worden via een configuratie bestand dat \texttt{/etc/crontab}\index{crontab} heet. De meeste \texttt{crontab} bestanden hebben een uitvoerige uitleg in het bestand staan met hoe je een regel in \texttt{crontab} moet zetten. Deze uitleg ziet er zo uit:
+
+\begin{lstlisting}[language=bash]
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7)
+# |  |  |  |  |            OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name command to be executed
+\end{lstlisting}
+
+Een crontab regel beschrijft in velden gescheiden door een stuk wit (spatie of tab) wanneer welke taak uitgevoerd moet worden. De velden lopen van links naar rechts, beginnend met op welke minuut er iets moet gebeuren naar uren, dag van de maand, de maand en de dag van de week.
+
+Per veld kunnen er verschillende waardes worden opgegeven. De asterisk (*) betekent elke mogelijke waarde of niet van betekenis. Zo kunnen we een regel maken met in elk veld een asterisk en bij \textquote{day of week} kunnen we dan \textquote{mon} opgeven. Het opgegeven commando zal dan elke maandag uitgevoerd worden. De velden mogen ook een reeks of lijst bevatten, waarbij de elementen van een lijst gescheiden zijn door komma's. Zo kunnen we voor \textquote{hours} bijvoorbeeld opgeven \textquote{8,9,10,11,12,13,14,15,16,17} om iets alleen tijdens de werkuren uit te laten voeren. Voor deze reeks is het makkelijker om het op te geven als \textquote{8-17}. Een reeks wordt dus weergegeven met een minteken (hyphen). Als je iets om de 5 minuten wil laten gebeuren dan kan je in het \textquote{minute} veld het volgende opgeven \textquote{*/5}. En zo kunnen we eindeloze combinaties maken en exact bepalen wanneer een bepaald commando uitgevoerd moet worden.
+
+Om de veiligheid van het systeem te verhogen en niet elk commando door root te laten uitvoeren moet je na de definitie van het moment opgeven welke gebruiker (user-name) het commando moet uitvoeren en pas daarna geef je het commando op dat moet worden uitgevoerd met de eventuele opties en argumenten.
+
+Gebruikers mogen ook zelf scripts of commando's laten uitvoeren. Hiervoor is er het \texttt{crontab} commando. Het \texttt{crontab} commando pas niet het centrale \texttt{crontab}-bestand aan, maar schrijft deze per gebruiker weg in de directory \texttt{/var/spool/cron/crontabs/}. Het is niet de bedoeling dat je bestanden in deze directory met een editor aanpast. Je moet altijd het \texttt{crontab} commando gebruiken voor een wijziging.
+

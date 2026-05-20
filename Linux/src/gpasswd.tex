@@ -1,0 +1,11 @@
+Om een gebruiker toe te voegen aan een groep, gebruiken we \texttt{gpasswd}\index{gpasswd}\index{commando!gpasswd}.  \texttt{gpasswd} is een tool om groepen te beheren.
+
+Om een gebruiker aan een groep toe te voegen gebruiken we:
+\begin{lstlisting}[language=bash]
+$ sudo gpasswd -a eengebruiker specialgroup
+\end{lstlisting}
+om diezelfde gebruiker weer uit de groep te halen gebruiken we:
+\begin{lstlisting}[language=bash]
+$ sudo gpasswd -d eengebruiker specialgroup
+\end{lstlisting}
+

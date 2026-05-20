@@ -1,0 +1,11 @@
+De netwerk manager (NetworkManager) bestaat uit drie onderdelen. Er is een daemon die het netwerk configureert en in de gaten houdt en er zijn twee tools om het netwerk te configureren.
+\begin{description}
+\item[NetworkManager] is de daemon die de netwerkinstellingen beheert en monitort
+\item[nmcli] is een commandline tool om de netwerkinstellingen te wijzigen
+\item[nmtui] is een curses tool om de netwerkinstellingen te wijzigen
+\end{description}
+
+De configuratie van NetworkManager is te vinden in de \texttt{/etc/NetworkManager} directory. De basis configuratie vind je in \texttt{/etc/NetworkManager/NetworkManager.conf}. Dit bestand heeft voor ons nog weinig dat we zouden willen kunnen aanpassen. De \texttt{/etc/NetworkManager/conf.d} directory kan stukjes configuratie bevatten waarmee wij NetworkManager kunnen aansturen, ook daar hebben we voorlopig niets te zoeken.
+
+De \texttt{/etc/NetworkManager/system-connections} is de plek waar NetworkManager de settings opslaat van onze interfaces. De settings voor onze bedrade (ethernet) en draadloze (WiFi) interfaces zijn in deze directory te vinden. We zullen hier verderop in het document op terug komen.
+

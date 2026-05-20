@@ -1,0 +1,28 @@
+De netwerk-hardware zijn we bij \texttt{lspci}\index{lspci} al tegen gekomen. De uitvoer van dat commando gaf 2 netwerkkaarten.
+\begin{lstlisting}[language=bash]
+$ lspci | grep -i net
+00:19.0 Ethernet controller: Intel Corporation Ethernet Connection I217-LM (rev 04)
+03:00.0 Network controller: Realtek Semiconductor Co., Ltd. RTL8192EE PCIe Wireless Network Adapter
+\end{lstlisting}
+Er is dus een netwerkkaart en een draadloze netwerkadapter in ons systeem aanwezig.
+
+Het eerste getal bij bijvoorbeeld de Ethernet controller is \texttt{00:19.0}, dit addres is het address op de PCI-bus. Dit soort adressen zijn voor gebruikers lastig om te gebruiken. Linux werk dan ook met namen voor interfaces om het gebruikers makkelijk te maken. De naam van ethernet interfaces beginnen met \texttt{en} en draadloze (wireless) netwerkadapters beginnen met \texttt{wl}. Om uit te vinden welke naam onze netwerk-adapters hebben gekregen kunnen we gebruik maken van het \texttt{/sys}-bestandssysteem. \texttt{/sys} is geen werkelijk bestaand bestandssysteem, maar een interne blik op hoe de Linux-kernel de wereld ziet, net zoals \texttt{/proc} dat is.
+
+Een \texttt{ls} van de PCI directory geeft een overzicht van alle PCI-adressen.
+\begin{lstlisting}[language=bash]
+$ ls -w 60 /sys/devices/pci0000\:00/
+0000:00:00.0  0000:00:16.0  0000:00:1c.2  0000:00:1f.3
+0000:00:01.0  0000:00:19.0  0000:00:1c.4  firmware_node
+0000:00:02.0  0000:00:1b.0  0000:00:1d.0  pci_bus
+0000:00:03.0  0000:00:1c.0  0000:00:1f.0  power
+0000:00:14.0  0000:00:1c.1  0000:00:1f.2  uevent
+\end{lstlisting}
+We komen daar het PCI \texttt{00:19.0} adres weer tegen met wat extra 0-en ervoor. Doe een list van de \texttt{net} directory in deze directory, dan zie je de naam van de netwerk interface.
+
+Het \texttt{ip}\index{ip} commando gebruiken we om netwerk interfaces te configureren, maar we kunnen het ook gebruiken om informatie over een adapter op te vragen:
+\begin{lstlisting}[language=bash]
+$ ip link show
+\end{lstlisting}
+Dit geeft alle interfaces met hun netwerk-address (MAC). Zet je achter het commando de naam van de interface dan zie je alleen de gegevens van die interface.
+
+

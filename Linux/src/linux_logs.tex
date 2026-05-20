@@ -1,0 +1,9 @@
+Omdat de log-bestanden plain-text kunnen we alle standaard teksttools op deze bestanden loslaten.
+
+Om direct te kunnen volgen wat er op een systeem gebeurt wordt veel het \texttt{tail} commando gebruikt. \texttt{tail} heeft een optie \texttt{-f} die follow betekent. Het blijft volgen welke nieuwe regels er aan een bestand worden toegevoegd. Een manier om bijvoorbeeld de \texttt{messages} log te blijven volgen is:
+\begin{lstlisting}[language=bash]
+$ sudo tail -f /var/log/messages
+\end{lstlisting}
+
+Omdat alle log-bestanden tekst bestanden zijn kan je ook bijvoorbeeld \texttt{grep} erop los laten en zoeken naar bepaalde patronen in de log-bestanden.
+

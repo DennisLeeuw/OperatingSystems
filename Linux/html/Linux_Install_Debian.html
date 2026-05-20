@@ -1,0 +1,129 @@
+<h1 id="voorbereidingen">Voorbereidingen</h1>
+<h2 id="download-iso">Download ISO</h2>
+<p>Download de Debian netwerk installatie ISO van <a
+href="https://www.debian.org/CD/netinst/"
+class="uri">https://www.debian.org/CD/netinst/</a> en selecteer daar de
+AMD64 image. Dit is de image die geschikt is voor Intel en AMD 64-bit
+processoren.</p>
+<h2 id="maak-een-vm">Maak een VM</h2>
+<p>Maak een virtuele machine met:</p>
+<ul>
+<li><p>RAM: 2 GB</p></li>
+<li><p>Disk: 8 GB</p></li>
+<li><p>zorg dat de VM bij het Internet kan, dus zorg voor een netwerk
+met Internet verbinding</p></li>
+</ul>
+<h1 id="debian-installatie">Debian installatie</h1>
+<ol>
+<li><p>Selecteer de Grafische installatie interface in de Debian
+Installer Menu (<a href="#DebInstallMenu" data-reference-type="ref"
+data-reference="DebInstallMenu">1</a>).</p>
+<figure id="DebInstallMenu">
+<img src="debian_install_01.png" />
+<figcaption>Debian Installer Menu</figcaption>
+</figure></li>
+<li><p>Selecteer daarna de <strong>Engelse</strong> taal. Bij problemen
+is de kans dat er iemand in het Engels het probleem al eens is
+tegengekomen vele malen groter dan in het Nederlands, dus wen je aan om
+in het Engels te werken met Linux.</p></li>
+<li><p>Bij Location kiezen we eerst other en daarna
+<strong>Europe</strong> en dan <strong>Netherlands</strong>.</p></li>
+<li><p>Voor de Locales laten we staan
+<strong>en_US.UTF-8</strong>.</p></li>
+<li><p>Voor de keyboard houden we <strong>American English</strong> aan,
+tenzij je een specifiek toetsenbord hebt.</p></li>
+<li><p>De volgende keuze die je moet maken is die voor een hostname,
+kortom hoe gaat je computer heten. Kies hiervoor <strong>je achternaam
+met 01</strong> eraan vast. Voor mij zou dat dus leeuw01 zijn. Let op!
+allemaal kleine letters.</p></li>
+<li><p>De keuze voor het domein waarin de machine zit is lastig omdat we
+geen domein hebben. Het makkelijkst is om hier voorlopig
+<strong>localdomain</strong> in te vullen. We kunnen dat later nog
+wijzigen.</p></li>
+<li><p>Nu moeten we een root wachtwoord kiezen. Het is verstandig om een
+sterk wachtwoord te kiezen, omdat de root gebruiker alles mag.</p></li>
+<li><p>Ook voor de gebruiker is het een goed plan om een sterk
+wachtwoord te kiezen. Gebruik een password manager om een wachtwoord te
+generen of om je gekozen wachtwoorden erin op te slaan.</p></li>
+<li><p>We houden de harddisk indeling simpel, dus kiezen we
+<strong>Guided - Use entire disk</strong> als onze optie voor de
+harddisk indeling zoals aangegeven in <a href="#DebDiskPart"
+data-reference-type="ref" data-reference="DebDiskPart">2</a>.</p>
+<figure id="DebDiskPart">
+<img src="debian_install_partition.png" />
+<figcaption>Debian Disk Partitioning</figcaption>
+</figure></li>
+<li><p>We kiezen de enige harddisk die er is (/dev/sda)</p></li>
+<li><p>daarna kiezen voor <strong>All files in one
+partition</strong>.</p></li>
+<li><p>In het overzicht dat we te zien krijgen zien we dat er naast een
+bestandssysteem ook een swap-partitie aangemaakt is zoals weergeven in
+figuur <a href="#DebDiskParts" data-reference-type="ref"
+data-reference="DebDiskParts">3</a>.</p>
+<figure id="DebDiskParts">
+<img src="Debian_Install_Partitioned.png" />
+<figcaption>Debian Disk Overview</figcaption>
+</figure></li>
+<li><p>Nadat we hebben gekozen voor <strong>Yes</strong> bij de vraag of
+we het zeker weten zal Debian beginnen met de installatie van het
+systeem.</p></li>
+<li><p>Na de installatie van het base system (een minimaal systeem),
+krijgen we de vraag of we nog meer software van andere CD’s willen
+installeren, dat willen we niet selecteer: <strong>No</strong></p></li>
+<li><p>Debian gaat nu opzoek naar updates en additionele software die
+geïnstalleerd kan worden. De repo’s van Debian staan over de wereld
+verspreid, om geen data op te halen van bijvoorbeeld servers in de
+Verenigde Staten, maar alleen van servers in Nederland moeten we een
+keuze maken vanaf welke servers wij onze software willen ophalen. Kies
+<strong>Netherlands</strong>.</p></li>
+<li><p>Selecteer daarna <strong>deb.debian.org</strong>.</p></li>
+<li><p>We gebruiken geen proxy dus bij die vraag mag je
+<strong>continue</strong> geven.</p></li>
+<li><p>Debian gaat nu de databases ophalen van alle software die er voor
+Debian beschikbaar is en gaat daarna meteen je systeem updaten met de
+laatst beschikbare versies. Afhankelijk van hoe nieuw de ISO was waarvan
+je hebt geboot kan dit even duren. Je kan af en toe een vraag krijgen
+van de installer, lees de tekst dan goed door en bepaal of je het wel of
+niet wilt wat er gevraagd wordt, of vraag je docent!</p></li>
+<li><p>Als de update klaar is krijg je de keuze om nog extra software te
+installeren (zie <a href="#DebSoft" data-reference-type="ref"
+data-reference="DebSoft">4</a>).</p>
+<figure id="DebSoft">
+<img src="Debian_Install_Software_uit.png" />
+<figcaption>Debian Additional Software Choice</figcaption>
+</figure>
+<p>We willen alleen de <strong>Standard System Utilities</strong>, dus
+die moet aan. De <strong>rest moet uit</strong> staan.</p></li>
+<li><p>Nadat Debian klaar is met de installatie kiezen we ervoor om GRUB
+te installeren in de <strong>master boot record</strong></p></li>
+<li><p>We selecteren <strong>/dev/sda</strong> (zie <a
+href="#DebGrubDev" data-reference-type="ref"
+data-reference="DebGrubDev">5</a>)</p>
+<figure id="DebGrubDev">
+<img src="Debian_Install_Grub-device.png" />
+<figcaption>Debian Install Grub Device</figcaption>
+</figure></li>
+<li><p>Als alles klaar is rebooten we het systeem.</p></li>
+</ol>
+<p>Login als <code>root</code> met het root-wachtwoord dat je hebt
+aangemaakt tijdens de installatie. Installeer het sudo pakket:</p>
+<div class="sourceCode" id="cb1" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># apt-get update</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apt-get install sudo</span></span></code></pre></div>
+<p>Voeg daarna jezelf als gebruiker toe aan de sudo groep:</p>
+<div class="sourceCode" id="cb2" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># usermod -a -G sudo dennis</span></span></code></pre></div>
+<p>Vervang <code>dennis</code> door je eigen gebruikersnaam; degene die
+je aangemaakt hebt bij de installatie.</p>
+<p>We loggen uit:</p>
+<div class="sourceCode" id="cb3" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># exit</span></span></code></pre></div>
+<p>We loggen nu in als een gewone gebruikeri, de gebruiker die je
+aangemaakt hebt bij de installatie. Nadat je ingelogd bent type je op de
+prompt:</p>
+<div class="sourceCode" id="cb4" data-language="bash"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo shutdown <span class="at">-h</span> now</span></code></pre></div>
+<p>Je VM zal afsluiten en uit gaan. Voortaan gebruik je altijd dit
+commando om je VM uit te zetten. Zet je VM nooit uit met de power-knop,
+het kan je Linux-systeem beschadigen en dan moet je deze hele
+installatie opnieuw doen.</p>

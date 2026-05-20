@@ -1,0 +1,13 @@
+Het proces dat op de achtergrond draait en dat verantwoordelijk is voor het schrijven van de verschillende logbestanden heet syslog\index{syslog}, een afkorting van system logging. Het gebruik van syslog heeft als groot voordeel dat niet elke software ontwikkelaar alle code hoeft te schrijven om logbestanden te schrijven, hij hoeft alleen maar te weten hoe hij data moet aanlever bij de syslog server. Voor de systeembeheerder is het makkelijk omdat hij niet elk programma hoeft te vertellen waar deze zijn meldingen weg moet schrijven, die hoeft alleen maar de syslog-server te beheren en het laatste voordeel is dat de output van syslog altijd dezelfde is, dus de logbestanden worden nog makkelijker leesbaar ook.
+
+Vele Linux distributies gebruiken rsyslog\index{rsyslog} als hun syslog server. De belangrijkste logbestanden in de \texttt{/var/log} die beheerd worden door de syslog server zijn:
+\begin{description}
+\item[\texttt{messages}] Alle logs
+\item[\texttt{mail} (SuSE) \texttt{maillog} (RedHat) of \texttt{mail.log} (Debian)] Mail logging
+\item[\texttt{mail.info}] Mail info messages
+\item[\texttt{mail.warn}] Mail warning messages
+\item[\texttt{mail.err}] Mail error messages
+\item[\texttt{daemon.log} (Debian)] Berichten van Daemons
+\item[\texttt{auth.log} (Debian) of \texttt{secure} (RedHat)] Authenticatie gerelateerde berichten
+\end{description}
+

@@ -1,0 +1,99 @@
+Je kan een script gebruiken om alle commando's die je op de commandline gebruikt onder elkaar te zetten als een lange lijst. Beter is het als je ook controleert of een commando succesvol is verlopen. Eerder hebben we behandeld dat de exit code van een commando terecht komt in de variabele \$?. Als we een test zouden kunnen doen in een script om te zien of deze variabele 0 is, dus als alles goed is verlopen, dan kunnen we controleren of er commando's fout zijn gegaan.
+
+Er is een commando dat \texttt{test}\index{test}\index{commando!test} heet dat doet wat het zegt, je kan er dingen mee testen, en de uitkomst is waar (true) of nietwaar (false), andere opties zijn er niet. Dit commando gaan we niet direct in een script gebruiken, maar eerst eens op de commandline uitproberen om te zien wat we ermee kunnen.
+\begin{lstlisting}[language=bash]
+$ touch test_bestand.txt
+$ test -f test_bestand.txt
+$ echo $?
+$ test -f deze_bestaat_niet
+$ echo $?
+$ file -s test_bestand.txt
+$ echo $?
+\end{lstlisting}
+Lees de manual-page van \texttt{test} eens door en zoek uit wat de \texttt{-s} optie betekent.
+
+Het \texttt{test} commando kan ook gebruikt worden om waarden met elkaar te vergelijken. \texttt{test} maakt daarin in onderscheid tussen strings en integers (getallen).
+\begin{lstlisting}[language=bash]
+$ test "Aap" = "Aap"; echo $?
+$ test "Aap" = "Aapje"; echo $?
+$ test "01" = "1"; echo $?
+$ test "01" -eq "1"; echo $?
+\end{lstlisting}
+Zoals je gezien zult hebben test de = op het gelijk zijn van strings en -eq op het gelijk zijn van integers, waarbij 01 gelijk is aan 1.
+
+Strings kan je vergelijken met = om te zien of ze aan elkaar gelijk zijn en met != om te zien of ze niet aan elkaar gelijk zijn.
+
+Met integers kan je nog veel meer vergelijkingen maken:
+\begin{description}
+	\item[-eq] Controlleer of integers gelijk zijn (equal)
+	\item[-ne] Controlleer of integers ongelijk zijn (not equal)
+	\item[-gt] Controlleer of eerste integer groter is dan de tweede (greater then)
+	\item[-ge] Controlleer of de eerste integer groter of gelijk is aan de tweede (greater or equal)
+	\item[-lt] Controlleer of eerste integer kleiner is dan de tweede (less then)
+	\item[-le] Controlleer of de eerste integer kleiner of gelijk is aan de tweede (less or equal)
+\end{description}
+In de manual pagina vind je nog veel meer mogelijkheden waarop je kan testen met \texttt{test}, maar voor ons zijn dit de belangrijkste opties. We gaan de opgedane kennis toepassen in shell-scripts.
+
+Het eerste script dat we gaan maken is een script dat een \texttt{ping}\index{Shell scripting!ping} doet naar een IP-adres en dat test of de ping goed verlopen is:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2021, Dennis Leeuw
+# ping een host en kijk of dat succesvol is verlopen
+
+ip="192.168.10.42"
+
+ping -c1 ${ip} 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]
+	then
+	echo "Het ${ip} is niet aanwezig op het netwerk"
+fi
+
+exit 0
+#END
+\end{lstlisting}
+We voeren hier het \texttt{ping}\index{ping}\index{commando!ping} commando uit en sturen de error en andere berichten naar \texttt{/dev/null}. Als de return code in \$? niet 0 is, dus 1 of hoger is, dan heeft onze ping geen antwoord gekregen en vertellen we dat aan de gebruiker.
+
+Het zal opgevallen zijn dat we bij de \texttt{if} twee bijzondere tekens hebben neergezet [ en ]. Deze tekens betekenen dat er een test gedaan moet worden. We hadden de regel ook zo kunnen schrijven:
+\begin{lstlisting}[language=bash]
+if test $? -ne 0
+\end{lstlisting}
+Het is echter een goede gewoonte om in scripts de blokhaken, [ en ], te gebruiken.
+
+Stel dat we ook aan de gebruiker willen laten weten als het wel goed gegaan is. Dus in alle andere gevallen, dat kunnen we doen met \texttt{else}\index{else}\index{Shell scripting!else}:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2021, Dennis Leeuw
+# ping een host en kijk of dat succesvol is verlopen
+
+ip="192.168.10.42"
+
+ping -c1 ${ip} 2>/dev/null 1>/dev/null
+if [ $? -ne 0 ]
+	then
+	echo "Het ${ip} is niet aanwezig op het netwerk"
+	else
+	echo "Het ${ip} is wel op het netwerk aangetroffen"
+fi
+
+exit 0
+#END
+\end{lstlisting}
+Probeer dit script ook eens met een ander IP adres, bijvoorbeeld 127.0.0.1.
+
+De \texttt{if, then, else} kent in bash nog een toevoeging namelijk de \texttt{elif}. De \texttt{elif} is een samentrekking van \texttt{else} en \texttt{if} en kan gebruikt worden om meerdere tests na elkaar te doen. Bijvoorbeeld:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2021, Dennis Leeuw
+# test een getal
+
+getal=15
+
+if [ ${getal} -le 10 ]; then
+	echo "Getal is kleiner of gelijk aan 10"
+elif [ ${getal} -ge 20 ]; then
+	echo "Getal is groter of gelijk aan 20"
+else
+	echo "Getal ligt tussen 10 en 20"
+fi
+\end{lstlisting}
+Neem dit script over en varieer de waarde van de variabele \texttt{getal}, zodat het het script een keer door de \texttt{if} loopt, een keer door de \texttt{elif} en een keer door de \texttt{else}.

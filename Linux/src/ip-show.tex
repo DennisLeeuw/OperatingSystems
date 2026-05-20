@@ -1,0 +1,48 @@
+Het \texttt{ip}\index{ip}\index{commando!ip} commando geeft je de mogelijkheid om alle informatie van een netwerk interface te zien, maar ook om vele settings te configureren. Linux is een uitgebreid bestuuringssysteem dat je kan gebruiken als desktop, server, switch, router, access point, tv, radio en nog veel meer. Dit betekent dat als er 1 tool is (\texttt{ip}) om allerlei verschillende netwerk instellingen te doen, dat het een behoorlijk complexe tool is. In dit stuk gaan we het niet hebben over het bouwen van switches of routers met Linux, dus behandelen we alleen die functionaliteit die je nodig hebt om een server of desktop aan een IP-netwerk te hangen.
+
+We hadden in het Inventarisatie hoofdstuk IP gebruikt om de MAC-adressen van de verschillende interfaces op te vragen:
+\begin{lstlisting}[language=bash]
+$ ip link show
+\end{lstlisting}
+met dit commando weten we ook gelijk welke netwerk interfaces er op onze machine aanwezig zijn en welke naam ze hebben.
+
+Op mijn machine ziet de output van het vorige commando er zo uit:
+\begin{lstlisting}[language=bash]
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp0s25: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN mode DEFAULT group default qlen 1000 link/ether 54:ee:75:9c:ab:53 brd ff:ff:ff:ff:ff:ff
+3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DORMANT group default qlen 1000 link/ether a8:a7:95:91:2d:8b brd ff:ff:ff:ff:ff:ff
+\end{lstlisting}
+Er zijn op mijn machine dus 3 netwerk interfaces aanwezig:
+\begin{itemize}
+	\item lo
+	\item enp0s25
+	\item wlp3s0
+\end{itemize}
+
+Met \texttt{ip} kan je ook opvragen welke IP-adressen er op je systeem geconfigureerd zijn. In plaats van de \texttt{link} gegevens vraag je dan de \texttt{address} gegevens op:
+\begin{lstlisting}[language=bash]
+$ ip addr show
+\end{lstlisting}
+
+Dat ziet er voor mijn interfaces zo uit:
+\begin{lstlisting}[language=bash]
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s25: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000 link/ether 54:ee:75:9c:ab:53 brd ff:ff:ff:ff:ff:ff
+3: wlp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000 link/ether a8:a7:95:91:2d:8b brd ff:ff:ff:ff:ff:ff
+    inet 10.181.65.132/24 brd 10.181.65.255 scope global dynamic noprefixroute wlp3s0
+       valid_lft 3378sec preferred_lft 3378sec
+    inet6 fe80::35de:2466:b3de:5771/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+\end{lstlisting}
+De lo interface heeft IP-adres 127.0.0.1 met een subnetmask van /8 ofwel 255.0.0.0. De enp0s25 interface heeft geen IP-adres en de wlp3s0 interface heeft IP-adres 10.181.65.132 met een subnetmask van /24 ofwel 255.255.255.0.
+
+Om de IP configuratie van deze machine compleet te maken willen we natuurlijk ook nog weten welke default gateway we hebben. Daarvoor gebruiken we de \texttt{route} optie. Die laat alle routes zien die de machine kent:
+
+\begin{lstlisting}[language=bash]
+$ ip route show
+\end{lstlisting}
+

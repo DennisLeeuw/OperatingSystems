@@ -1,0 +1,8 @@
+Het geheugengebruik op een machine is belangrijk om te weten. Er zijn dan ook verschillende commando's die hier informatie over geven. In deze paragraaf zullen we het hebben over de commando's die je vertellen hoeveel geheugen er in de computer zit. Het belangrijkste is doe de Linux-kernel tegen het geheugen aankijkt en dat kunnen we zie door gebruikt te maken van \texttt{/proc/meminfo}\index{/proc/meminfo} bestand. Met \texttt{cat} of \texttt{less} kunnen we dat bestand lezen en dan zien we heel veel informatie over het geheugen. De belangrijkst informatie voor ons op dit moment is de totale hoeveelheid geheugen (RAM) die er in de machine zit en hoeveel er in gebruik is. Een compactere manier om dit weer te geven is door gebruik te maken van het \texttt{free}\index{free}\index{commando!free} commando:
+\begin{lstlisting}[language=bash]
+$ free 
+         total      used      free   shared buff/cache   available
+Mem:  32538364  18631520    591412  2071772   13315432    11378676
+Swap: 15236492     63816  15172676
+\end{lstlisting}
+\texttt{free} heeft nog een andere handige functie en dat is dat het deze informatie met een bepaalde interval, bijvoorbeeld elke 10 seconden, kan weergeven. Zo kan je een drukke server in de gaten houden. Om dit te doen gebruik je \texttt{free -s 10}.

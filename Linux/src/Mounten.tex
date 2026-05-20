@@ -1,0 +1,12 @@
+Wat je zal zijn opgevallen als je een Windows-gebruiker bent is dat Linux geen drive letters heeft. In Linux is het hele systeem \'e\'en groot file system waarbij de verschillende disks of partities gemount worden op een directory in het file system.
+\begin{lstlisting}[language=bash]
+$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0 931.5G  0 disk 
+|-sda1   8:1    0 931.5G  0 part /home/dennis
+sdb      8:16   1  59.8G  0 disk 
+|-sdb1   8:17   1  58.8G  0 part /
+|-sdb2   8:18   1     1K  0 part 
+|_sdb5   8:21   1   976M  0 part [SWAP]
+\end{lstlisting}
+

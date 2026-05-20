@@ -1,0 +1,18 @@
+Het SUID-bit\index{SUID-bit} is het meest linkse bit uit de reeks en heeft dus een decimale waarde van 4. Het is de bit die hoort bij de user dus kan je het SUID-bit ook setten door \texttt{u+s} te gebruiken. Voorbeelden:
+\begin{lstlisting}[language=bash]
+$ mkdir SUID.d
+$ touch SUID.txt
+$ chmod u+s SUID.d
+$ chmod 4777 SUID.txt
+$ ls -ld SUID*
+drwsr-xr-x 1 dennis dennis  4096 Feb  7  2022 SUID.d
+-rwsrwxrwx 1 dennis dennis 63960 Feb  7  2022 SUID.txt
+\end{lstlisting}
+Het eerste rwx blokje is nu veranderd in rws om aan te geven dat het SUID-bit gezet is.
+
+Het bit op een bestand zorgt ervoor dat, als je het bestand kunt opstarten, de applicatie draait onder de username van de eigenaar. Dus als een bestand als eigenaar heeft root.admin en het SUID-bit is gezet dan zal bij opstarten het programma draaien met root-rechten. Het voordeel is dat gewone gebruikers zo programma's kunnen opstarten met rechten die ze normaal niet hebben. Het nadeel is dat er een security-lek zou kunnen ontstaan, dus je moet heel voorzichtig zijn met deze rechten.
+
+Een voorbeeld op een Linux systeem waar het SUID-bit gebruikt wordt is op het \texttt{passwd} programma. Een gebruiker moet instaat zijn om zijn wachtwoord te wijzigen, terwijl het \texttt{/etc/shadow} bestand alleen lees en schrijfbaar is door root.
+
+Het bit op een directory heeft geen betekenis in GNU/Linux.
+

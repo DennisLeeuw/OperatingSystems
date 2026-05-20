@@ -1,0 +1,42 @@
+\documentclass[12pt, a4paper, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[dutch,english]{babel}
+\usepackage[official]{eurosym}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{float}
+\usepackage{xurl}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue, filecolor=blue, urlcolor=blue, pdftitle=, pdfauthor=, pdfsubject=, pdfkeywords=}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{adjustbox}
+\usepackage{color}
+
+\title{Linux Intro Opdrachten}
+\author{Dennis Leeuw}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\begin{abstract}
+Dit document bevat de opdrachten die behoren bij het Linux Intro document
+\end{abstract}
+
+\section{Installatie van CentOS op VirtualBox}
+\input{src/Installatie_intro}
+\section{Download CentOS boot image}
+\input{src/CentOSDownloadISO}
+\section{Aanmaken van een NAT netwerk}
+\input{src/VirtualBoxNAT}
+\section{Aanmaken van een Virtual Machine}
+\input{src/VirtualBoxVMCreate}
+\section{CentOS installatie}
+\input{src/CentOSInstallation}
+
+\end{document}

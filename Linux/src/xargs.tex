@@ -1,0 +1,6 @@
+We hebben met | (pipe) gezien dat we de output van het ene commando kunnen voeren aan een volgend commando. Het kan ook voorkomen dat je de output van een commando wilt gebruiken als een argument van een volgend commando. Dat kan niet met pipe, met de pipe geef je data door, daarvoor heb je \texttt{xargs}\index{xargs}\index{commando!xargs} nodig. Het commando \texttt{xargs} neemt de output van een commando en maakt er argumenten van:
+\begin{lstlisting}[language=bash]
+echo "Aap Noot Mies" | mkdir
+echo "Aap Noot Mies" | xargs mkdir
+\end{lstlisting}
+

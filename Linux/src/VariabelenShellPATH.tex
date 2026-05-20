@@ -1,0 +1,9 @@
+Als we de shell ook op andere plekken willen laten zoeken naar commando's dan moeten we de shell-variabele aanpassen. Het aanpassen van de variabele doen we met \texttt{export}\index{export}\index{commando!export}:
+\begin{lstlisting}[language=bash]
+$ echo $PATH
+$ PATH=".:${PATH}"
+$ export PATH
+$ echo $PATH
+\end{lstlisting}
+met deze opdracht hebben we de . directory toegevoegd aan de PATH variabele. Als we een commando aanroepen en het komt voor in de directory waar we op dat moment in staan dan zal het dat commando uitvoeren.
+

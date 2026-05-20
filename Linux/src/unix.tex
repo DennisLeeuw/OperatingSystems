@@ -1,0 +1,45 @@
+Om de vraag te kunnen beantwoorden wat Linux is moeten we een stukje terug in de tijd en wel naar het eind van de jaren '60 uit de vorige eeuw. Een groepje programmeurs werkend aan een project genaamd Multics\index{Multics} bij Bell Labs (AT\&T), tegenwoordig Nokia Bell Labs, kregen in 1969 te horen dat Bell Labs zich terug trok uit het Multics project.
+
+\begin{description}
+\item[Time Sharing] Meerdere gebruikers tegelijkertijd laten werken op \'e\'en systeem
+\item[command processor] Een \textquote{shell} in user-space
+\item[hi\"erarchisch bestandssysteem] directory's kunnen zowel bestanden als subdirectory's bevatten
+\item[links] de mogelijkheid dat 1 bestand met meerdere namen aangeroepen kan worden
+\item[hogere programmeertaal] niet (alleen) geschreven in assembly
+\end{description}
+
+Om zijn spelletje (Space Travel) te kunnen blijven spelen ontwikkelde Ken Thompson\index{Thompson, Ken} samen met Dennis Ritchie\index{Ritche, Dennis} een nieuw besturingssysteem met veel gelijkenissen met Multics. Uit het projectteam voor Multics werd \textquote{Unix}\index{Unix} geboren en de programmeertalen B en daarna C.
+
+Een ander lid van het team Brian Kernighan\index{Kernighan, Brian} schijnt met de naam Unics gekomen te zijn als woordgrap op Multics. Hoe de naam ooit \index{Unix}Unix is geworden is niet bekend.\par
+
+De gedachte achter Unix is ooit in 1979 mooi beschreven door Dennis Ritchie:
+\selectlanguage{english}
+\begin{quotation}
+What we wanted to preserve was not just a good environment in which to do programming, but a system around which a fellowship could form. We knew from experience that the essence of communal computing, as supplied by remote-access, time-shared machines, is not just to type programs into a terminal instead of a keypunch, but to encourage close communication.
+\end{quotation}
+\selectlanguage{dutch}
+Het ging dus om een systeem waarop samengewerkt kon worden en dan vooral geprogrammeerd.
+
+Uit de wens vanuit de organisatie om tekst te kunnen verwerken werd het systeem uitgebreid met tekstverwerkingsfuncties
+en een eerste tekst editor en tekst formatter. Hieruit blijkt meteen de filosofie achter Unix. Maak kleine tools die
+\'e\'en ding goed doen en gebruik ze gezamenlijk om complexe dingen te doen. Er is dus een editor en een formatter. De
+eerste tekst formatter heette roff\index{roff} en deze werd als snel opgevolgd door troff\index{troff}, die je nog steeds terug vindt op de
+systemen. De unix manual-pages\index{manual-pages}, waarover later meer, worden opgemaakt met behulp troff.\par
+
+De editor is inmiddels verschillende keren verbeterd, wat een ander voordeel is van dit \textquote{small is beautiful} principe. Je kan kleine stukjes (programma's) aanpassen terwijl wat goed is behouden blijft.
+
+De eerste versies van Unix waren geschreven in assembly. Assembly is een programmeertaal die volledig toegespitst is op de onderliggende hardware. Iets dat in assembly geschreven is werkt dan ook alleen op \'e\'en type machine. In 1974 kwam Unix versie 4 uit die bijna volledig herschreven was in de
+taal \index{C}C. C is niet machine afhankelijk, er is een compiler nodig om de taal om te zetten naar de machine afhankelijke machinetaal. Door het gebruik van C werd het mogelijk Unix ook op andere systemen te draaien dan het PDP systeem
+waar het oorspronkelijk voor geschreven was. Unix kon de wereld gaan veroveren.\par
+
+Bell Labs mocht door juridische afspraken met de Amerikaanse overheid geen commerci\"ele zaken ondernemen buiten de telefonie, daardoor werd de vraag naar Unix beantwoord door alleen geld te rekenen voor de media (tapes), het verzenden van het systeem en de administratieve kosten van een licentie. Voor dat geld kregen scholen een besturingssysteem inclusief de broncode. Dit laatste maakte het aanpassen en bestuderen van het systeem makkelijk en aantrekkelijk.
+
+Omdat het systeem goedkoop verkrijgbaar was was het een ideaal systeem voor universiteiten. Studenten konden er relatief goedkoop op leren programmeren. Door studenten en andere
+gebruikers werden er in de loop van de tijd meer en meer programma's geschreven en verbeteringen gemaakt. Deze verbeterde stukken software werden met elkaar gedeeld. Het voelde als hobby en leer projecten. Soms waren de wijzigingen zo groot dat er een variant van het oorspronkelijk Unix werd gedeeld (gedistribueerd). Deze collecties van programma's werden dan ook distributies genoemd.
+
+Ook commerci\"ele bedrijven maakten gebruikt van het Unix systeem en maakten hun eigen operatingsystems met de beschikbare code. IBM had en heeft AIX en HP HPUX. En er was een klein bedrijfje in de US dat als een van de eerste bedrijven Unix naar de microcomputer, ofwel de PC, bracht. Tot dan draaide het eigenlijk alleen op grote servers. Hun Unix versie heette Xenix\index{Xenix} en het bedrijfje stond bekend als Microsoft\index{Microsoft}.
+
+E\'en van de meest bekende distributies is die van University of California die ontwikkeld werd door de Berkeley Computer Systems Research Group, de Berkeley Software Distribution\index{Berkeley Software Distribution} of afgekort \index{BSD}BSD. De eerste versie van BSD kwam uit in 1978 en de ontwikkeling van BSD werd geleid door Billy Joy. Het waren BSD systemen waarop het heet Internet netwerk met TCP/IP werd ontwikkeld (1988). Het oorspronkelijke BSD bestaat niet meer, maar open source varianten zijn er nog genoeg zoals: FreeBSD, OpenBSD en NetBSD. Een combinatie van BSD code en Mach werd de basis voor Darwin dat door Apple gebruikt wordt in Mac OS X en iOS.
+
+De vele verschillende systemen die ontstonden waren voor eindgebruikers een ramp. Wat op het ene systeem aanwezig was was op een andere niet aanwezig en omgekeerd. Een Unix-applicatie die op de ene distributie werkte werkte niet zomaar ook op een andere. Gebruikers wilden standaardisatie. Software moest uitwisselbaar zijn. De standaard die in 1988 ontstond is de \index{POSIX}POSIX standaard van de IEEE. Het beschrijft welke software en functies minimaal aanwezig moet zijn en ook aan welke functionalitiet die software minimaal moet voldoen. Extra functionaliteit is dus geen probleem. Als een systeem aan de eisen van POSIX-standaard voldoet heet die POSIX-compliant.
+

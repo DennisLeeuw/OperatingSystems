@@ -1,0 +1,35 @@
+Om een service te starten of te stoppen gebruikt \texttt{systemd} bestanden waarin beschreven wordt hoe een service heet en welke commando's er nodig zijn om te starten en stoppen. Deze beschrijving van een service wordt binnen \texttt{systemd} een \textbf{unit} genoemd. Units kan je onder andere terug vinden in de \texttt{/etc/systemd/system} directory. Een voorbeeld van een unit-file in Debian 11 is de \texttt{syslog.service}. Deze ziet er zo uit:
+
+\begin{lstlisting}[language=bash]
+[Unit]
+Description=System Logging Service
+Requires=syslog.socket
+Documentation=man:rsyslogd(8)
+Documentation=man:rsyslog.conf(5)
+Documentation=https://www.rsyslog.com/doc/
+
+[Service]
+Type=notify
+ExecStart=/usr/sbin/rsyslogd -n -iNONE
+StandardOutput=null
+Restart=on-failure
+
+# Increase the default a bit in order to allow many simultaneous
+# files to be monitored, we might need a lot of fds.
+LimitNOFILE=16384
+
+[Install]
+WantedBy=multi-user.target
+Alias=syslog.service
+\end{lstlisting}
+
+Onder het kopje \textbf{Unit} vind je een beschrijving van de service en wat deze nodig heeft om te kunnen werken. Bij \textit{Requires} staat dat \texttt{syslog} een \texttt{syslog.socket} nodig heeft. Voor nu gaan we ervan uit dat het systeem dit oplost. Wij gaan verder naar de \textbf{Service} kop.
+
+Bij \textit{ExecStart} staat het commando dat gebruikt moet worden op de service op te starten. Zoals je kan zien is er geen commando gegeven om de service te stoppen. Een Unix-achtig systeem heeft de \texttt{kill} functie om om te gaan met processen (zie Linux CLI documentatie). Deze kan gebruikt worden door \texttt{systemd} om processen te stoppen. De \textit{Type} met als waarde Notify zegt dat de daemon aan systemd laat weten wanneer het klaar is met opstarten. Dit heeft als voordeel dat als \texttt{systemd} dit signaal krijgt dat het door kan met andere zaken te doen en niet langer hoeft te wachten. Tot slot is er in deze sectie nog de \textit{Restart} optie die we willen behandelen. Het geeft niet aan wat we moeten doen bij een restart, maar wanneer we moeten restarten. In dit geval als \texttt{rsyslogd} crashed of elke andere willekeurig melding van een error geeft dan wordt het proces geherstart.
+
+Alle Unit-files zijn platte tekst bestanden en kunnen dus met een willekeurige editor aangepast worden. Als je een bestand (service) hebt gewijzigd of toegevoegd moet je \texttt{systemctl} vertellen dat er iets nieuws is. Dat doe je met het volgende commando:
+\begin{lstlisting}[language=bash]
+$ sudo systemctl daemon-reload
+\end{lstlisting}
+Hierna kan je de nieuwe of aangepaste service stoppen, starten of herstarten met de gewijzigde settings.
+

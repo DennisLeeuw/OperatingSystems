@@ -1,0 +1,10 @@
+Om een IP-adres toe te voegen gebruiken we de \texttt{add} functie bij \texttt{addr}:
+\begin{lstlisting}[language=bash]
+$ sudo ip addr add 192.168.42.5/255.255.255.0 dev enp0s25
+\end{lstlisting}
+Met het \texttt{show} commando kunnen we zien dat dit ook echt gebeurd is.
+
+Vervang \texttt{add} door \texttt{del} om het ip-adres weer te verwijderen.
+
+Deze wijzigingen op de netwerk interface zijn niet permanent. Na een reboot zullen de wijzigingen verdwenen zijn.
+

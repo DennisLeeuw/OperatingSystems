@@ -1,0 +1,67 @@
+OATH is an open mechanism for generating either event-based or time-based One Time Passwords and there are a number of hardware tokens and software implementations available.
+
+The event-based protocol uses an event-based HOTP algorithm (RFC 4226)
+
+The time-based protocol uses the time-based TOTP algorithm (RFC 6238).
+
+Get the needed packages
+sudo apt install libpam-oath oathtool qrencode
+
+Generate the seed:
+head -10 /dev/urandom | sha512sum | cut -b 1-30
+
+Create secure users.oath file:
+$ sudo touch /etc/users.oath
+$ sudo chown root:root /etc/users.oath
+$ sudo chmod 600 /etc/users.oath
+
+Add seed to /etc/users.oath.
+For TOTP use:
+HOTP/T30/6 <username> - <seed>
+
+For HOTP use:
+HOTP <username> - <seed>
+
+See Sources for the link to the page that explains the users.oath file (UsersFile.wiki).
+
+For testing we use sshd so we can always revert the settings. If you are doing this on a remote server, make sure you have a extra login as root, so you can undo your changes if things do not work as expected.
+Add the following line before @include common-auth in /etc/pam.d/sshd (pick one of the following):
+auth sufficient pam_oath.so usersfile=/etc/users.oath window=30 digits=6
+auth required pam_oath.so usersfile=/etc/users.oath window=30 digits=6
+With sufficient you are immediately logged in when the OTP is correct, and if it is not correct you get the change to login with a normal username/password combination, this is a nice setting for testing.
+With required you must fill in the OTP correctly and have a correct username/password to login. This is the production setting for 2FA.
+
+/etc/ssh/sshd_config
+KbdInteractiveAuthentication yes
+
+sudo systemctl restart sshd
+
+For testing ssh into your machine, you should get the prompt:
+One-time password (OATH) for `username':
+
+Generate the TOTP in another console:
+oathtool --totp <seed>
+Or the HOTP:
+oathtool --hotp <seed>
+
+And answer the 6-digit OTP as answer on the SSH session. When done correctly you should be able to login.
+
+Install FreeOTP on your mobile device.
+
+From here on we will only discuss TOTP.
+
+oathtool -v --totp -d6 <seed>
+
+Take the base32 secret and feed that to qrencode:
+qrencode -t UTF8 'otpauth://totp/<username>@<machine>?secret=<seed>'
+
+Scan the QR-code with FreeOTP and your are ready to go. Use ssh to login to the machine and get the 6-digit code from FreeOTP.
+
+Special Note:
+The /etc/users.oath file gets updated every time you log in, which can make this a challenge to manage centrally across multiple hosts.
+
+Sources:
+https://warlord0blog.wordpress.com/2020/05/01/one-time-password-and-sshd/
+https://spod.cx/blog/two-factor-ssh-auth-with-pam_oath-google-authenticator.shtml
+https://wiki.archlinux.org/title/Pam_oath
+https://code.google.com/archive/p/mod-authn-otp/wikis/UsersFile.wiki

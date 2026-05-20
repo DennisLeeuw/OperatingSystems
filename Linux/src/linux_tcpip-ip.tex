@@ -1,0 +1,30 @@
+Het \texttt{ip} commando geeft je de mogelijkheid om de IP configuratie op te vragen en te wijzigen. Let op! de wijzigingen die je met \texttt{ip} maakt zijn na een reboot weer verdwenen.
+
+Een overzicht van de verschillende interfaces krijg je via
+\begin{lstlisting}[language=bash]
+$ ip link show
+\end{lstlisting}
+Je krijgt een genummerde lijst met interfaces die beschikbaar zijn. De naam na het nummer is de naam van de interface. In de voorbeeld uitvoer van \texttt{ip} hieronder zijn \textbf{lo} en \textbf{enp1s0f0} de namen van de eerste en de tweede netwerk interface.
+\begin{lstlisting}[language=bash]
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp1s0f0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc fq_codel state DOWN mode DEFAULT group default qlen 1000
+    link/ether 84:ba:59:e1:36:ea brd ff:ff:ff:ff:ff:ff
+    altname enx84ba59e136ea
+\end{lstlisting}
+Op de tweede regel staat per interface de tekst \textbf{link/} met daarachter het type link. Voor de eerste interface is dat \textbf{loopback} en voor de tweede interface \textbf{ether}. Deze laatste is een afkorting voor Ethernet. Achter de link/ether staat het MAC-adres van de interface. Voor de ethernet interface zien we ook dat deze een \texttt{state DOWN} heeft en dus niet actief is.
+
+\begin{lstlisting}[language=bash]
+$ ip addr show
+\end{lstlisting}
+Geeft je een genummerde lijst van de beschikbare interfaces met hun IP-settings. Als we setting van \'e\'en enkele interface willen weten wat zijn IP-settings zijn dan geven de ook de naam van het device mee:
+\begin{lstlisting}[language=bash]
+$ ip addr show dev lo
+\end{lstlisting}
+
+Tot slot kunnen we met:
+\begin{lstlisting}[language=bash]
+$ ip route show
+\end{lstlisting}
+De routeringstabel opvragen, die geeft ons ook de default gateway gegevens.
+

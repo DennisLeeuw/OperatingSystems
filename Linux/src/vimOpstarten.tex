@@ -1,0 +1,17 @@
+Het kan zijn dat \texttt{vim} nog niet geinstalleerd is. Mocht dat het geval zijn, installeer dan \texttt{vim} via de packagemanager voor jouw systeem. Voor Debian systemen is dat:\index{vim!installeren}
+
+\begin{lstlisting}[language=bash]
+$ sudo apt-get install vim
+\end{lstlisting}
+
+De meeste gebruikelijke manier om \texttt{vim} op te starten is door aan \texttt{vim} meteen een bestandsnaam mee te geven:\index{vim!starten met bestandsnaam}
+\begin{lstlisting}[language=bash]
+$ vim bestand.txt
+\end{lstlisting}
+Als je klaar bent met het toevoegen van tekst kan je met \textbf{:wq} afsluiten\index{vim!opslaan en afsluiten}. Dit slaat het document op (w)\index{vim!opslaan} en sluit af (q). Wil je de editor verlaten zonder de gemaakte wijzigingen op te slaan, dan gebruikt je \textbf{:q!}\index{vim!afsluiten zonder opslaan}. Het doet een quit (q) zonder verdere vragen stellen.
+
+Een andere manier om vim op te starten is door geen bestandsnaam mee te geven:\index{vim!starten zonder bestandsnaam}
+\begin{lstlisting}[language=bash]
+$ vim
+\end{lstlisting}
+de editor weet nu niet onder welke bestandsnaam een bestand opgeslagen moet worden. Bij de write (w) moet je nu dus de bestandsnaam meegeven: \textbf{:w bestand.txt}\index{vim!bestand schrijven} slaat het bestand dat je gemaakt hebt op als bestand.txt. Na deze opdracht kan je met \textbf{:q} vim afsluiten.

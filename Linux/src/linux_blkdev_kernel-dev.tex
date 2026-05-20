@@ -1,0 +1,4 @@
+In GNU/Linux everything is a file, dus ook block-devices zijn bestanden. De bestanden zijn terug te vinden in de \texttt{/dev} directory.
+
+Harddisks en USB-sticks worden door de kernel behandeld via het SCSI-subsysteem, dus al deze disken beginnen met \texttt{sd}. In de \texttt{/dev} directory vind je een subdirectory \texttt{block} met daarin de major en minor nummers van de beschikbare block-devices. Een \texttt{ls -l} van deze directory laat zien naar welke device-namen ze verwijzen.
+

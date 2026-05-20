@@ -1,0 +1,9 @@
+In Unix en Unix-achtige operating systems zoals Linux is het basis principe dat alles een bestand (file) is. Dit betekent dat alles binnen het systeem; documenten, directories, harddisks, printers, toetsenborden, maar ook processen weergegeven worden als bestanden. Het voordeel hiervan is dat dezelfde commando's en API's gebruikt kunnen worden voor verschillende onderdelen van het besturingssysteem.
+
+Het filesysteem is een enkele boom van bestanden en directories, zonder onderscheid tussen disks en partities. Zelfs verplaatsbare media zoals USB-sticks en DVDs zijn onderdeel van deze boom als ze 'gemount' zijn. Ook processen (/proc) en de kernel (/sys) is voor een groot deel benaderbaar via het bestandssysteem.
+
+Met \texttt{ls} kan je in bijvoorbeeld \texttt{/proc} kijken en zien welke processen er zijn. Je ziet er nummers staan en die nummers komen overeen met de process nummers zoals ook \texttt{ps} die heeft. Doe maar eens:
+\begin{lstlisting}[language=bash]
+$ ps aux
+\end{lstlisting}
+en je ziet in de tweede kolom dezelfde nummers staan als in \texttt{/proc/}. \texttt{ps} is ook het commando om te zien welke processen er op je systeem actief zijn. We zullen \texttt{ps} in een volgend hoofdstuk uitgebreid behandelen.

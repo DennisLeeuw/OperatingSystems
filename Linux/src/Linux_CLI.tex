@@ -1,0 +1,391 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Command Line Interface}
+\date{\today\\v.0.9.5}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+\chapter{Inleiding}
+\input{src/Inleiding_serie}
+
+% Requires: GUI, DASH
+% Provides: ls, pwd, whoami, hostname, history, mkdir, cd, rmdir, ~
+% PATH, HOME, USER
+\chapter{Waarom de commandline interface?}
+\input{src/WaaromDeCLI}
+\section{Toegang tot de CLI}
+\input{src/CLIToegang}
+\section{De prompt}
+\input{src/CLIPrompt}
+\section{De shell}
+\input{src/CLIShell}
+\subsection{History}
+\input{src/CLIHistory}
+\section{De home-directory}
+\input{src/HomeDirectory}
+\section{Shell variabelen}
+\input{src/VariabelenShell}
+\subsection{Eigen variabelen}
+\input{src/VariabelenEigen}
+\section{Shell Quotes en Escapes}
+\input{src/quotesescape}
+\subsection{Escapes}
+\input{src/quotes}
+\subsection{Quotes}
+\input{src/quotes}
+
+% Requires: ls
+% Provides: fhs, ps (short)
+\chapter{Het bestandssysteem}
+\section{Everything is a file}
+\input{src/EverythingIsAFile}
+\subsection{Bestandstypen}
+\input{src/bestandstypen}
+\section{FHS - Filesystem Hierarchy Standard}
+\input{src/FHS}
+
+% Requires: fhs
+% Provides: man, locate, info, apropos
+\chapter{Linux documentatie}
+\input{src/DocIntro}
+\section{man-pages}
+\input{src/DocMan}
+\section{Waar vind ik iets?}
+\input{src/DocVinden}
+\section{Info}
+\input{src/DocInfo}
+\section{/usr/share/doc}
+\input{src/DocShareDoc}
+\section{Internet}
+\input{src/DocInternet}
+
+% Requires: ls, fhs, man
+% Provides: type, which, |, ;, &&, ||, |, xargs
+\chapter{Commando's}
+\input{src/command_syntax}
+\section{Waar zijn de commando's?}
+\input{src/WaarZijnCommandos}
+\section{Shell builtin commando's}
+\input{src/shell_builtin}
+\section{Error codes}
+\input{src/ErrorCodes}
+\section{Samenstellingen}
+\input{src/commando_samenstellingen}
+\section{xargs}
+\input{src/xargs}
+
+% Requires: fhs
+% Provides: touch, cat, mkdir, rmdir, >, >>, <, <<, redirects
+\chapter{Werken met bestanden}
+\input{src/Bestanden}
+\section{Directories}
+\input{src/Directories}
+\section{Bestanden maken en stdin, stdout en stderr}
+\input{src/BestandenMaken}
+\section{Bestanden kopie\"eren, verplaatsen, hernoemen, verwijderen}
+\input{src/Bestanden_verplaatsen}
+
+% Requires: fhs
+% Provides: vi, vim, nano, pico
+\chapter{Het gebruik van een editor}
+\input{src/editor}
+\section{vi, pico, nano}
+\input{src/editors}
+\section{vim}
+\input{src/vimIntro}
+\subsection{vim opstarten}
+\input{src/vimOpstarten}
+\input{src/vimTextInvoer}
+\input{src/vimDelete}
+\input{src/vimKnippenPlakken}
+\input{src/vimBewegen}
+
+% Requires: fhs, editor
+% Provides: grep, find, globbing, regular expressions, sed
+\chapter{Zoeken en vinden}\label{zoekenenvinden}
+\input{src/ZoekenVindenIntro}
+\section{Globbing}
+\input{src/Globbing}
+\section{Zoeken naar bestand}
+\input{src/find}
+\input{src/ZoekenNaarBestanden}
+\section{Zoeken in bestanden}
+\input{src/ZoekenInBestanden}
+\input{src/grep}
+\section{Regular Expressions}
+\input{src/regex}
+\section{Zoek en vervang}
+\input{src/sed}
+
+% Requires: fhs, ls, grep
+% Provides: users, groups, id, adduser, deluser, gpasswd, usermod
+%           /etc/passwd, /etc/shadow, /etc/group, /etc/gshadow
+% FIXME /etc/gshadow
+\chapter{Gebruikers, groepen en rechten}
+\input{src/gebruikersgroepenrechten}
+\section{Gebruikers en groepen}
+\input{src/gebruikers}
+\input{src/groepen}
+\input{src/upg}
+\section{Werken als root}
+\input{src/WerkenAlsroot}
+\subsection{sudo}
+\input{src/sudo}
+\subsection{su}
+\input{src/su}
+\section{Gebruikersbeheer}
+\input{src/adduser}
+\input{src/addgroup}
+\input{src/gpasswd}
+\input{src/usermod}
+\input{src/delgroup}
+\input{src/deluser}
+
+% Requires: fhs, ls, grep, users, groups
+% Provides: chown, chmod, access rights
+\chapter{Toegangsrechten op bestanden en directories}
+\input{src/bestandsrechten}
+\input{src/bestandsrechten_overzicht}
+\section{Bestandstypen}
+\input{src/file}
+\section{De eigenaar}
+\input{src/chown}
+\section{read, write and execute}
+\input{src/rwx}
+\input{src/chmod}
+\section{Het 4de-bit}
+\input{src/4th-bit}
+\subsection{SUID-bit}
+\input{src/suidbit}
+\subsection{SGID-bit}
+\input{src/sgidbit}
+\subsection{Sticky-bit}
+\input{src/stickybit}
+
+% Requires: sudo, cat
+% Provides: lscpu, free, dmidecode, uname
+% lspci, lsusb, lsscsi, lsblk, du, df, fdisk
+\chapter{Systeem inventarisatie}
+\input{src/inventarisatie}
+\section{System versienummers}
+\input{src/versienummers}
+\subsection{Distributie versie}
+\input{src/distro_version}
+\subsection{Kernel versie}
+\input{src/kernel_version}
+\section{Het moederbord}
+\subsection{CPU}\index{CPU}\index{Hardware informatie!CPU}
+\input{src/cpu_info}
+\subsection{RAM}\index{RAM}\index{Hardware informatie!RAM}
+\input{src/ram_info}
+\subsection{BIOS}\index{BIOS}\index{Hardware informatie!BIOS}
+\input{src/bios_info}
+\section{Extensie bussen}
+\subsection{PCI}\index{PCI}\index{Hardware informatie!PCI}
+\input{src/pci_info}
+\subsection{USB}\index{USB}\index{Hardware informatie!USB}
+\input{src/usb_info}
+\subsection{SCSI}\index{SCSI}\index{Hardware informatie!SCSI}
+\input{src/scsi_info}
+\section{Harddisks}
+\input{src/disks}
+\input{src/disks-fs}
+\input{src/disks-partition}
+\input{src/disk-free}
+\input{src/disk-usage}
+\section{Netwerk}
+\input{src/netwerk_hardware}
+\section{Inventarisatie opdracht}
+\input{src/inventarisatie_opdracht}
+
+% Provides: journalctl, ps, dmesg, top, free, last
+% uptime, syslog, kill
+\chapter{Systeembeheer}
+\input{src/systeembeheer}
+\section{CPU gebruik}
+\input{src/uptime}
+\section{Geheugen gebruik}
+\input{src/geheugengebruik}
+\section{Aanwezige gebruikers}
+\input{src/usermonitoring}
+\section{Processen}
+\input{src/processen_ps}
+\input{src/processen_kill}
+\input{src/processen_top}
+\section{Logging}
+\input{src/logging}
+\subsection{syslog}
+\input{src/syslog}
+\subsection{kernel berichten}
+\input{src/logging_kernel}
+
+% Requires: lsblk
+% Provides: mount, umount
+\chapter{File systems}
+\input{src/file_systems}
+\section{Formatting file systems}
+\input{src/mkfs}
+\section{Mounten van lokale bestandssystemen}
+\input{src/Mounten}
+\section{Mounten van disks}
+\input{src/MountenDisks}
+
+% Requires: IP kennis
+% Provides: Network, ip, /etc/resolv.conf, /etc/hostname
+%	    host, hostnamectl, ping, ifconfig, route
+\chapter{Netwerk configuratie}
+\input{src/Netwerk_intro}
+\section{Wijzigen van de hostname}
+\input{src/hostnamectl}
+\section{Handmatige IP configuratie}
+\input{src/ip-show}
+\input{src/ifconfig}
+\input{src/route}
+\input{src/ip-ip-add-remove}
+\input{src/ip-route-add-remove}
+\section{DNS configuratie}
+\input{src/resolvconf}
+%\input{src/hosts}
+%\section{System IP configuratie}
+%\subsection{Debian based}
+%\subsection{Red Hat based}
+
+% Requires: network
+% Provides: Installing software
+%           From repo
+%           Adding repo's
+%	    Local
+%           AppImage
+\chapter{Software Management}
+\input{src/package_management}
+\section{The package manager}
+\input{src/package_manager}
+\section{Systeem update}
+\input{src/package-sys_update}
+\subsection{APT}
+\input{src/apt-sys_update}
+\subsection{YUM}
+\input{src/yum-sys_update}
+\subsection{DNF}
+\input{src/dnf-sys_update}
+\section{Software management}
+\input{src/package-install}
+\subsection{APT}
+\input{src/apt-install}
+\subsection{YUM}
+\input{src/yum-install}
+\subsection{DNF}
+\input{src/dnf-install}
+%\section{Repositories}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+%\subsection{Adding repositories}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+\section{Packages van het Internet}
+\input{src/package-internet}
+%\subsection{AppImage}
+%\section{Naar een nieuwe major version}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+
+% Requires: software installation
+% Provides: Programming languages
+\chapter{Programmeertalen}
+\input{src/Programmeertalen}
+\input{src/Programming_Proc-OOP.tex}
+\section{C}
+\input{src/C}
+\section{C++}
+\input{src/Cplusplus}
+\section{Perl}
+\input{src/Perl}
+\section{PHP}
+\input{src/PHP}
+\section{Python}
+\input{src/Python}
+\section{Java}
+\input{src/java}
+
+% Requires: Cron
+\chapter{Shell scripting}\index{Shell scripting}
+\input{src/ScriptingIntro}
+\section{Waarom scripting?}
+\input{src/ScriptingGebruik}
+\section{Hello World - een eerste script}
+\input{src/ScriptingHelloWorld}
+\section{Het starten van scripts}\index{Shell scripting!Starten}
+\input{src/ScriptingOpstarten}
+\section{Commentaar}\index{Shell scripting!commentaar}
+\input{src/ScriptingCommentaar}
+\section{Variabelen}\index{Variabelen, shell scripting}\index{Shell scripting!Variabelen}
+\input{src/ScriptingVariabelen}
+\section{if}\index{if}\index{Shell scripting!if}
+\input{src/ScriptingIf}
+\subsection{Opdracht: Werken met if}
+\input{src/ScriptingIfOpdracht}
+\section{for}\index{for}\index{Shell scripting!for}
+\input{src/ScriptingFor}
+\subsection{Opdracht: Werken met for}
+\input{src/ScriptingForOpdracht}
+\section{while}\index{while}\index{Shell scripting!while}
+\input{src/ScriptingWhile}
+\subsection{Opdracht: Werken met While}
+\input{src/ScriptingWhileOpdracht}
+\section{Opdracht: Gemiddelde cijfer van een student}
+\input{src/ScriptingKlasOpdracht}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

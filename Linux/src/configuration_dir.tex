@@ -1,0 +1,13 @@
+E\'en van de basis principes bij het ontwikkelen van Unix is geweest dat data zoveel mogelijk in platte tekst moet zijn, zo ook de configuratie bestanden. Of het nu gaat om de configuratie van een webserver of om een desktop-omgeving alle bestanden zijn zoveel mogelijk in platte tekst en dus lees- en verwerkbaar met de standaard tools die worden meegeleverd op een GNU/Linux systeem.
+
+De configuratie van de software op een GNU/Linux systeem kan je terug vinden in de \texttt{/etc} directory. Dit is de \textquote{system-wide} configuratie en dus ook makkelijk te backupen want het is maar \'e\'en directory. In deze directory heeft elk programma zijn eigen configuratie bestand of een subdirectory met confiuratie bestanden. Gebruik \texttt{ls} om een overzicht te krijgen van wat er zoal in jouw \texttt{/etc} directory staat:
+\begin{lstlisting}[language=bash]
+$ ls /etc
+\end{lstlisting}
+
+De voorkeuren van elke gebruiker staan in de gebruikers home-directory in de zogenaamde verborgen bestanden verborgen bestanden of directories in de home-directory van een gebruiker beginnen met een punt. Met het commando:
+\begin{lstlisting}[language=bash]
+$ ls -a
+\end{lstlisting}
+zie je ook de verborgen bestanden.
+

@@ -1,0 +1,68 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Werken met bestanden}
+\date{\today\\
+1.0.0\\
+\vfill
+\raggedright
+\copyright\ 2020-2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_cli_bestanden}
+\subsection{Voorkennis}
+\input{src/voorkennis_cli_bestanden}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% Requires: fhs
+% Provides: touch, cat, mkdir, rmdir, rm, redirects: >, >>, <, <<
+\section{Introductie}
+\input{src/Bestanden}
+\section{Directories}
+\input{src/Directories}
+\input{src/directories-cd}
+\section{Bestanden maken en stdin, stdout en stderr}
+\input{src/BestandenMaken}
+\section{Kopie\"eren, verplaatsen, verwijderen}
+\input{src/Bestanden_verplaatsen}
+\section{Vragen en opdrachten}
+\input{src/vragen-bestanden}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

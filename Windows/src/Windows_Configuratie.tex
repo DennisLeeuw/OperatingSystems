@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt,twoside,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Windows: Configuratie}
+\date{\today\\
+0.0.0
+\vfill
+\raggedright
+\copyright\ 2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% requires: 
+% provides: 
+\section{Introductie}
+\input{src/windows-configuratie}
+
+\section{System Information}
+\input{src/windows-sysinfo}
+
+\section{Task Manager}
+\input{src/windows-taskmanager}
+
+\section{Settings}
+\input{src/windows-settings}
+
+\section{Control Panel}
+\input{src/windows-controlpanel}
+
+\section{Advanced System Settings}
+\input{src/windows-advancedsystemsettings}
+
+\section{Microsoft Management Console - MMC}
+\input{src/windows-mmc}
+\subsection{MMC: Computer Management}
+\input{src/windows-mmc_computermanagement}
+\subsection{MMC: Event viewer}
+\input{src/windows-mmc_eventviewer}
+\subsection{MMC: Group Policy Editor}
+\input{src/windows-mmc_gpe}
+
+\section{Registry}
+\input{src/windows-registry}
+
+\section{System Configuration}
+\input{src/windows-sysconfig}
+
+\section{God Mode}
+\input{src/windows-config_godmode}
+
+\section{INI-bestanden}
+\input{src/windows-ini_bestanden}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

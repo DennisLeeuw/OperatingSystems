@@ -1,0 +1,39 @@
+De data op een disk (harddisk of SSD) is verdeeld over mappen\index{mappen}, folders\index{folders} of directories\index{directories}. Deze namen worden door elkaar gebruikt, maar betekenen allemaal hetzelfde. Het zijn plekken waar bestanden\index{bestanden} of in het Engels files\index{files} in kunnen worden opgeslagen zodat de data op de disk overzichtelijk kan worden ingedeeld. De directory waarin je nu staat is je home-directory\index{home-directory}, de plek waar jij je bestanden in mag opslaan.
+
+Om de organisatie van data te bevorderen heeft Microsoft al een aantal subdirectories voor je aangemaakt. Type op de prompt \texttt{dir}\index{dir}\index{commando!dir} en geef enter. Je krijgt nu een overzicht van bestanden en directories in jouw home-directory, zoals \texttt{Downloads}, \texttt{Documents}, \texttt{Music}, \texttt{Pictures}, \texttt{Videos} en nog wat meer. De hoop is dat gebruikers op deze manier hun data gestructureerd opslaan. Je hoeft je niet aan de structuur van Microsoft te houden. Als jij liever je data indeelt op basis van \texttt{Prive}, \texttt{School}, \texttt{Werk} kan dat natuurlijk ook. Alleen moet je dan nog wel zelf die directories maken.
+
+Met het \texttt{mkdir}\index{mkdir}\index{commando!mkdir} commando kan je een directory aanmaken:
+\begin{lstlisting}[style=DOS]
+mkdir Prive
+\end{lstlisting}
+
+Met het \texttt{rmdir}\index{rmdir}\index{commando!rmdir} commando kan je een directory weggooien:
+\begin{lstlisting}[style=DOS]
+rmdir Prive
+\end{lstlisting}
+Directories die we met \texttt{rmdir} weggooien komen niet in de Recycle Bin terecht zoals dat wel gebeurt als je dat via \texttt{File Explorer} zou doen.
+
+Je kan een directory alleen weggooien als deze leeg is. Alle default door Microsoft aangemaakte directories zijn niet leeg. Ze bevatten subdirectories of verborgen bestanden. Met de \texttt{-hidden} optie kan je met \texttt{dir} deze verbonden bestanden zichtbaar maken. Doen we een
+\begin{lstlisting}[style=DOS]
+dir Videos
+\end{lstlisting}
+Dan lijkt deze map leeg. Doen we echter:
+\begin{lstlisting}[style=DOS]
+dir -hidden Videos
+\end{lstlisting}
+Dan zie je dat er een bestand zichtbaar is geworden, namelijk een \texttt{desktop.ini} file.
+
+We hebben gezien dat we met \texttt{rmdir} directories weg kunnen gooien. Met het \texttt{del}\index{del}\index{commando!del} commando kan je bestanden weggooien, ook deze komen niet in de Recycle Bin terecht en zijn direct van het systeem verdwenen.
+
+Om met mappen en bestanden om te kunnen gaan in PowerShell is er nog een commando nodig dat je veel zult gebruiken en dat commando is \texttt{cd}\index{cd}\index{commando!cd}, wat een afkorting is van Change Directory. Daarmee kan je dus van directory wijzigen.
+
+\begin{lstlisting}[style=DOS]
+cd Documents
+dir
+\end{lstlisting}
+De bovenstaande commando's zorgen ervoor dat je eerst jezelf verplaatst naar de Documents directory (LET OP: je prompt wijzigt mee) en met \texttt{dir} laat je zien welke files en folders er in deze directory staan. Je mag aan \texttt{cd} ook een volledig pad meegeven. Bijvoorbeeld
+\begin{lstlisting}[style=DOS]
+cd \Users
+\end{lstlisting}
+en met .. gaan we stapje dichter naar de basis van de harddisk, namelijk de root directory (\textbackslash).
+

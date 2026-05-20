@@ -1,0 +1,37 @@
+1. OS Intro
+2. Windows structuur			    Linux structuur
+	OS                                  Kernel Clib shell, X (whyland)
+	API                                 API
+	Mappen Windows, Users, Apps         (boot usr var) home (opt local)
+	cd dir md (mkdir) rmdir             cd ls mkdir rmdir
+	cmd/powershell                      shell - bash
+	Root-directory
+	Drive letters                       mount-points
+
+3. Configuratie
+	system (control panel)              /etc
+	ipconfig - powershell?              ip
+	god mode
+	Registry - regedit                  Remote configuration management
+
+4. Logging / troubleshooting            /var/log journalctl
+	eventviewer + filters               cat less tail head grep
+	updates (powershell)                rpm en apt (apt-get update apt-get upgrade)
+	backups (powershell) zip            tar
+
+5. Users and Groups
+	Waarom groepen en gebruikers (vergelijk met telefoon)
+	Administrator                       root
+	create / delete
+	Maak gebruiker aan om dagelijks mee te werken (gamen)
+
+6. Rechten
+	ACLs - file permissions
+	Apps
+		
+For UWP (Universal Windows Platform) or Modern Apps:
+    		Open Settings: Go to Start > Settings. 
+		Navigate to Privacy: Select Privacy & security (Windows 11) or Privacy (Windows 10). 
+		Manage App Permissions: Scroll down to the App permissions section and select the specific resource, such as Camera, Microphone, or File system. 
+		Control Access: Here, you can turn permissions on or off for all apps or for individual applications, as seen with the File System example
+

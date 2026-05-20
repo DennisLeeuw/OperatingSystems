@@ -1,0 +1,12 @@
+Data, besturingssysteem en programma's zijn opgeslagen op een storage device. Om enige ordening aan te brengen aan hoe we data op een storage device opslaan gebruiken we een bestandssysteem\index{bestandssysteem}. Dit maakt het mogelijk om data op te slaan als bestanden\index{bestanden} en deze te ordenen in directories. Veel gebruikte synoniemen voor een directory\index{directory} zijn een folder\index{folder} of een map\index{map}.
+
+Een bestandssysteem is in het Engels een file system\index{file system}. Bijna elke operating system heeft zijn eigen file system en sommige operating systems ondersteunen meer dan \'e\'en bestandssysteem. Windows gebruikt tegenwoordig NTFS, maar vroeger het FAT-filesystem. Linux kent het extended filesystem (extfs), maar ook bijvoorbeeld BTRFS en Reiserfs. Apple gebruik het Apple File System (APFS).
+
+Je kan geen Apple APFS of Linux extfs disk lezen op een Windows systeem. Dat maakt de uitwisseling van data lastig. Het FAT file system is al heel oud en er is voor bijna elk operating systeem inmiddels wel een driver die het file systeem kan lezen en schrijven. Dus als je data wilt uitwisselen tussen de verschillende systemen via bijvoorbeeld een USB-stick dan is het het handigst om te zorgen dat de USB-stick gebruik maakt van het FAT file system.
+
+%Onder Linux is NTFS-3G ontwikkeld en daarmee kan Linux NTFS disks lezen en schrijven. NTFS-3G is ook beschikbaar voor Mac OS X. Er is experimentele ontwikkeling gaande om ook APFS te ondersteunen onder Linux. FAT is op bijna elk systeem lees- en schrijfbaar, daar dit systeem al heel oud is en er voor bijna elk besturingssysteem wel drivers beschikbaar zijn.
+
+
+%Een hardeschijf heet een block device omdat data gelezen (en geschreven) kan worden in vaste groottes, genaamd blocks, sectors of clusters. Een block is meestal 512 bytes of een veelvoud daarvan. Je kan data rechtstreeks naar een block device sturen, maar meestal wordt een block device geformatteerd zodat er een bestandssysteem wordt aangemaakt.
+
+

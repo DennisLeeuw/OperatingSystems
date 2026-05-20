@@ -1,0 +1,264 @@
+Voordat we beginnen met de installatie moeten we eerst een paar variabelen een waarde geven. Wijzig deze variabelen naar eigen behoefte. De FQDN is de verwijzing naar de host waarop Icinga draait en wordt gebruikt als hostname in de virtual host configuratie van Apache.
+\begin{lstlisting}[language=bash]
+FQDN="icinga.example.com"
+EMAIL="me@example.com"
+ICINGAWEB2_DB_PASSWORD="changeme"
+ICINGA_WEB_ADMIN_USER="admin"
+ICINGA_WEB_ADMIN_PWD="changeme"
+\end{lstlisting}
+
+
+\section{Apache}
+
+\subsection{Installatie}
+\begin{lstlisting}[language=bash]
+DEBIAN_FRONTEND=noninteractive apt-get -y install \
+apache2
+\end{lstlisting}
+
+\subsection{Configuratie}
+\begin{lstlisting}[language=bash]
+cat << EOF > /etc/apache2/sites-available/icinga.conf
+<VirtualHost *:80>
+    ServerName ${FQDN}
+    ServerAdmin ${EMAIL}
+
+    DocumentRoot "/usr/share/icingaweb2/public"
+
+    <Directory "/usr/share/icingaweb2/public">
+        Options SymLinksIfOwnerMatch
+        AllowOverride None
+
+        <IfModule mod_authz_core.c>
+            # Apache 2.4
+            <RequireAll>
+                Require all granted
+            </RequireAll>
+        </IfModule>
+
+        SetEnv ICINGAWEB_CONFIGDIR "/etc/icingaweb2"
+
+        EnableSendfile Off
+
+        <IfModule mod_rewrite.c>
+            RewriteEngine on
+            # RewriteBase /icingaweb2/
+            RewriteBase /
+            RewriteCond %{REQUEST_FILENAME} -s [OR]
+            RewriteCond %{REQUEST_FILENAME} -l [OR]
+            RewriteCond %{REQUEST_FILENAME} -d
+            RewriteRule ^.*$ - [NC,L]
+            RewriteRule ^.*$ index.php [NC,L]
+        </IfModule>
+
+        <IfModule !mod_rewrite.c>
+            DirectoryIndex error_norewrite.html
+            ErrorDocument 404 /error_norewrite.html
+        </IfModule>
+    </Directory>
+
+    ErrorLog  /var/log/apache2/icinga-error.log
+    CustomLog /var/log/apache2/icinga-access.log combined
+</VirtualHost>
+EOF
+\end{lstlisting}
+
+\subsection{Activatie}
+\begin{lstlisting}[language=bash]
+a2ensite icinga.conf
+apache2ctl configtest
+systemctl reload apache2
+\end{lstlisting}
+
+
+\section{PHP-FPM}
+PHP-FPM is een FastCGI Process Manager tussen Apache en PHP. PHP-FPM wordt vaak gebruikt op zwaar belaste web-servers. Meer informatie is te vinden op \url{https://www.php.net/manual/en/install.fpm.php}
+
+\subsection{Installatie}
+\begin{lstlisting}[language=bash]
+DEBIAN_FRONTEND=noninteractive apt-get -y install \
+php-fpm                \
+\end{lstlisting}
+
+\subsection{Activatie}
+\begin{lstlisting}[language=bash]
+my_php_fpm=`apt-cache showpkg php-fpm | grep -A 1 'Reverse Provides' | tail -1 | cut -d' ' -f1`
+a2enmod proxy_fcgi setenvif
+a2enconf ${my_php_fpm}
+apache2ctl configtest
+systemctl restart ${my_php_fpm}.service
+systemctl restart apache2.service
+\end{lstlisting}
+
+\section{MariaDB}
+MariaDB is een SQL-database. MariaDB is een onafhankelijke open source doorontwikkeling van MySQL dat in handen is van Oracle.
+
+\subsection{Installatie}
+\begin{lstlisting}[language=bash]
+DEBIAN_FRONTEND=noninteractive apt-get -y install \
+mariadb-client         \
+mariadb-server         
+\end{lstlisting}
+
+\subsection{Configuratie}
+\begin{lstlisting}[language=bash]
+mysql_secure_installation
+\end{lstlisting}
+
+\section{Icinga}
+Monitoring server gebaseerd op en compatible met Nagios.
+
+\subsection{Installatie}
+\begin{lstlisting}[language=bash]
+DEBIAN_FRONTEND=noninteractive apt-get -y install \
+icinga2                \
+icingacli              \
+icingaweb2             \
+icinga2-ido-mysql      \
+monitoring-plugins     \
+nagios-nrpe-plugin     \
+nagios-plugins-contrib
+\end{lstlisting}
+
+\subsection{Icinga2 database}
+Achterhaal het gegenereerde wachtwoord voor db\_ido\_mysql en stop dat in een variabele
+\begin{lstlisting}[language=bash]
+ICINGA_IDO_PASSWORD="$(awk -F'"' '/password/ {print$2}' /etc/icinga2/features-available/ido-mysql.conf)"
+\end{lstlisting}
+Maak de icinga2 database aan:
+\begin{lstlisting}[language=bash]
+mysql <<< "
+    CREATE DATABASE icinga2;
+    GRANT SELECT, INSERT, UPDATE, DELETE, DROP, CREATE VIEW, INDEX, EXECUTE
+    ON icinga2.*
+    TO 'icinga2'@'localhost'
+    IDENTIFIED BY '$ICINGA_IDO_PASSWORD';
+    FLUSH PRIVILEGES;
+"
+\end{lstlisting}
+
+\subsection{IDO-MySQL}
+\begin{lstlisting}[language=bash]
+icinga2 feature enable command ido-mysql
+mysql icinga2 < /usr/share/icinga2-ido-mysql/schema/mysql.sql
+\end{lstlisting}
+
+\subsection{Icinga monitoring}
+\begin{lstlisting}[language=bash]
+icingacli module enable monitoring
+\end{lstlisting}
+
+
+\subsection{icingaweb2 database}
+\begin{lstlisting}[language=bash]
+mysql <<< "
+    CREATE DATABASE icingaweb2;
+    GRANT ALL
+    ON icingaweb2.*
+    TO 'icingaweb2'@'localhost'
+    IDENTIFIED BY '$ICINGAWEB2_DB_PASSWORD';
+    FLUSH PRIVILEGES;
+"
+mysql icingaweb2 < /usr/share/icingaweb2/etc/schema/mysql.schema.sql
+\end{lstlisting}
+
+\subsection{icingaweb2 configuratie}
+\begin{lstlisting}[language=bash]
+# roles.ini
+cat << EOF > /etc/icingaweb2/roles.ini
+[Administrators]
+users = "$ICINGA_WEB_ADMIN_USER"
+permissions = "*"
+groups = "Administrators"
+EOF
+
+# groups.ini
+cat << EOF > /etc/icingaweb2/groups.ini
+[icingaweb2]
+backend = "db"
+resource = "icingaweb_db"
+EOF
+
+# config.ini
+cat << EOF > /etc/icingaweb2/config.ini
+[global]
+show_stacktraces = "1"
+config_backend = "db"
+config_resource = "icingaweb_db"
+#
+[logging]
+log = "syslog"
+level = "ERROR"
+application = "icingaweb2"
+facility = "user"
+EOF
+
+# authentication.ini
+cat << EOF > /etc/icingaweb2/authentication.ini
+[icingaweb2]
+backend = "db"
+resource = "icingaweb_db"
+EOF
+
+# resources.ini
+cat << EOF > /etc/icingaweb2/resources.ini
+[icingaweb_db]
+type = "db"
+db = "mysql"
+host = "localhost"
+port = ""
+dbname = "icingaweb2"
+username = "icingaweb2"
+password = "$ICINGAWEB2_DB_PASSWORD"
+charset = "UTF8"
+persistent = "0"
+use_ssl = "0"
+#
+[icinga_ido]
+type = "db"
+db = "mysql"
+host = "localhost"
+port = ""
+dbname = "icinga2"
+username = "icinga2"
+password = "$ICINGA_IDO_PASSWORD"
+charset = "latin1"
+persistent = "0"
+use_ssl = "0"
+EOF
+
+mkdir /etc/icingaweb2/modules/monitoring/
+
+# config.ini
+cat << EOF > /etc/icingaweb2/modules/monitoring/config.ini
+[security]
+protected_customvars = "*pw*,*pass*,community"
+EOF
+
+# commandtransports.ini
+cat << EOF > /etc/icingaweb2/modules/monitoring/commandtransports.ini
+[icinga2]
+transport = "local"
+path = "/var/run/icinga2/cmd/icinga2.cmd"
+EOF
+
+# backends.ini
+cat << EOF > /etc/icingaweb2/modules/monitoring/backends.ini
+[icinga]
+type = "ido"
+resource = "icinga_ido"
+EOF
+\end{lstlisting}
+
+\subsection{Admin wachtwoord voor icingaweb}
+\begin{lstlisting}[language=bash]
+# Create a hash from password
+HASH_ICINGA_WEB_ADMIN_PASSWORD=$(openssl passwd -1 "$ICINGA_WEB_ADMIN_PWD")
+
+# Create user in database
+mysql icingaweb2 -Bse "
+    INSERT INTO icingaweb_user
+        (name, active, password_hash)
+        VALUES ('$ICINGA_WEB_ADMIN_USER', 1, '$HASH_ICINGA_WEB_ADMIN_PASSWORD');
+"
+\end{lstlisting}

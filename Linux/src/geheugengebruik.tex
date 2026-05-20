@@ -1,0 +1,8 @@
+In het vorige hoofdstuk hebben we het gebruik van \texttt{free} gezien. Naast het totaal van het aanwezige geheugen geeft \texttt{free} ook het in gebruik zijnde geheugen aan:
+\begin{lstlisting}[language=bash]
+$ free -g
+     total   used   free  shared  buff/cache   available
+Mem:    31     14      3       1          12          13
+Swap:   14      0     14
+\end{lstlisting}
+Met de \texttt{-g} optie geeft \texttt{free} de waarden weer in gibi-bytes. In het bovenstaande voorbeeld hebben dus nog 3G vrij van de 31G die er in de machine zit.

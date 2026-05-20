@@ -1,0 +1,102 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Software Management}
+\date{\today\\v.0.9.5}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli}
+\section{Voorkennis}
+\input{src/voorkennis_cli}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: network
+% Provides: Installing software
+%           From repo
+%           Adding repo's
+%	    Local
+%           AppImage
+\chapter{Software Management}
+\input{src/package_management}
+\section{The package manager}
+\input{src/package_manager}
+\section{Systeem update}
+\input{src/package-sys_update}
+\subsection{APT}
+\input{src/apt-sys_update}
+\subsection{YUM}
+\input{src/yum-sys_update}
+\subsection{DNF}
+\input{src/dnf-sys_update}
+\section{Software management}
+\input{src/package-install}
+\subsection{APT}
+\input{src/apt-install}
+\subsection{YUM}
+\input{src/yum-install}
+\subsection{DNF}
+\input{src/dnf-install}
+%\section{Repositories}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+%\subsection{Adding repositories}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+\section{Packages van het Internet}
+\input{src/package-internet}
+%\subsection{AppImage}
+%\section{Naar een nieuwe major version}
+%\subsection{APT}
+%\subsection{YUM}
+%\subsection{DNF}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

@@ -1,0 +1,6 @@
+Om de default gateway te configureren gebruiken we:
+\begin{lstlisting}[language=bash]
+$ sudo ip route add default via 192.168.42.1
+\end{lstlisting}
+Het gegeven IP-adres van de default gateway moet natuurlijk wel binnen een van de ons bekende netwerken vallen. \texttt{del} kan gebruikt worden om een default gateway adres te verwijderen. De wijzigingen die we op de command line doen zijn niet van permanente aard. Na een reboot zijn ze verdwenen.
+

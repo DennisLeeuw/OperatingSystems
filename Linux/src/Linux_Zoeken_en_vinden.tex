@@ -1,0 +1,75 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Zoeken en vinden}
+\date{\today\\
+1.1.0\\
+\vfill
+\raggedright
+\copyright\ 2020-2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_cli_zoeken_en_vinden}
+\subsection{Voorkennis}
+\input{src/voorkennis_cli_zoeken_en_vinden}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% Requires: editor, quoting, documentatie
+% Provides: grep, find, globbing, regular expressions, sed
+\section{Zoeken en vinden}\label{zoekenenvinden}
+\input{src/ZoekenVindenIntro}
+
+\section{Zoeken naar bestanden}
+\subsection{Globbing}
+\input{src/Globbing}
+\subsection{find}
+\input{src/find}
+\input{src/ZoekenNaarBestanden}
+
+\section{Zoeken in bestanden}
+\input{src/ZoekenInBestanden}
+\subsection{grep}
+\input{src/grep}
+\subsection{Regular Expressions}
+\input{src/regex}
+
+\section{Zoek en vervang in bestanden}
+\input{src/sed}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

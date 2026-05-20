@@ -1,0 +1,13 @@
+In het vorige hoofdstuk heb je al kennis gemaakt met LAMP (Linux, Apache, MySQL en PHP), daar gaan we nu verder mee werken. We gaan MySQL vullen met de gegevens die nodig zijn voor NextCloud en we installeren de NextCloud software, wat PHP is, binnen de Apache omgeving. Om te kunnen beginnen moeten we eerst NextCloud downloaden of installeren vanuit de package manager. Niet elke distributie levert NextCloud mee en omdat het belangrijk is dat je een NextCloud systeem goed bij houdt met betrekking tot de security-patches is het aan te raden om de software zelf te downloaden vanaf de website van NextCloud.
+
+Ga naar \url{https://nextcloud.com/} en klik op Get NextCloud en selecteer Download for Server. Op het moment van schrijven is de meest recente versie versie 19.0.1, dus dat versienummer wordt in de rest van dit document gebruikt. Kijk zelf op de pagina van de NextCloud site wat de meest recente versie is en gebruik dat versienummer in de volgende commando's.
+
+\begin{lstlisting}[language=bash]
+$ sudo mkdir -p /srv/www/
+$ cd /srv/www/
+$ sudo wget https://download.nextcloud.com/server/releases/nextcloud-19.0.1.tar.bz2
+$ sudo tar jxvf nextcloud-19.0.1.tar.bz2
+\end{lstlisting}
+
+Volg verder de aanwijzingen uit het NextCloud installatie document op \url{https://docs.nextcloud.com/server/19/admin_manual/installation/source_installation.html}.
+

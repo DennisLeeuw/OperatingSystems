@@ -1,0 +1,15 @@
+Met het commando
+\begin{lstlisting}[language=bash]
+$ sudo fdisk -l
+\end{lstlisting}
+kan je een overzicht krijgen van alle disks en partities in het systeem inclusief hun grote.
+
+Door aan \texttt{fdisk} een device als parameter mee te geven kan je de disk partities wijzigen:
+\begin{lstlisting}[language=bash]
+$ sudo fdisk /dev/sdc
+\end{lstlisting}
+
+Met \textbf{q} verlaat je \texttt{fdisk} zonder de wijzigingen naar disk weg te schrijven. \texttt{fdisk} gebruikt 1 karakter commando's om acties uit te voeren. Niets wordt naar disk weggeschreven totdat het schrijf commando (\textbf{w}) gegeven wordt. Je kunt dus redelijk aanklooien zonder al te  veel risico's, maar toch gebruik een aparte disk om op te testen en doe dat niet op de disk waarop je GNU/Linux systeem ge\"installeerd is.
+
+De \textbf{m} toets geeft een overzicht van de beschikbare opdrachten.
+

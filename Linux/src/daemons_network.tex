@@ -1,0 +1,39 @@
+Veel daemons worden gebruikt om diensten aan het netwerk aan te bieden. Om een dienst aan te kunnen bieden moet een daemon luisteren op een port en zodra er een verbinding wordt gemaakt op de port moet de daemon een nieuw proces laten luisteren. Veel daemons kan je vertellen op welke interface of welk IP-adres ze moeten luisteren, zo kan je er bijvoorbeeld voor zorgen dan een MySQL server alleen luistert op de interface van localhost zodat hij niet van buitenaf beschikbaar is.
+
+Als we een daemon opstarten willen we kunnen controleren of de daemon daadwerkelijk luistert op een interface. Van oudsher werd hiervoor het \texttt{netstat}\index{netstat} commando gebruikt, nieuwere systemen hebben meestal het \texttt{ss}\index{ss} commando. Beide commando's hebben de dezelfde functionaliteit. Je kan ze gebruiken om te zien welk proces er liuoisterd op welke interface en je kan zien welke verbindingen er op dit moment gaande zijn. We zullen voor de compleetheid beide commando's laten zien.
+
+Als een daemon luistert op een poort en we willen kunnen zien of dat daadwerkelijk gebeurt dan moeten we de commando's vragen om ons de LISTENING status te laten zien:
+\begin{lstlisting}[language=bash]
+$ netstat -l
+\end{lstlisting}
+\begin{lstlisting}[language=bash]
+$ ss -l
+\end{lstlisting}
+Als je beide commando's ge\"installeerd hebt staan dan zal je zien de de output iets verschillend is.
+
+Er luisteren over het algemeen veel processen naar allerlei verschillende zaken. Vaak willen we alleen weten of ze op TCP of UDP luisteren. Met de \texttt{-u} optie kunnen we kiezen voor UDP en met \texttt{-t} voor TCP. We kunnen ze ook tesamen gebruiken om zowel de TCP als de UDP porten te laten zien:
+\begin{lstlisting}[language=bash]
+$ netstat -lut
+\end{lstlisting}
+\begin{lstlisting}[language=bash]
+$ ss -lut
+\end{lstlisting}
+Je ziet dat voor beide commando's de opties identiek zijn.
+
+Tot slot van het bekijken van de luisterende poorten willen we ook kunnen zien welk proces (welke daemon) de poort gebruikt. Dit kan alleen root zien, dus moeten we sudo gebruiken:
+\begin{lstlisting}[language=bash]
+$ sudo netstat -tulp
+\end{lstlisting}
+\begin{lstlisting}[language=bash]
+$ sudo ss -tulp
+\end{lstlisting}
+
+Beide commando's kunnen ook gebruikt worden om te zien welke verbindingen er nu open staan met je computer:
+\begin{lstlisting}[language=bash]
+$ sudo netstat -tuanp | grep -vE 'LISTEN|:\*'
+\end{lstlisting}
+\begin{lstlisting}[language=bash]
+$ sudo ss -tu -o state connected
+\end{lstlisting}
+Gebruik de man-page van de verschillende commando's om te zien wat de opties betekenen.
+

@@ -1,0 +1,85 @@
+Een variabele is een plek om data in op te slaan voor later gebruik. We kunnen ons script aanpassen op de volgende manier om een voorbeeld te geven van het gebruik van een variabele in scripts:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2020, Dennis Leeuw
+# License: GPL v3
+# Versie: 1.1
+# Dit script print Hello world! Op het scherm
+
+output="Hello world!"
+echo $output
+# Verlaat het script met error-code 0
+exit 0
+#END
+\end{lstlisting}
+
+We hebben nu een variabele met de naam output toegevoegd en deze variabele hebben we de waarde (data) "Hello world!" gegeven.
+
+Bij het echo-commando\index{echo} gebruiken we de variabele om weer onze vertrouwde uitvoer te krijgen.
+
+Let er op dat bij het declareren (het van een waarde voorzien) van de variabele er geen dollar-teken voor de variabele staat, maar bij het gebruik wel.
+
+De shell heeft ook een aantal ingebouwde variabelen\index{ingebouwde variabelen}\index{builtin variables}\index{variabelen!ingebouwde}. Deze variabelen worden met allemaal hoofdletters geschreven. Om verwarring te voorkomen is het dus handig om je eigen variabelen niet met allemaal hoofdletters te schrijven. De meest gebruikte shell-variabelen in scripts zijn \$USER die de gebuikersnaam bevat, \$HOME die de home-directory bevat en \$PWD die het complete directory pad bevat vanaf de root tot de directory waarin de gebruiker stond toen hij het script startte. Probeer dit script uit:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2020, Dennis Leeuw
+# License: GPL v3
+# Versie: 1.1
+# Vertelt de gebruiker met welke gebruikersnaam hij of zij ingelogd is, wat
+# zijn of haar home-directory is en in welke directory hij of zij nu staat.
+
+echo "Je bent ingelogd als $USER en je home-directory is $HOME"
+echo "Je huidige directory is $PWD"
+
+exit 0
+#END
+\end{lstlisting}
+
+Variabelen worden dus gebruikt om data in op te slaan. Je kan ook de uitvoer van een commando in een variabele stoppen. Op Linux bestaat er het commando \texttt{date}\index{date}\index{commando!date} dat op verschillende manieren informatie over de datum en tijd kan weergeven en waarmee je de datum en tijd op je computer kan zetten. Omdat date zoveel kan lijkt het in eerste instantie ingewikkeld, maar als je er een beetje ervaring mee op doet blijkt het een enorm handige tool te zijn. Tikken we alleen date in op de commandline en daarna enter, dan krijgen we van het systeem de huidge datum en tijd terug en in welke tijdzone we leven. Als we bijvoorbeeld alleen het jaar willen weten waarin we nu leven dan vragen we dat aan date door:
+\begin{lstlisting}[language=bash]
+date +%Y
+\end{lstlisting}
+en alleen de maand is:
+\begin{lstlisting}[language=bash]
+date +%m
+\end{lstlisting}
+dit is het maandnummer, willen de naam van de maand dan gebruiken we:
+\begin{lstlisting}[language=bash]
+date +%B
+\end{lstlisting}
+Meer van deze opties vind je terug in de manual-pagina van texttt{date}. Lees deze door zodat je ook weet hoe je de dag, de uren en de minuten moet weergeven.
+
+Om in een script de uitvoer van \texttt{date} in een variabele te zetten kunnen we het volgende gebruiken:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2021, Dennis Leeuw
+# License: GPL v3
+# Versie: 1.0
+# Wat is de huidige datum en tijd
+
+start="$(date '+%Y-%m-%d-%H-%M')"
+
+echo ${start}
+
+exit 0
+#END
+\end{lstlisting}
+We hebben nu de uitvoer van het \texttt{date} commando aan een variabele gegeven en deze geprint. Let op de quotes! Als we parameters aan een commando willen voeren die ook een betekenis in de shell hebben, zoals in dit geval het \%-teken, dan moeten we de parameter tussen enkele quotes zetten zodat ze door de shell niet ge\"interpreteerd worden.
+
+De laatste manier om een variabele een waarde te geven is door aan de gebruiker input te vragen, hiervoor bestaat er het \texttt{read}\index{read}\index{commando!read} commando. In een script zou je dat zo kunnen gebruiken:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (c) 2021, Dennis Leeuw
+# License: GPL v3
+# Versie: 1.0
+# Vraag de gebruiker om zijn leeftijd
+
+echo -n "Hallo $USER, hoe oud ben jij? "
+read leeftijd
+
+echo "De gebruiker $USER is $leeftijd jaar oud."
+
+exit 0
+#END
+\end{lstlisting}
+

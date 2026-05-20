@@ -1,0 +1,11 @@
+Stel dat we een commando hebben uitgevoerd en we krijgen niets terug, hoe weten we dan zeker dat het goed gegaan is? Dat weten we omdat een commando ook een exit{}-code terug geeft. Een exit{}-code van 0 betekend dat alles goed gegaan is en alles boven 0 dat er iets fout gegaan is. De man-page van het programma kan je vaak meer vertellen over welke exit{}-code wat betekent als je er niet uit komt met de beschrijving van de error. Type het volgende
+\begin{lstlisting}[language=bash]
+$ touch hello.txt
+$ cat hello.txt
+$ echo $?
+$ cat Hello.txt
+$ echo $?
+\end{lstlisting}
+na de eerste \texttt{echo \$?} krijg je een 0 en na de tweede \texttt{echo \$?} een 1. Dat komt omdat het eerste commando uitgevoerd kan worden en het tweede niet. Het bestand Hello.txt (met een hoofdletter) bestaat niet.
+
+Het \$-teken betekent dat we te maken hebben met een variabele. Het vraagteken is een speciale variabele die de shell gereserveerd heeft om de exit-code in op te slaan.

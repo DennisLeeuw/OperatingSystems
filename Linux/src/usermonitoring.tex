@@ -1,0 +1,17 @@
+Bij het gebruik van \texttt{uptime} hebben we gezien dat er twee gebruikers actief zijn op ons systeem. Wie zouden dat zijn? Juist! met het gebruik van \texttt{who} kunnen we dat achterhalen:
+\begin{lstlisting}[language=bash]
+$ who
+root     tty1         2021-02-09 18:07
+dennis   tty7         2021-02-09 18:10 (:0)
+\end{lstlisting}
+We zien dat zowel root als dennis zijn ingelogd. Beide gebruikers zijn nog steeds ingelogd. De root gebruiker is 3 minuten eerder ingelogd dan de gebruiker dennis.
+
+Met \texttt{last} zien we wie er ingelogd zijn en wie er ingelogd zijn geweest:
+\begin{lstlisting}[language=bash]
+$ last
+dennis tty7        :0         Tue Feb  9 18:10   still logged in
+root   tty1                   Tue Feb  9 18:07   still logged in
+dennis tty7        :0         Tue Feb  9 11:14 - 18:10  (06:56)
+reboot system boot 4.19.0-13  Tue Feb  9 11:13   still running
+\end{lstlisting}
+De gebruiker dennis is op 9 februari om 11:14 ingelogd en om 18:10 weer uitgelogd.

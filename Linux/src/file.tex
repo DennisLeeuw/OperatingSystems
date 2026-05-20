@@ -1,0 +1,23 @@
+Waar Windows de extensie van een bestand gebruikt om te bepalen wat voor type bestand het is, gebruik Linux hoofdzakelijk de eerste bytes van een bestand om aan te geven wat voor bestand het is. Met het \texttt{file} commando kunnen we achterhalen met wat voor bestand we te maken hebben zonder het bestand te openen.
+
+\begin{lstlisting}[language=bash]
+$ touch onbekend_bestand.txt
+$ file onbekend_bestand.txt
+onbekend_bestand.txt: empty
+\end{lstlisting}
+We hebben een leeg bestand, dus weet het \texttt{file} commando niet wat voor bestand we hebben, zelfs niet met de .txt uitgang.
+
+\begin{lstlisting}[language=bash]
+$ echo '%PDF-1.5' > onbekend_bestand.txt
+$ file onbekend_bestand.txt
+onbekend_bestand.txt: PDF document, version 1.5
+\end{lstlisting}
+Een bestand met een .txt extensie en een kop in het bestand dat aangeeft dat het een PDF zal door het systeem gezien worden als een PDF.
+
+\begin{lstlisting}[language=bash]
+$ echo '#!/bin/bash' > onbekend_bestand.txt
+$ file onbekend_bestand.txt
+onbekend_bestand.txt: Bourne-Again shell script, ASCII text executable
+\end{lstlisting}
+De \#! geeft aan dat het een shell-script is en /bin/bash zegt dat het om de Bourne-Again shell gaat.
+

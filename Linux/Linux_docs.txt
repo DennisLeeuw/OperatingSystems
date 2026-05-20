@@ -1,0 +1,53 @@
+Algemeen
+--------
+
+2.1 Linux_Introductie.pdf Linux_Install_Debian.pdf (klassikaal)
+2.2 Linux_CLI_Kennismaking.pdf
+2.3 Linux_Documentatie.pdf
+2.4 Project
+2.5 Linux_Commandos.pdf (rewrite ncal stuk)
+2.6 Linux_Bestanden.pdf (+tail, +head)
+2.7 Linux_Editors.pdf
+2.8 Project
+2.9 Assessment
+
+3.1 Linux_Zoeken_en_vinden.pdf
+3.2 Linux_Gebruikers_en_Groepen.pdf
+3.3 Linux_Bestandsrechten.pdf
+3.4 Project
+3.5 Linux_Inventarisatie.pdf
+3.6 Linux_Networking.pdf
+3.7 Linux_Software_Management.pdf
+3.8 Project
+3.9 Assessment
+
+4.1 Linux_Processen.pdf (at moet nog beschreven worden)
+4.2 Linux_Logging.pdf
+4.3 Linux_Kernel -- Linux_Basis_Systeembeheer.pdf (kernel modules moet nog ergens anders een plekje vinden)
+4.4 Project
+4.5 
+4.6
+4.7
+4.8 Project
+4.9 Assessment
+
+5.1 DHCP + DNS
+5.2 
+5.3
+5.4 Project
+5.5 LAMP
+5.6
+5.7
+5.8 Project
+5.9 Assessement
+
+
+--------------------------------------------------------------------------------------------------------------------
+Linux_GUI-1.0.1.pdf
+
+Linux_Opdr_GUI-20220306.pdf
+
+Linux_LAMP.pdf
+Linux_NextCloud.pdf
+Linux_Printing.pdf
+Icinga_Installatie-0.1.1.pdf

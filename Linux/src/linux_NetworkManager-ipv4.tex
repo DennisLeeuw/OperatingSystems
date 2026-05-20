@@ -1,0 +1,56 @@
+Standaard gebruikt NetworkManager zijn eigen ingebouwde DHCP-client, dus zodra je een netwerkabel in de netwerkpoort steekt, en er is een DHCP-server op het netwerk aanwezig, dan wordt je automatisch verbonden met het netwerk.
+
+Maar soms wil je het anders, dan wil je je eigen DNS server testen en dus de IP-adressen van de DNS-servers wijzigen, of een vast IP-adres instellen. We gaan je hier vertellen hoe je die settings wijzigen kan.
+
+We beginnen met het maken van een nieuwe interface. We geven de interface een eigen naam:
+\begin{lstlisting}[language=bash]
+sudo nmcli con add con-name "LocalEthernet" type 802-3-ethernet
+\end{lstlisting}
+De IEEE 802.3 beschrijft ethernet, vandaar dat we voor type \texttt{802-3-ethernet} zetten. Als je nu een \texttt{ls} doet van \texttt{/etc/NetworkManager/system-connections/} dan zal je zien dat er een bestand gemaakt is met de naam \texttt{LocalEthernet.nmconnection}. Daarin zitten de settings die wij gaan zetten. Met:
+\begin{lstlisting}[language=bash]
+sudo cat /etc/NetworkManager/system-connections/LocalEthernet.nmconnection
+\end{lstlisting}
+kan je de inhoud van het bestand zien en dan zien we dat er onder het kopje \texttt{[ipv4]} een \texttt{method=auto} staat. Dat betekent dat deze interface automatisch connect, er wordt mee bedoelt dat het verwacht een IP adres van DHCP te krijgen. Laten we beginnen met het disablen van ipv6:
+\begin{lstlisting}[language=bash]
+sudo nmcli con modify "LocalEthernet" ipv6.method disable
+\end{lstlisting}
+Met \texttt{cat} kunnen we controleren of het bestand geupdate is.
+
+Om een interface handmatig te configureren moeten we de \texttt{method} op \textbf{manual} zetten, maar dit kan alleen als we ook een IP-adres configureren:
+\begin{lstlisting}[language=bash]
+sudo nmcli con modify "LocalEthernet" ipv4.method manual ipv4.addresses 192.168.1.42/24
+\end{lstlisting}
+wat hopelijk opgevallen is is het woord \texttt{addresses} het is meervoud. We kunnen meerdere IP-adressen op 1 interface configureren. Via een komma gescheiden lijst zouden we meerdere IP-adressen kunnen toewijzen.
+
+We hebben nu een IP-adres in het profiel, nu moeten we nog een default gateway toevoegen:
+\begin{lstlisting}[language=bash]
+sudo nmcli con modify "LocalEthernet" ipv4.gateway 192.168.1.1
+\end{lstlisting}
+
+En tot slot de DNS-server die tot onze beschikking hebben:
+\begin{lstlisting}[language=bash]
+sudo nmcli con modify "LocalEthernet" ipv4.dns 192.168.1.1,192.168.1.2
+\end{lstlisting}
+
+Nu we een profiel hebben met daarin de gewenste settings, is de grote vraag hoe wordt dit profiel aangeroepen als we een stekker in onze ethernet port steken? Ergens zullen we het profiel moeten linken met een interface. Dat doen we met het laatste commando:
+\begin{lstlisting}[language=bash]
+sudo nmcli con modify "LocalEthernet" ifname <IFNAME>
+\end{lstlisting}
+Waarbij IFNAME een bestaande interface op je systeem is. Maar hoe weten we nu wat de IFNAMEs op ons systeem zijn..., daarvoor gebruiken we weer nmcli:
+\begin{lstlisting}[language=bash]
+sudo nmcli device show
+\end{lstlisting}
+Dit geeft een list met devices. \texttt{GENERAL.TYPE} het type interface weer. Zoek naar een ethernet interface, dan vind je achter \texttt{GENERAL.DEVICE} de device naam.
+
+Nu we alle settings correct gezet hebben, kunnen we NetworkManager restarten met:
+\begin{lstlisting}[language=bash]
+sudo nmcli con up LocalEthernet
+\end{lstlisting}
+
+Met het \texttt{nmcli device show} commando dat we eerder gebruikt hebben kunnen we zien dat de settings op de interface geconfigureerd staan. Bij de WIRED-PROPERTIES.CARRIER kunnen we zien of er een carrier-signaal is. Staat deze op \textbf{on} dan is er een kabel met ons systeem verbonden die ook met een ethernet netwerk verbonden is. Staat deze op \textbf{off} dan is dat niet het geval of we hebben te maken met een defecte kabel.
+
+Willen we dit profiel weggooien dan gebruiken we:
+\begin{lstlisting}[language=bash]
+nmcli connection delete LocalEthernet
+\end{lstlisting}
+

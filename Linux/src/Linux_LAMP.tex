@@ -1,0 +1,79 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+\usepackage{csquotes}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Linux LAMP}
+%\subtitle{Linux voor MBO niveau 4 en het LPI Linux Essentials examen}
+%\subject{Een Praktische Gids}
+\date{\today\\v.0.3.0}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2021-2023 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_Server}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+\chapter{Inleiding}
+\input{src/Inleiding_serie}
+%Management netwerk
+
+\chapter{Introductie}
+\input{src/LAMP}
+\section{Verantwoording}
+\input{src/linux_lamp_intro}
+
+\chapter{Apache}
+\input{src/webservers}
+\section{Installatie}
+\input{src/ApacheInstall}
+\section{Configruation}
+\input{src/apache_configuration_files}
+
+\chapter{MariaDB}
+\input{src/database_servers}
+% Extra disk voor DB
+\section{Installatie}
+\input{src/MariaDBInstall}
+
+\chapter{PHP}
+\input{src/PHPInstall}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

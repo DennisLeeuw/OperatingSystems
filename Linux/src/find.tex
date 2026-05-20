@@ -1,0 +1,6 @@
+Om op de commandline bestanden te zoeken die ergens op het filesysteem staan is er het commando \texttt{find}. De syntax van het \texttt{find} commando ziet er ongeveer zo uit:
+\begin{lstlisting}[language=bash]
+find <path> <options> <action>
+\end{lstlisting}
+\texttt{find} zoekt vanaf het opgegeven \texttt{path} naar bestanden die voldoen aan de opgegeven opties en voert daar de opgegeven \texttt{action} op uit. De standaard \texttt{action} is om de naam van het bestand inclusief het complete pad te printen naar de standaard output. De zoekactie van \texttt{find} is als je dat niet limiteert recursief en gaat dus door alle subdirectories. Dat betekent ook dat als je \texttt{/} als pad op geeft dat het hele bestandssysteem doorzocht wordt (dat kan even duren).
+

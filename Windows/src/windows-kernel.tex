@@ -1,0 +1,17 @@
+De kernel van Microsoft Windows is de de NT OS Kernel\index{NT OS Kernel} (\texttt{ntoskrnl.exe}). De kernel is de basis van een besturingssysteem en het deel dat geladen wordt door de bootloader. De kernel is uiteindelijk verantwoordelijk voor het volledig en op een correcte manier opstarten van het hele systeem. De kernel bevat de basis hardware drivers en kan eventueel extra kernel mode hardware drivers laden. De kernel kunnen we opsplitsen in een aantal lagen of onderdelen:
+\begin{description}
+\item[Executive] is een collectie kernel-mode functies waarin een kernel voorziet. Het bestaat uit: I/O manager, IPC Manager, Virtual Memory Manager, Process Manager, PnP Manager, Power Manager, Security Reference Monitor en de Object Manager.
+	\begin{description}
+	\item[I/O manager] Regelt alle Input en Output
+	\item[IPC manager] Regelt de communicatie tussen de processen (Inter Proces Communication)
+	\item[Virtual Memory manager] Regelt welke proces of applicatie welk stukje geheugen heeft en/of mag gebruiken
+	\item[Process manager] Regels alle processen op het systeem
+	\item[PnP manager] Regelt de Plug-n-Play devices
+	\item[Power manager] Regelt het power management systeem
+	\item[Security Reference Monitor]
+	\item[Object manager] uiteindelijk moeten alle modules door de object manager naar de kernel of een device driver.
+	\end{description}
+\item[kernel en drivers] de interface tussen de hardware en de executive services.
+\item[Hardware Abstraction Layer] Een abstractie laag die van een een complex samenraapsel van hardware een paar uniforme interfaces maakt. Zo hoeven de lagen boven de HAL niets te weten van allerlei verschillende soorten printers, maar is er \'e\'en uniforme printer interface.
+\end{description}
+

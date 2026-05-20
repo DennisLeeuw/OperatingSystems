@@ -1,0 +1,43 @@
+Met \texttt{free}\index{free}\index{commando!free} hebben we gezien wat het geheugen gebruik is en wat er nog vrij is. Het zou natuurlijk mooi zijn als we kunnen zien wat er geheugen gebruikt. Het geheugen wordt gebruikt door processen. Een proces is alles wat er in het geheugen zit en dat min of meer continue draait. Een overzicht van de aanwezige processen kan je krijgen met het \texttt{ps}\index{ps}\index{commando!ps} commando. Het \texttt{ps} commando zonder opties laat alleen de processen zien van de gebruiker waaronder je bent ingelogd. Om alle processen te zien die op een systeem draaien is er de \texttt{-e} optie. Dit is vaak een heel lange lijst met processen en die zijn gesorteerd op proces id:
+\begin{lstlisting}[language=bash]
+$ ps -e | head -10
+  PID TTY          TIME CMD
+    1 ?        00:00:44 systemd
+    2 ?        00:00:01 kthreadd
+    3 ?        00:00:00 rcu_gp
+    4 ?        00:00:00 rcu_par_gp
+    6 ?        00:00:00 kworker/0:0H-kblockd
+    8 ?        00:00:00 mm_percpu_wq
+    9 ?        00:02:43 ksoftirqd/0
+   10 ?        00:11:19 rcu_sched
+   11 ?        00:00:00 rcu_bh
+\end{lstlisting}
+Met de \texttt{head -10} krijgen we de eerste 10 regels te zien. We zien dat proces nummer 1 (PID is Process ID, ofwel proces nummer) systemd\index{systemd} is. Dat is op de meeste moderne systemen het geval. Nadat de kernel geladen is in het geheugen wordt systemd opgestart die dan zorg voor het opstarten van de rest van het systeem.
+
+In de tweede kolom zien we dat bij TTY een vraagteken staat. Dat betekent dat het proces niet gekoppeld is aan een terminal en dus op de achtergrond rustig zijn werk aan het doen is. Gebruikers processen zijn gekoppeld aan een terminal:
+\begin{lstlisting}[language=bash]
+PID   TTY          TIME CMD
+18209 pts/10   00:00:00 vim
+18313 pts/12   00:00:00 bash
+18751 pts/11   00:00:03 vim
+19027 pts/13   00:00:00 ps
+\end{lstlisting}
+Het laatste commando uit dit lijstje is onze eigen opdracht, \texttt{ps}, en de \texttt{vim} processen zijn de processen waarmee ik dit document aan het schrijven ben. Door aan \texttt{ps} de \texttt{-l} (long) optie mee te geven kunnen we ook zien wie de eigenaar van het proces is:
+\begin{lstlisting}[language=bash]
+F S  UID  PID   PPID   C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
+0 S  1000 18209  5870  0  80   0 -  4552 core_s pts/10   00:00:00 vim
+0 S  1000 18313  1930  0  80   0 -  1748 -      pts/12   00:00:00 bash
+0 S  1000 18751  8994  0  80   0 -  4533 core_s pts/11   00:00:05 vim
+0 R  1000 19540 12035  0  80   0 -  2637 -      pts/13   00:00:00 ps
+\end{lstlisting}
+We zien dat we meerdere extra kolomn hebben gekregen waaronder de S van status. Voor ons \texttt{ps} proces staat daar een R, kortom dit proces is 'running'. De eigenaar van het proces is de gebruiker met UID 1000. En dat ben ik.
+
+Wat opgevallen zal zijn is dat voor het \texttt{ps} commando we alleen ps zien en niet de opties. We hebben dus nog geen idee wat er echt gebeurd. Om dat te achterhalen moeten we de opties \texttt{-lef} gebruiken:
+\begin{lstlisting}[language=bash]
+F S  UID     PID   PPID   C PRI  NI ADDR SZ WCHAN  TTY                TIME CMD
+0 S dennis   18209  5870  0  80   0 -  4552 core_s 08:15 pts/10   00:00:00 vim src/Linux_deel2_CLI.tex
+0 S dennis   18313  1930  0  80   0 -  1748 -      Mar16 pts/12   00:00:00 bash
+0 S dennis   18751  8994  0  80   0 -  4567 core_s 08:35 pts/11   00:00:07 vim src/processen.tex
+0 R dennis   20084 12035  0  80   0 -  2658 -      09:21 pts/13   00:00:00 ps -lef
+\end{lstlisting}
+Als eerste valt op dat lange regels doorgaan op de volgende regel, het UID 1000 is nu vertaald naar de naam van de gebruiker en van de commando's zien we nu ook met welke optie ze zijn opgestart. Bij het \texttt{ps} commando zien we dat de opties \texttt{-lef} worden weergegeven en bij de \texttt{vim} commando's zien we ook welke bestandsnamen er aan \texttt{vim} zijn meegegeven bij het starten.

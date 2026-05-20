@@ -1,0 +1,88 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux introductie}
+\date{\today\\v.1.1.2}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\input{src/OverDitDocument}
+\input{src/DocChanges_Intro}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+\chapter{Wat is Linux?}
+\input{src/WatIsLinux}
+
+\chapter{Waarom Open Source?}
+\input{src/WaaromOpenSource}
+
+\chapter{Gebruiksrechten en licenties}
+\input{src/Licenties}
+\section{Gebruikslicenties}
+\subsection{MIT}
+\input{src/MIT}
+\subsection{BSD}
+\input{src/BSD}
+\subsection{GPL}
+\input{src/GPL}
+\section{Creative Commons}
+\input{src/CreativeCommons}
+\section{Open standaarden}
+\input{src/OpenStandaarden}
+\section{Open data}
+\input{src/OpenData}
+\section{Open Source Business Model}
+\input{src/OpenSourceBusinessModel}
+
+\chapter{Linux Distributies}
+\input{src/Distributies}
+\section{Debian}
+\input{src/Debian}
+\section{Red Hat}
+\input{src/RedHat}
+\section{OpenSuSE}
+\input{src/SuSE}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

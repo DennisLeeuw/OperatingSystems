@@ -1,0 +1,59 @@
+Regular expressions\index{regular expressions} zijn speciale karakters waarmee je in complexe data-sets kan zoeken. De naam regular expression wordt vaak afgekort tot regexp\index{regexp} of regex\index{regex}. Regular expressions worden gebruikt om patronen te zoeken in data. Wordt dit patroon gevonden dan wordt de gehele regel waarin dit patroon voorkomt afgebeeld op het scherm. Je kan zoeken in bestanden of in de output (stdout) van een commando.
+
+De basis van regular expressions is een aantal karakters met een speciale betekenis:
+
+\begin{tabular}{| l | l |}
+\hline
+. & Is een willekeurig karakter \\
+\hline
+? & Is exact 1 karakter \\
+\hline
+* & Herhaal de voorgaande expressie 0 of meer keren \\
+\hline
+\textasciicircum & Begin van de regel \\
+\hline
+\$ & Einde van de regel \\
+\hline
+$\backslash$ & Escape; speciale karakters worden als echte karakters behandeld \\
+\hline
+\{\} & Zorg dat dat een regular expression een eenheid (groep) vormt \\
+\hline
+\end{tabular}
+
+Deze speciale karakters kunnen we gebruiken om regular expressions te maken. We beginnen met de ., ? en *:
+\begin{lstlisting}[language=bash]
+$ mkdir regex
+$ cd regex
+$ touch aap.txt
+$ touch ap.txt
+$ touch pa
+$ touch filetxt
+$ ls | grep a?*p
+$ ls | grep a.*p
+\end{lstlisting}
+merk op dat het verschil in output van de twee \texttt{ls} commando's zit in het aantal keren dat een letter voor moet komen. De combinatie ?* zegt dat er 1 of meer karakters moeten zijn, terwijl .* zegt dat het 0 of meer karakters moet zijn.
+
+\begin{lstlisting}[language=bash]
+$ ls | grep ^a
+$ ls | grep a$
+\end{lstlisting}
+Met het \textasciicircum{} zoeken we vanaf het begin van de regel, dus de regel moet beginnen met een a. Met de \$ zoeken we vanaf het einde, dus de regel moet eindigen met een a.
+
+Als we bestanden willen zien die op .txt eindigen dan willen we dat de punt onderdeel is van onze zoek opdracht en willen we niet dat de punt gezien wordt als een willekeurig karakter. Vergelijk de volgende twee commando's en hun uitkomst:
+\begin{lstlisting}[language=bash]
+$ ls | grep '.txt'
+$ ls | grep '\.txt'
+\end{lstlisting}
+
+Let op de ticks om de regular expression. De ticks zorgen ervoor dat de regular expression bij \texttt{grep} terecht komt en niet al door de shell wordt uitgevoerd. De shell is natuurlijk de eerste die de complete commando regel krijgt. Het is de shell die moet beslissen wie welk deel uitvoert. Voor \texttt{ls} is dat niet zo moeilijk  daar wordt de opdracht aan \texttt{ls} overgelaten, maar voor de regular expression bij \texttt{grep} ontstaan er twee mogelijkheden. De shell lost zelf al een deel van de regular expression op en geeft wat er over blijft aan \texttt{grep} of de shell geeft de complete regular expression aan \texttt{grep}. Dat laatste is wat we in dit geval willen. Vergelijk je hiervoor gekregen uitkomsten eens met:
+\begin{lstlisting}[language=bash]
+$ ls | grep \.txt
+\end{lstlisting}
+Wat hopelijk opvalt is dat ondanks de $\backslash$ er niet gefilterd wordt op .txt maar op alles dat een willekeurig karakter heeft met daarachter txt. Dat komt omdat de shell de $\backslash$. al matched met de output van \texttt{ls}. Dit is dus wel iets om op te letten met regular expressions. Het is altijd veilig om de regex tussen ticks te zetten. Dan weet je zeker dat de regex bij \texttt{grep} uitkomt en niet bij de shell.
+
+Soms willen we kunnen aangeven hoe vaak een bepaald karakter achter elkaar voorkomt. Daarvoor hebben we de curly braces (accolades).
+\begin{lstlisting}[language=bash]
+$ ls | grep -E 'a{2}'
+\end{lstlisting}
+Zoek zelf in de man-page van grep op wat -E betekent.
+

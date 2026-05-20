@@ -1,0 +1,21 @@
+Het script kan op twee verschillende manieren opgestart worden. Allereerst kunnen we script rechtstreeks aan de shell geven:
+\begin{lstlisting}[language=bash]
+$ bash ./hello_world.sh
+\end{lstlisting}
+De tweede mogelijkheid is dat we het script executable maken en daarna direct uitvoeren. We kunnen een script executable maken voor de eigenaar door het x-bit te zetten voor de user:
+\begin{lstlisting}[language=bash]
+$ chmod u+x ./hello_world.sh
+\end{lstlisting}
+Daarna kan de eigenaar het script direct uitvoeren
+\begin{lstlisting}[language=bash]
+$ ./hello_world.sh
+\end{lstlisting}
+Bij beide opties is het van belang om het complete pad mee te geven aan het script. In de voorbeelden konden we volstaan met ./ omdat het script in de directory staat waar we al in staan. Maar we zouden ook het volledige pad kunnen opgeven:
+\begin{lstlisting}[language=bash]
+$ /home/dennis/scripts/hello_world.sh
+\end{lstlisting}
+We kunnen ook het pad /home/dennis/scripts toevoegen aan onze PATH variabele en er zo voor zorgen dat we nooit meer het pad hoeven op te geven.
+\begin{lstlisting}[language=bash]
+$ export PATH=$PATH:/home/dennis/scripts
+$ hello_world.sh
+\end{lstlisting}

@@ -1,0 +1,56 @@
+Het \texttt{journalctl} commando is een frontend naar de logbestanden van \texttt{systemd-journald}. \texttt{journalctl} kent vele opties om elementen uit de logs de filteren, of om de output anders aan de gebruiker te laten zijn dan de standaard zoals de syslog-bestanden eruit zagen.
+
+Het opstarten van \texttt{journalctl} zonder enige opties of argumenten laat zien wat \texttt{systemd-journald} aan logs heeft verzameld sinds het opstarten van het systeem, of sinds de laatste logrotate. Je ziet alleen de logs waartoe je rechten hebt. Door \texttt{sudo} voor het commando te gebruiken krijg je alles te zien.
+
+Aan \texttt{journalctl} kan je opties meegeven zodat er op verschillende manieren gefilterd wordt in de logs.
+\begin{lstlisting}[language=bash]
+$ sudo journalctl --system
+\end{lstlisting}
+Dit geeft de logs van het systeem die alleen voor de beheerder(s) bestemd is. Hierin tref je onder andere de logs van de kernel aan.
+
+Met de \textit{-k} optie krijg je alleen de kernel-berichten te zien:
+\begin{lstlisting}[language=bash]
+$ sudo journalctl -k
+\end{lstlisting}
+
+De lijst van logmeldingen kan erg lang zijn. Om alleen de laatste meldingen te zien kan je nadat je de lijst op je scherm hebt gebruikt maken van het groterdan teken (\textbf{>}) om naar de laatste melding te gaan. Een andere optie is om gebruikte maken van de \texttt{-r} optie om de lijst \textquote{reverse} te sorteren. De nieuwste melding staat dan boven aan.
+
+Meestal is het niet nodig om alle meldingen te zien, maar alleen degene die rond een bepaald tijdstip zijn gebeurd:
+\begin{lstlisting}[language=bash]
+$ journalctl -S "10 minutes ago"
+\end{lstlisting}
+Dit vraagt aan \texttt{journalctl} om alleen de berichten die de huidige gebruiker (geen \texttt{sudo}) te laten zien die niet ouder zijn dan 10 minuten geleden. Je kan aan \texttt{-S} ook een datum en tijdstip meegeven. Met \texttt{-U} (Until) kunnen we ook nog aangeven tot welk moment we de logs willen zien. Op deze manier kunnen we heel precies bepalen van welk stukje uit het verleden we de logs willen zien.
+
+Tijdens het zoeken naar problemen willen we ons kunnen focussen op een bepaald proces en zien wat er gebeurt, terwijl het gebeurt. Aan \texttt{journalctl} kunnen we de \texttt{-f} optie, van \textquote{follow}, meegeven om te zien wat er gebeurt, terwijl het gebeurt.
+
+Om alleen de logs van een bepaald proces te kunnen volgen is er de \texttt{-u} (Unit) optie. Een unit is een bepaald proces zoals dat door \texttt{systemd} of met de hand opgestart is. Willen we zien wat het proces \texttt{systemd-journald} doet en logt op dit moment:
+\begin{lstlisting}[language=bash]
+$ sudo journalctl -f -u systemd-journald
+\end{lstlisting}
+
+Als je niet precies weet wat de unit-naam is dan kan je via \texttt{systemctl} een lijst opvragen van alle units die er zijn:
+\begin{lstlisting}[language=bash]
+$ systemctl -l
+\end{lstlisting}
+De eerste kolom geeft de unit naam die je kan gebruiken met \texttt{journalctl}.
+
+Als we alleen meldingen met een bepaalde prioriteit willen zien dan moeten we de \texttt{-p} optie gebruiken. Hier kunnen we de naam van een prioriteit of het nummer van de prioriteit gebruiken. Prioriteiten worden genummerd van 0 tot 7 met 0 als hoogste prioriteit. De prioriteiten met hun naam staat in de volgende lijst
+
+\begin{enumerate}
+  \setcounter{enumi}{-1}
+  \item emerg
+  \item alert
+  \item crit
+  \item err
+  \item warning
+  \item notice
+  \item info
+  \item debug
+\end{enumerate}
+
+We kunnen ook een range van prioriteiten opgeven
+\begin{lstlisting}[language=bash]
+$ sudo journalctl -p 0..3
+\end{lstlisting}
+Alle prioriteiten die genoemd zijn worden weergegeven, dit is dus in dit voorbeeld 0 tot en met 3.
+

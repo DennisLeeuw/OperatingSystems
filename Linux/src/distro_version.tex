@@ -1,0 +1,31 @@
+Om op een draaiend systeem te achterhalen welke distributie er ge\"installeerd is valt vaak niet mee. Het begon ermee dat elke distributie zijn informatie op zijn eigen plek bewaarde. Zo hadden de verschillende systemen hun eigen bestanden in de \texttt{/etc/} directory:
+\begin{description}
+\item[SUSE] /etc/SUSE-brand
+\item[Debian] /etc/debian\_version
+\item[RedHat] /etc/redhat-release
+\end{description}
+en ook de inhoud van deze bestanden was niet consistent. Er is een poging gedaan om dit te verbeteren. Er is nu \'e\'en bestand dat op elk systeem aanwezig is en dat is \texttt{/etc/os-release}\index{/etc/os-release}. Een vergelijking tussen de inhoud op een Debian systeem en op een SUSE-systeem laat al gelijk zien dat we er nog niet helemaal zijn:
+\begin{lstlisting}[language=bash]
+PRETTY_NAME="Debian GNU/Linux 10 (buster)"
+NAME="Debian GNU/Linux"
+VERSION="10 (buster)"
+VERSION_ID="10"
+VERSION_CODENAME=buster
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+\end{lstlisting}
+
+\begin{lstlisting}[language=bash]
+PRETTY_NAME="openSUSE Leap 15.1"
+NAME="openSUSE Leap"
+VERSION="15.1"
+ID="opensuse-leap"
+ID_LIKE="suse opensuse"
+HOME_URL="https://www.opensuse.org"
+BUG_REPORT_URL="https://bugs.opensuse.org"
+CPE_NAME="cpe:/o:opensuse:leap:15.1"
+\end{lstlisting}
+
+Het belangrijkste is dat we nu alleen \texttt{/etc/os-release} nodig hebben om te achterhalen op welke distributie we aan het werk zijn.

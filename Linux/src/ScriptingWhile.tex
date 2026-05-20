@@ -1,0 +1,61 @@
+Om door een lijst met elementen te lopen tot een bepaalde conditie is bereikt gebruiken we \texttt{while}. \texttt{while} kent hetzelfde begin en eind van de loop als \texttt{for}, namelijk \texttt{do} en \texttt{done}. Een voorbeeld van het gebruik van \texttt{while} zou kunnen zijn:
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# While voorbeeld
+
+i=1
+while [ $i -le 10 ]
+do
+	echo $i
+	i=$(($i+1))
+done
+
+#END
+\end{lstlisting}
+Dit script lijkt erg op de \texttt{for}-loop uit de vorige paragraaf. We vertellen hier dat de variabele \texttt{i} 1 is en vragen aan \texttt{while} om de loop te doorlopen zolang \texttt{i} kleiner of gelijk is aan 10. Om te zorgen dat \texttt{i} bij elke keer dat de loop doorlopen wordt 1 hoger wordt, moeten we bij \texttt{i} 1 optellen. Rekenen in de shell doen we door gebruikt te maken van dubbele haken, de uitkomst van de berekening zetten we weer in \texttt{i} waardoor \texttt{i} 1 hoger wordt. Deze manier van rekenen kan je ook op de commandline gebruiken, daar heb je niet alleen de shell voor nodig.
+
+In de opgave uit de vorige paragraaf heb je een script gemaakt dat bepaalde directories aanmaakt op basis van een gebruikersnaam die wordt ingegeven door de gebruiker. Van de Linux commando's ben je inmiddels gewend dat je met opties waarden kan meegeven. Het zou natuurlijk heel mooi zijn als je die gebruikersnaam ook met een optie mee zou kunnen geven aan een script. En dat kan ook. In scripting heten parameters of opties die je meegeeft bij het opstarten van een script positional parameters\index{positional parameters}\index{Shell scripting!positional parameters}. Deze positional parameters hebben nummers en lopen van 0 tot het getal van de laatste parameter. Positional parameter 0 is altijd de naam van het script inclusief het pad waarmee het is opgestart.
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# Positional parameters
+
+echo "Dit script is opgestart als: $0"
+
+echo "Parameter 1 is: $1"
+echo "Parameter 2 is: $2"
+echo "Parameter 3 is: $3"
+
+#END
+\end{lstlisting}
+als we dit script opstarten met wat parameters kan krijgen we dit:
+\begin{lstlisting}[language=bash]
+$ ./scriptWhilePosPar.sh aap noot mies
+Dit script is opgestart als: ./scriptWhilePosPar.sh
+Parameter 1 is: aap
+Parameter 2 is: noot
+Parameter 3 is: mies
+\end{lstlisting}
+De eerste optie is in \$1 terecht gekomen, de tweede in \$2 enzovoort.
+
+In dit script is het natuurlijk onhandig dat we voor elke positionele parameter een regel schrijven. Het zou makkelijker zijn als we de positionele paramaters \'e\'en voor \'e\'en zouden kunnen doorlopen. Een commando dat handig is bij het gebruik van positional parameters is \texttt{shift}\index{shift}\index{Shell scripting!shift}. Met \texttt{shift} schuiven we de positional parameters een positie op. De waarde van parameter 3 wordt de waarde van parameter 2, de waarde van parameter 2 wordt de waarde van parameter 1 en de waarde van parameter 1 wordt weggegooid. Dit kunnen we gebruiken om zo door de hele lijst aan positional parameters te lopen.
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+# (C) 2021 Dennis Leeuw
+# While voorbeeld 2
+
+echo "Dit script is opgestart als: $0"
+
+i=1
+while [ "$1" != "" ]
+do
+	echo "Parameter $i is: $1"
+	shift
+	i=$(($i+1))
+done
+
+#END
+\end{lstlisting}
+De uitvoer van dit script is hetzelfde als het vorige, maar we hoeven nu niet meer voor elke parameter een regel te maken, plus dat het ook niet meer uitmaakt hoeveel parameters we meegeven. Met het gebruik van \texttt{shift} en \texttt{while} kunnen we de positionele parameters doorlopen opzoek naar opties die meegegeven zijn aan een script.

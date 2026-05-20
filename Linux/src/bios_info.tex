@@ -1,0 +1,51 @@
+De BIOS of EUFI is verantwoordelijk voor het opstarten van de computer, het moet dus heel veel weten van de hardware in een systeem. Als we de BIOS zouden kunnen uitvragen over ons systeem dan zou dat heel veel informatie kunnen opleveren, potentieel zelfs heel gevoelige informatie. Je kan dit dan ook niet als gewone gebruiker. Je moet root zijn om \texttt{dmidecode}\index{demidecode}\index{commando!demidecode} te kunnen gebruiken. In de gegeven voorbeelden zullen we dna ook \texttt{sudo} gebruiken.
+
+De totale informatie die aanwezig is in de DMI-tabel is heel veel, dus het is handiger om er alleen de stukjes uit te halen die we nodig hebben. Dit doen we door aan \texttt{demidecode} de optie \texttt{-s} mee te geven met het onderdeel dat we zouden willen hebben. Als we bijvoorbeeld alleen de informatie over de BIOS versie willen hebben gebruiken we:
+\begin{lstlisting}[language=bash]
+$ sudo dmidecode -s bios-version
+GNET88WW (2.36 )
+\end{lstlisting}
+Als je alleen de \texttt{-s} optie meegeeft en verder niets dan zie je welke keywords er bestaan voor \texttt{-s}.
+
+Als we iets meer willen weten van het BIOS kunnen we ook meer informatie op vragen. Alle informatie over het systeem is opgedeeld in types. Met \texttt{-t} kan je alle informatie van een type opvragen, zonder een keyword krijg je een lijst te zien van beschikbare types. Alle BIOS informatie valt onder het keyword bios.
+\begin{lstlisting}[language=bash]
+$ sudo dmidecode -t bios
+# dmidecode 3.2
+Getting SMBIOS data from sysfs.
+SMBIOS 2.7 present.
+
+Handle 0x002A, DMI type 13, 22 bytes
+BIOS Language Information
+	Language Description Format: Abbreviated
+	Installable Languages: 1
+		en-US
+	Currently Installed Language: en-US
+
+Handle 0x0040, DMI type 0, 24 bytes
+BIOS Information
+	Vendor: LENOVO
+	Version: GNET88WW (2.36 )
+	Release Date: 05/30/2018
+	Address: 0xE0000
+	Runtime Size: 128 kB
+	ROM Size: 12288 kB
+	Characteristics:
+		PCI is supported
+		PNP is supported
+		BIOS is upgradeable
+		BIOS shadowing is allowed
+		Boot from CD is supported
+		Selectable boot is supported
+		ACPI is supported
+		USB legacy is supported
+		BIOS boot specification is supported
+		Targeted content distribution is supported
+		UEFI is supported
+	BIOS Revision: 2.36
+	Firmware Revision: 1.14
+\end{lstlisting}
+Je ziet dat we zo al heel veel meer informatie naar boven halen.
+
+\texttt{dmidecode} commando waarmee je veel informatie kan vinden. Lees de manual-pagina eens door en speel eens met de \texttt{-t} en \texttt{-s} opties om ermee vertrouwd te raken.
+
+

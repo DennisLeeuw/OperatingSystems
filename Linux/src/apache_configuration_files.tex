@@ -1,0 +1,32 @@
+De Apache configuratie bestanden op Debian-based systemen kunnen gevonden worden in \texttt{/etc/apache2}. Voor Red Hat gebaseerde systemen is dat \texttt{/etc/httpd} met als basis configuratie bestand \texttt{/etc/httpd/conf/httpd.conf}. Daar wij werken met een Debian-systeem zullen we ons tot dat systeem beperken, toch zal veel van zaken die we benoemen op beide systemen gelijk zijn, maar misschien op een iets andere plek staan of een iets andere naam hebben. Heb je een voorkeur voor een ander Linux-systeem dan Debian dan helpt een zoekmachine je het beste opweg om te onderzoeken hoe het op jouw systeem werkt.
+
+In de \texttt{/etc/apache2} directory staat allereerst het hoofd configuratie bestand \texttt{apache2.conf}. Dit bestand bevat de basis configuratie van de webserver, zoals onder welke gebruikersnaam en groep de server draait, maar ook waar de daemon zijn standaard log bestanden naar wegschrijft. Misschien wel het belangrijkste van dit bestand is dat het de configuratie snippets inleest om te zorgen voor de functionele werking van de web-server. Deze configuratie snippets zijn verdeeld over drie directories:
+\begin{description}
+\item[conf-available] Configuratie snippets die het systeem tot beschikking staan, maar waarmee in productie niets gebeurt.
+\item[conf-enabled] Configuratie snippets die door de beheerder geenabled zijn zodat ze in productie gebruikt worden.
+\item[mods-available] Functionele uitbreidingsmodules die in de webserver gebruikt kunnen worden, maar waarmee in productie niets wordt gedaan.
+\item[mods-enabled] Functionele uitbereidingsmodules waarvan de beheerder bepaald heeft dat ze in productie gebruikt moeten worden.
+\item[sites-available] Websites (domeinen) die door de webserver geserveerd kunnen worden, maar waarmee in productie niets gedaan wordt.
+\item[sites-enabled] Websites waarvan de beheerder besloten heeft dat onze server ze moet serveren.
+\end{description}
+
+Je ziet dat er steeds een available directory is waarin we de configuratie bestanden kunnen zetten of wijzigen, maar die hebben niet direct invloed op de werking de server. Pas als er een symbolic link gemaakt wordt in de enabled directory naar het bestand in de available directory zal Apache tijdens het opstarten de configuratie ook daadwerkelijk gebruiken. We kunnen natuurlijk met de hand de symbolic links zetten, maar omdat er op verschillende systemen verschillende directories gebruikt worden (vergelijk Red Hat en Debian) zijn er commando's die het leven simpeler maken.
+
+Om configuratie snippets te enabled of disabelen zijn er de commando's \texttt{a2enconf}\index{a2enconf} en \texttt{a2disconf}\index{a2disconf}. Om een overzicht van de beschibare snippets te krijgen kunnen we de inhoud van de directory \texttt{/etc/apache2/conf-available} opvragen.
+
+Om snippets van modules en hun configuratie te enabelen of te disabelen zijn er de commando's \texttt{a2enmod}\index{a2enmod} en \texttt{a2dismod}\index{a2dismod}. Om een overzicht van de beschikbare modules op te vragen kunnen we de inhoud van de directory \texttt{/etc/apache2/mods-available} opvragen. Met \texttt{apache2ctl -M} kan je opvragen welke modules de draaiende server op dit moment gebruikt.
+
+Voor het enabelen en disabelen van sites dienen natuurlijk eerst de sites geconfigureerd te zijn, daarna kan met \texttt{a2ensite}\index{a2ensite} een site geenabled worden en met \texttt{a2dissite}\index{a2dissite} disabled worden. Voor een overzicht van de beschikbare site-configuraties kunnen we de inhoud van de directory \texttt{/etc/apache2/sites-available} opvragen.
+
+De syntax van deze commando's is heel eenvoudig:
+\begin{lstlisting}[language=bash]
+$ sudo a2enconf security
+\end{lstlisting}
+Dit zorgt ervoor dat de Apache security directives geenabled worden.
+
+Met \texttt{apache2ctl}\index{apache2ctl} kan je de ge-enabelde configuratie testen voordat je een restart of reload doet.
+\begin{lstlisting}[language=bash]
+$ sudo apache2ctl configtest
+\end{lstlisting}
+Geen nieuws is goed nieuws.
+

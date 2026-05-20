@@ -1,0 +1,7 @@
+Het veilig verwijderen van devices uit een computer, zoals bijvoorbeeld USB-sticks heeft te maken met het feit dat de de computer en het device niet alleen voor data met elkaar verbonden zijn, maar ook elektrisch. Het verwijderen onder spanning kan ervoor zorgen dat er een vonkje overspringt en gevoelige elektronica zoals SSD's en USB-sticks kunnen daar niet tegen. We willen dus eerst de spanning van het apparaat verwijderen en dan pas het apparaat loskoppelen van de computer.
+
+Dus voordat we een USB-stick, een SSD-drive of een memory-card verwijderen zorgen we ervoor dat we eerst de spanning van het apparaat halen met:
+\begin{lstlisting}[language=bash]
+$ udiskctl power-down -b /dev/sdc
+\end{lstlisting}
+

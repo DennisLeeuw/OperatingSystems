@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt,twoside,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+\lstdefinestyle{DOS}
+{
+    backgroundcolor=\color{black},
+    basicstyle=\scriptsize\color{white}\ttfamily
+}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Define document
+\author{D. Leeuw}
+\title{Windows: Het systeem}
+\date{\today\\
+0.0.0
+\vfill
+\raggedright
+\copyright\ 2025 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+
+% requires: 
+% provides: 
+\section{Windows ontdekken}
+\input{src/windows-internals_intro}
+\input{src/windows-layers}
+\subsection{Windows Architectuur}
+\input{src/windows-architecture}
+\subsection{API}
+\input{src/api}
+
+\section{Applications}
+\subsection{Services}
+\input{src/windows-services}
+\subsection{Apps}
+\input{src/windows-apps}
+
+\section{System services}
+\input{src/windows-system_services}
+
+\section{Kernel en drivers}
+\input{src/windows-kernel}
+
+\section{Command Line Interface}
+\input{src/windows-terminal}
+\subsection{De prompt}
+\input{src/windows-ps_prompt}
+\subsection{Werken met files en folders}
+\input{src/windows-files_folders}
+
+\section{Directory structure}
+\input{src/windows-directory_tree}
+\subsection{\textbackslash Windows}
+\input{src/windows-directory_windows}
+\subsection{\textbackslash Program Files}
+\input{src/windows-directory_program_files}
+\subsection{\textbackslash Users}
+\input{src/windows-directory_users}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\printindex
+\end{document}
+
+%%% Last line %%%

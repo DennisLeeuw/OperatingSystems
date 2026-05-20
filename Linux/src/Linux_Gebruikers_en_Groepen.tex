@@ -1,0 +1,92 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{book}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Command Line Interface}
+\date{\today\\v.0.9.5}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+\copyright\ 2020-2025 Dennis Leeuw\\
+
+\input{styles/licentie}
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\frontmatter
+\chapter{Over dit Document}
+\section{Leerdoelen}
+\input{src/leerdoelen_cli_gebruikers_en_groepen}
+\section{Voorkennis}
+\input{src/voorkennis_cli_gebruikers_en_groepen}
+%\input{src/OverDitDocument}
+%\input{src/DocChanges_CLI}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\mainmatter
+
+% Requires: ls, grep
+% Provides: users, groups, id, adduser, deluser, passwd, gpasswd, usermod
+%           /etc/passwd, /etc/shadow, /etc/group, /etc/gshadow
+% FIXME /etc/gshadow
+\chapter{Gebruikers, groepen en rechten}
+\input{src/gebruikersgroepenrechten}
+\section{Gebruikers}
+\input{src/gebruikers}
+\section{Groepen}
+\input{src/groepen}
+\section{UPG}
+\input{src/upg}
+\chapter{Werken als root}
+\input{src/WerkenAlsroot}
+\section{su}
+\input{src/su}
+\section{sudo}
+\input{src/sudo}
+\chapter{Gebruikersbeheer}
+\section{Gebruikers toevoegen}
+\input{src/adduser}
+\subsection{User: wachtwoorden}
+\section{Groepen toevoegen}
+\input{src/addgroup}
+\subsection{Group: wachtwoorden}
+\input{src/gpasswd}
+\section{Wijzigen van een gebruiker}
+\input{src/usermod}
+\section{Verwijderen van een groep}
+\input{src/delgroup}
+\section{Verwijderen van een user}
+\input{src/deluser}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

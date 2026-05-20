@@ -1,0 +1,138 @@
+\begin{theindex}
+
+  \item api, \hyperpage{7}
+  \item applicatie, \hyperpage{1}
+  \item application programmable interface, \hyperpage{7}
+
+  \indexspace
+
+  \item bash, \hyperpage{9}
+  \item bestanden, \hyperpage{13}
+  \item bestandssysteem, \hyperpage{13}
+  \item besturingssysteem, \hyperpage{1}
+  \item bios, \hyperpage{5}
+  \item boot device, \hyperpage{5}
+  \item boot loader, \hyperpage{5}
+  \item boot manager, \hyperpage{5}
+  \item boot proces
+    \subitem fase 1, \hyperpage{5}
+    \subitem fase 2, \hyperpage{5}
+    \subitem fase 3, \hyperpage{5}
+  \item booting, \hyperpage{5}
+  \item bootstrapping, \hyperpage{5}
+  \item buroblad, \hyperpage{10}
+
+  \indexspace
+
+  \item central processing unit, \hyperpage{3}
+  \item cli, \hyperpage{9}
+  \item cmd, \hyperpage{9}
+  \item command, \hyperpage{1}
+  \item command interpreter, \hyperpage{9}
+  \item command line interface, \hyperpage{9}
+  \item commando, \hyperpage{9}
+  \item computer, \hyperpage{3}
+  \item cpu, \hyperpage{3}
+
+  \indexspace
+
+  \item daemons, \hyperpage{7}, \hyperpage{11}
+  \item data, \hyperpage{3}
+  \item desktop, \hyperpage{10}
+  \item directory, \hyperpage{13}
+  \item documenten, \hyperpage{3}
+  \item drivers, \hyperpage{7}
+
+  \indexspace
+
+  \item file system, \hyperpage{13}
+  \item folder, \hyperpage{13}
+
+  \indexspace
+
+  \item geheugen, \hyperpage{3}
+  \item graphical user interface, \hyperpage{10}
+  \item gui, \hyperpage{10}
+
+  \indexspace
+
+  \item harddisk, \hyperpage{3}
+  \item hardware initialisatie, \hyperpage{5}
+
+  \indexspace
+
+  \item input devices, \hyperpage{9}
+  \item input-device, \hyperpage{1}
+  \item interfaces, \hyperpage{7}
+
+  \indexspace
+
+  \item kernel, \hyperpage{7}
+
+  \indexspace
+
+  \item Linux, \hyperpage{1}
+
+  \indexspace
+
+  \item Mac OS X, \hyperpage{1}
+  \item map, \hyperpage{13}
+  \item master boot record, \hyperpage{5}
+  \item mbr, \hyperpage{5}
+  \item modulair, \hyperpage{7}
+  \item monolitisch, \hyperpage{7}
+  \item muis, \hyperpage{9, 10}
+
+  \indexspace
+
+  \item opdrachten, \hyperpage{3}
+  \item operating system, \hyperpage{1}
+  \item opslagapparaat, \hyperpage{3}
+  \item OS, \hyperpage{1}
+  \item output, \hyperpage{9}
+
+  \indexspace
+
+  \item partitie-tabel, \hyperpage{5}
+  \item pointing device, \hyperpage{10}
+  \item PowerShell, \hyperpage{9}
+  \item print server, \hyperpage{11}
+  \item print service, \hyperpage{11}
+  \item printer, \hyperpage{9}
+  \item processen, \hyperpage{11}
+  \item processor, \hyperpage{3}
+  \item programma, \hyperpage{1}, \hyperpage{3}
+  \item programmeur, \hyperpage{1}
+
+  \indexspace
+
+  \item RAM, \hyperpage{3}
+  \item Random Access Memory, \hyperpage{3}
+
+  \indexspace
+
+  \item scherm, \hyperpage{9}
+  \item service, \hyperpage{1}
+  \item services, \hyperpage{7}, \hyperpage{11}
+  \item shell, \hyperpage{9}
+  \item ssd, \hyperpage{3}
+  \item storage device, \hyperpage{3}
+
+  \indexspace
+
+  \item toetsenbord, \hyperpage{9}
+  \item touchscreen, \hyperpage{9, 10}
+  \item trackpad, \hyperpage{10}
+
+  \indexspace
+
+  \item uefi, \hyperpage{5}
+  \item ui, \hyperpage{9}
+  \item usb-stick, \hyperpage{3}
+  \item user interface, \hyperpage{9}
+
+  \indexspace
+
+  \item Windows, \hyperpage{1}
+
+\end{theindex}

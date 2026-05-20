@@ -1,0 +1,13 @@
+Nadat het BIOS klaar is met zijn taken wil deze een boot-loader laden. Vroeger was dit LiLo, de Linux Loader, maar tegenwoordig wordt GRUB, GRand Unified Bootloader, gebruikt. GRUB kan verschillende operating systems laden en kan dus gebruikt worden als universele bootloader om zowel Linux als Windows te starten. Zo kan je op \'e\'en machine Windows en Linux hebben staan en kan je door te herstarten kiezen welk OS je wil gebruiken.
+
+De bootloader laadt de kernel, Linux, welke ervoor zorgt dat er tegen de hardware gesproken kan worden. De taken van de kernel zijn:
+\begin{itemize}
+\item het beheren van het fysieke geheugen en daarbij behorend het opdelen van het virtuele geheugen voor proces isolatie
+\item zorgen dat zowel processen als hardware de resources krijgen waarom ze vragen (interrupts), als dat mag
+\item het serialiseren van de taken die uitgevoerd moeten worden, ofwel proces management (schedulig)
+\end{itemize}
+
+Als de kernel zijn taken verder op de achtergrond kan uitvoeren kan proces nummer 1 gestart worden om het verdere bootproces af te maken, meestal eindigend in een grafische of een command line interface, waarna de gebruiker(s) aanzet zijn.
+
+Als je een \texttt{ls} doet van de \texttt{/boot/} directory dan vinden we daarin de belangrijkste bestanden die nodig zijn om een Linux systeem op te kunnen starten.
+
