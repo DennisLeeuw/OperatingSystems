@@ -1,0 +1,6 @@
+SSH\index{SSH} is een client-server-protocol. De server luistert op port 22 voor verbindingen. SSH maakt gebruik van SSL voor de encryptie. Nadat een geencrypte verbinding tot stand is gebracht kan de gebruiker inloggen met zijn gebruikersnaam en wachtwoord. Feitelijk is SSH dus een geencrypte tunnel waarover data gezonden kan worden.
+
+Als een client contact op neemt met de server dan stuurt de server zijn public key naar de client. Vanaf dat moment kan de client alle te verzenden data encrypten met de public key en kan alleen degene met de private key (de server) de data decrypten. Hiermee hebben we een veilige verbinding.
+
+De eerste keer dat er een verbinding tot stand wordt gebracht kent de client de server natuurlijk nog niet. De client zal aan de gebruiker vragen of deze server te vertrouwen is. Als je dit bevestigd wordt de public key van de server inclusief de FQDN of het IP-adres opgeslagen. De volgende keer dat je een verbinding maakt zal de combinatie van server en public key gecontrolleerd worden. Als de combinatie niet klopt, omdat op de server de public/private key combinatie gewijzigd is, of erger als je verbinding niet uitkomt op de server die je denkt dan krijg je van de client een waarschuwing. Controlleer deze waarschuwing ALTIJD!
+

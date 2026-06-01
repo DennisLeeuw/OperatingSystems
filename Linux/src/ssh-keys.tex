@@ -1,0 +1,33 @@
+SSH maakt gebruik van public en private keys. Door op een server je public key te zetten kan ssh met je private key je data encrypten en deze data kan ge-encypt worden door de public key. De server weet dan 100% zeker dat jij het bent, want er is er als het goed is maar \'e\'en die je private key heeft en dat ben jij. Hierna kan de normale encryptie plaatsvinden. Je krijgt dus toegang tot een server via je private key.
+
+Om dit op te kunnen zetten moeten we je public key opslaan op de server dit doen we in het bestand \texttt{authorized\_keys}. Wij gebruiken onze eigen \texttt{~/.ssh} directory om dit bestand in op te slaan. We gaan deze directory eerst aanmaken op de server. Log in op je server met je eigen gebruikersnaam en maak de directory aan:
+\begin{lstlisting}[language=bash]
+mkdir -m 0700 ~/.ssh
+\end{lstlisting}
+We zorgen dat alleen wij toegang hebben tot deze directory. We gaan nu verder op de client waar we toegang vandaan willen hebben tot de server.
+
+Het eerste wat we moeten doen is keys genereren. Daarvoor heeft SSH zijn eigen tool, die je een paar vragen zal stellen. Lees verder om te weten wat je waar in moet vullen.
+\begin{lstlisting}[language=bash]
+ssh-keygen 
+\end{lstlisting}
+
+Bij het beantwoorden van de vragen vervang je <SERVERNAME> door de hostname van je eigen server en vervang je <USERNAME> door je eigen gebruikersnaam.
+\begin{lstlisting}[language=bash]
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/UNAME/.ssh/id_ed25519): /home/<USERNAME>/.ssh/<SERVERNAME>_ed25519
+Enter passphrase for "/home/UNAME/.ssh/SERVER_ed25519" (empty for no passphrase): 
+Enter same passphrase again: 
+\end{lstlisting}
+
+Kopieer de public key naar je server vervanf <SERVERNAME> door de hostname van de server en vervang SERVERIP door de FQDN van de server of het IP-adres van de server. <USERNAME> kan je weer vervangen door je eigen gebruikersnaam:
+\begin{lstlisting}[language=bash]
+cat ~/.ssh/<SERVERNAME>_ed25519.pub | ssh <USERNAME>@<SERVERIP> "cat >> ~/.ssh/authorized_keys"
+\end{lstlisting}
+
+Je kan nu inloggen op je server zonder gebruikersnaam/wachtwoord, maar met je private key:
+\begin{lstlisting}[language=bash]
+ssh -i ~/.ssh/<SERVERNAME>_ed25519 <USERNAME>@<SERVERIP>
+\end{lstlisting}
+
+Meer over SSH en keys: \url{https://wiki.archlinux.org/title/SSH_keys}
+
