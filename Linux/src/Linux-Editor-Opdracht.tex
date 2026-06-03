@@ -1,0 +1,66 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Editor Opdracht}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/Opdracht-Editor-leerdoelen}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+
+\section{Situatie}
+\input{src/Opdracht-Editor-situatie}
+\section{Voorbereiding}
+\input{src/Opdracht-Editor-voorbereidingen}
+\section{Opdrachten}
+\input{src/Opdracht-Editor-opdrachten}
+\section{Zoeken}
+\input{src/Opdracht-Editor-zoeken}
+\section{Opslaan}
+\input{src/Opdracht-Editor-opslaan}
+\section{Inleveren}
+\input{src/Opdracht-Editor-inleveren}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%
