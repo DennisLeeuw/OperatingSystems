@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Backup}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_backup}
+\subsection{Voorkennis}
+\input{src/voorkennis_backup}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+
+% Requires: command knowledge, linux storage system knowlegde
+% Provides: cp, gzip, tar, dd, rsync
+% Snapshots? git?
+
+\section{Introductie}
+\input{src/linux-backup-intro}
+
+\section{Het maken van een kopie}
+\input{src/linux-cp}
+
+\section{GNU-ZIP}
+\input{src/linux-gzip}
+
+\section{Tape archive}
+\input{src/linux-tar}
+
+\section{Carbon Copy}
+\input{src/linux-dd}
+
+\section{Off-site backup}
+\input{src/linux-rsync}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

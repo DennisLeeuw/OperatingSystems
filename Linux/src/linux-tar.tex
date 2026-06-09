@@ -1,0 +1,33 @@
+Linux kent \'e\'en commando dat bij elke beheerder bekent is voor het maken van backups\index{backup}. Deze tool is \texttt{tar}\index{tar}\index{backup!tar}. De naam is een afkorting van Tape Archive, wat gelijk de herkomst verraad. Backups werden en worden nog vaak op tape gemaakt en dat is waar \texttt{tar} voor geschreven was. Maar omdat alles een bestand is kan tar inplaats van naar tape ook naar een bestand schrijven.
+
+Naast de naam van de tool is tar ook de naam van het bestandsformaat van \texttt{tar}. Data wordt op tape weggeschreven als \'e\'en lange rij enen en nullen. Als je verschillende bestanden achter elkaar zet moet er ergens een index zijn die zegt waar een bestand begint en waar het eindigt. De manier waarop dit beschreven wordt in een tar-archive heet het tar-bestandsformaat\index{tar!bestandsformaat} en een archief met bestanden wordt vaak een tarball\index{tarball} genoemd.
+
+We beginnen met het maken van een archief als bestand:
+\begin{lstlisting}[language=bash]
+tar cvf my_archive.tar <directory_met_bestanden>
+\end{lstlisting}
+
+Met \texttt{c} geven we aan dat we een archief willen maken (create). De v staat voor verbose, zodat we kunnen zien wat \texttt{tar} toevoegd aan het archief en f vertelt waar we data naartoe willen schrijven, in dit geval naar \texttt{my\_archive.tar}. Met de .tar extensie vertellen we dat een archief is in het tar-bestandsformaat. Als laatste geven we op wat we in het archief willen stoppen, we kiezen voor een directory waarin wat bestanden staan.
+
+Met x (extract) kunnen we bestanden uit het archief halen. Dat kan \'e\'en enkel bestand zijn of we kunnen het hele archief uitpakken.
+\begin{lstlisting}[language=bash]
+mkdir extract
+cd extract
+tar xvf ../my_archive.tar
+\end{lstlisting}
+We hebben een nieuwe directory aangemaakt en het hele archief uitgepakt in deze nieuwe directory. Feitelijk hebben we nu een kopie van onze data.
+
+De oorsponkelijke data neemt ruimte in op de disk, het archief neemt de ruimte in van de data plus wat administratieve overhead en de uitgepakte data neemt weer de ruimte in van de data. Het wordt tijd dat we gaan opruimen. Begin met het weggooien van de extract-directory.
+
+Gebruik \texttt{ls} om te achterhalen hoe groot \texttt{my\_achive.tar} is. We kunnen gzip gebruiken om het archief te comprimeren:
+\begin{lstlisting}[language=bash]
+gzip my_archive.tar
+\end{lstlisting}
+Bekijk weer de grootte van het archief bestand. Het zal nu een stukje kleiner zijn. De \texttt{tar} tool kan dit ook in 1x doen:
+\begin{lstlisting}[language=bash]
+tar zcvf my_archive.tar.gz <directory_met_bestanden>
+\end{lstlisting}
+De z geeft aan dat we GNU-ZIP (gzip) gebruiken. Je kan ook de j gebruiken voor compressie met bzip2 of de J voor compressie met xz. Denk erom dat als je een andere compressie gebruikt dat je dan ook de extensie van het archief aanpast.
+
+Bij het uitpakken van een gecomprimeerd archief kan je dezelfde letters gebruiken om te zorgen dat \texttt{tar} eerst de tarball uncompressed en daarna uitpakt.
+

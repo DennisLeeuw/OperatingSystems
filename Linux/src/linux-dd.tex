@@ -1,0 +1,15 @@
+Met \texttt{dd}\index{dd} kan bestanden, delen van bestanden, disk of delen van disks kopie\"eren. Je geeft \texttt{dd} een bestand om van te lezen en een bestand waar naar geschreven moet worden. Omdat alles een bestand is kan het een bestand op disk zijn, maar ook bijvoorbeeld een harddisk. Stel we hebben een USB-stick in onze computer zitten van 8GB en deze wordt door Linux /dev/sdb genoemd. Dan kunnen we met dd een kopie maken van deze disk:
+\begin{lstlisting}[language=bash]
+dd if=/dev/sdb of=~/sdb.img
+\end{lstlisting}
+De optie \texttt{if} heeft als input-bestand de disk /dev/sdb, de optie \texttt{of} heeft als output-bestand een document met de naam \texttt{sdb.img}. \texttt{dd} zal aan het begin van /dev/sdb beginnen met lezen en bit voor bit de data in sdb.img wegschrijven. Als dd aan het einde van sdb is is hij klaar.
+
+Stoppen we hierna een lege USB-stick, ook van 8GB, op de plaats van de stick die we net gelezen hebben dan kunnen we het omgekeerde doen:
+\begin{lstlisting}[language=bash]
+dd if=~/sdb.img of=/dev/sdb
+\end{lstlisting}
+We schrijven nu de image terug naar een andere USB-stick. Effectief hebben we nu een kopie gemaakt van onze USB-stick.
+
+Aan het begin van deze cursus heb je een ISO-bestand van de Debian site gedownload (debian.iso). Dit heet een ISO-image en ISO is een afkorting voor het bestandsformaat dat op CD-ROMs gebruikt wordt (ISO-9660). Deze image heb je gebruikt om je Debian systeem te installeren. Je had hem ook met dd op een USB-stick kunnen zetten en dan had je vanaf die USB-stick kunnen booten.
+
+
