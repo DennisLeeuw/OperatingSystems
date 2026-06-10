@@ -1,3 +1,27 @@
 Een universele tool om data te kopie\"eren is \texttt{rsync}\index{rsync}. Met \texttt{rsync} kan je lokaal bestanden kopie\"eren, maar je kan bestanden ook naar een andere server kopie\"eren. Naast het maken van een kopie kan rsync bestanden ook in sync houden. Dus alleen een kopie maken als een bestand gewijzigd is. Hiermee is \texttt{rsync} de tool om data veilig te stellen.
 
+De \texttt{rsync} tool gebruikt de standaard SRC DST syntax zoals meerder Linux tools. Maar de SRC of DST kan ook een host of user@host zijn zodat je data van of naar een remote system kan kopie\"eren.
+
+Een voorbeeld zou kunnen zijn:
+\begin{lstlisting}[language=bash]
+rsync -r Documents user@127.0.0.1:~/Documents.copy
+\end{lstlisting}
+De \texttt{-r} is voor recursive zodat we de complete directory kopie\"eren.
+
+Als we data over willen zetten waarbij alle rechten en alle time-stamps behouden blijven dan kunnen we de archive mode gebruiken. Ideaal voor backups.
+\begin{lstlisting}[language=bash]
+rsync -a Documents user@127.0.0.1:~/Documents.copy
+\end{lstlisting}
+
+De \texttt{rsync} tool is een heel voorzichtige tool. Dat betekent dat bestanden niet zomaar weggegooid worden. Updates wil hij wel uitvoeren, maar voor het verwijderen van bestanden die aan de bron verwijderd zijn moet je \texttt{rsync} specifiek de opdracht daartoe geven. Voor backups natuurlijk perfect, dan blijven oude bestanden bestaan en kan je ze later terug zetten. Maar als je twee websites in sync wil houden, dan wil je dat oude bestanden verwijderd worden. Zie de man-page voor alle mogelijk opties, wij gebruiken er hier maar \'e\'en.
+\begin{lstlisting}[language=bash]
+rsync -a --delete-after Documents user@127.0.0.1:~/Documents.copy
+\end{lstlisting}
+De extra optie zegt tegen \texttt{rsync} dat hij eerst alle data in sync moet brengen en daarna pas verwijderde bestanden mag weggooien. Dit voorkomt bijvoorbeeld dat code of CSS-bestanden die van elkaar afhankelijk zijn weggegooid worden voordat een vervanger geplaatst is.
+
+De data die wordt verstuurd gaat as-is over de lijn. Voor de veiligheid zouden we data encrypt over de lijn willen laten gaan. Daarvoor kunnen we een optie aan \texttt{rsync} meegeven die inplaats van de standaard shell \texttt{ssh} gebruikt.
+\begin{lstlisting}[language=bash]
+rsync -a --rsh="ssh -i /home/dennisnc/.ssh/hostname-key -l dennis" Documents user@127.0.0.1:~/Documents.copy
+\end{lstlisting}
+We vertellen hier tegen rsycn dat de remote shell \texttt{ssh} is en dat onze lokale gebruiker \textit{dennisnc} een private key heeft voor de server waarop ingelogd moet worden met de remote gebruiker \textit{dennis}. Op deze manier hebben we een veilige overdracht van data.
 
