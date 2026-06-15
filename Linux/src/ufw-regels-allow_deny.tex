@@ -1,0 +1,18 @@
+Een firewall kan een connectie toestaan (\textbf{allow}) of verbieden (\textbf{deny}), zo ook UFW. Met een simpele regel kunnen we bijvoorbeeld verbindingen naar port 42 via TCP toestaan:
+\begin{lstlisting}[language=bash]
+sudo ufw allow 42/tcp
+\end{lstlisting}
+
+Als we de verbinding naar 42 UDP willen verbieden dan kan dat ook:
+\begin{lstlisting}[language=bash]
+sudo ufw deny 42/udp
+\end{lstlisting}
+
+Op deze manier kunnen we UFW vertellen wat er toegestaan is en wat niet. Wat we ook gezien hebben is dat voor elke IPv4 regel er ook een IPv6 regel wordt toegevoegd. UFW zorgt er dus voor dat de regels voor IPv4 gelijk zijn aan die van IPv6.
+
+UFW gebruikt \texttt{/etc/services} om diensten van naam te voorzien. Je mag dus inplaats van port/protocol ook de naam van de service gebruiken:
+\begin{lstlisting}[language=bash]
+sudo ufw allow snmp-trap
+\end{lstlisting}
+Welke port en protocol is dit en waar dient dit voor?
+

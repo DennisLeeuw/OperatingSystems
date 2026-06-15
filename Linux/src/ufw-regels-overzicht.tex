@@ -1,0 +1,23 @@
+Met het \textbf{status} argument kunnen we de status van de firewall opvragen. De meest simpele vorm is:
+\begin{lstlisting}
+sudo ufw status
+\end{lstlisting}
+Dit toont of de firewall actief is en welke regels er ingesteld zijn (als er regels ingesteld zijn).
+
+Met het argument \textbf{verbose} bij status krijg je meer informatie:
+\begin{lstlisting}
+sudo ufw status verbose
+\end{lstlisting}
+Dit laat ook zien hoe de logging is ingesteld en wat de default policies zijn.
+
+We kunnen de regels die we in de firewall hebben ook laten nummeren:
+\begin{lstlisting}
+sudo ufw status numbered
+\end{lstlisting}
+
+Tot slot kunnen we de onderliggende netfilter regels tonen:
+\begin{lstlisting}
+sudo ufw status raw
+\end{lstlisting}
+Dit vraagt wel diepgaande kennis van netfilter.
+

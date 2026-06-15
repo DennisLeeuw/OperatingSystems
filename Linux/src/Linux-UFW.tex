@@ -1,0 +1,81 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: UFW}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_backup}
+\subsection{Voorkennis}
+\input{src/voorkennis_backup}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+
+% Requires: command knowledge, TCP/IP
+% Provides: ufw
+
+\section{Introduction}
+\input{src/ufw-intro}
+
+\section{Installatie \& Configuratie}
+\input{src/ufw-debian-install}
+\input{src/ufw-config}
+\subsection{Logging}
+\input{src/ufw-logging}
+\subsection{Actief of niet actief}
+\input{src/ufw-status}
+
+\section{Firewall regels}
+\input{src/ufw-regels-intro}
+\subsection{allow en deny}
+\input{src/ufw-regels-allow_deny}
+\subsection{Overzicht van de regels}
+\input{src/ufw-regels-overzicht}
+\subsection{Verwijderen van regels}
+\input{src/ufw-delete}
+\subsection{From regels}
+\input{src/ufw-from}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%

@@ -1,0 +1,25 @@
+De regels die we tot nog toe hebben gemaakt staan een service (port en protocol) toe vanuit de hele wereld (Anywhere). Dat willen we niet altijd. Soms willen we dat verbindingen alleen toegestaan zijn vanaf een bepaalt host (IP-adres). Om dit te bewerkstelligen gebruiken we het \textbf{from} argument.
+\begin{lstlisting}[language=bash]
+sudo ufw allow from 1.2.3.4
+\end{lstlisting}
+Staat verbindingen toe naar alle services vanaf het 1.2.3.4 IP-adres.
+
+We kunnen ook een subnet opgeven:
+\begin{lstlisting}[language=bash]
+sudo ufw allow from 192.168.1.0/24
+\end{lstlisting}
+
+Vaak willen we ook beperken waartoe een bepaalde host toegang heeft. Bijvoorbeeld alleen tot https. Om dit te bereiken moeten we de firewall vertellen op welk IP-adres de verbinding binnen mag komen en op elke port:
+\begin{lstlisting}[language=bash]
+sudo ufw allow from 192.168.1.42 to 192.168.1.24 port ssh
+\end{lstlisting}
+Het 192.168.1.24 IP-adres moet een adres zijn op onze machine en daarop mag 192.168.1.42 connecten aan de SSH-service. We mogen het destination IP-adres ook vervangen door het \textbf{any} argument om elke willekeurig destination adres toe te staan. Om het helemaal af te maken kunnen we de regel heel specifiek maken:
+\begin{lstlisting}[language=bash]
+sudo ufw allow from <target> to <destination> port <port number> proto <protocol name>
+\end{lstlisting}
+
+In combinatie met routing kunnen we ook voor twee, of meer, verschillende netwerken bepalen welke data er van en naar welk netwerk gestuurd mag worden. We zouden bijvoorbeeld kunnen bepalen dat gebruikers van het 192.168.1.0/24 netwerk via SSH gebruik mogen maken van diensten op het 10.0.0.0/8 netwerk:
+\begin{lstlisting}[language=bash]
+sudo ufw allow from 192.168.1.0/24 to 10.0.0.0/8 port 22 proto tcp
+\end{lstlisting}
+

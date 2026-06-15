@@ -1,0 +1,26 @@
+Er zijn verschillende manieren om een regel te verwijderen. Je kan de regel zoals je die hebt ingevoerd voorzien van een \textbf{delete} argument inplaats van \textbf{allow} of \textbf{deny}:
+\begin{lstlisting}[language=bash]
+sudo ufw delete snmp-trap
+\end{lstlisting}
+
+Een makkelijkere manier kan zijn door eerst de status van UFW op te vragen met nummers en dan de regel te deleten op basis van zijn regelnummer:
+\begin{lstlisting}[language=bash]
+sudo ufw status numbered
+\end{lstlisting}
+Levert een autoput op die lijkt op:
+\begin{lstlisting}[language=bash]
+Status: active
+
+     To           Action     From
+     --           ------     ----
+[ 1] 42/tcp       ALLOW IN   Anywhere
+[ 2] 42/udp       DENY IN    Anywhere
+[ 3] 42/tcp (v6)  ALLOW IN   Anywhere
+[ 4] 42/udp (v6)  DENY IN    Anywhere
+\end{lstlisting}
+Op basis van bovenstaande kunnen we bijvoorbeeld regel 2 verwijderen. We verwijderen dan ook alleen regel 2, regel 4 (de IPv6 variant) blijft bestaan.
+\begin{lstlisting}[language=bash]
+sudo ufw delete 2
+\end{lstlisting}
+Verwijder regel 2 en controlleer dit met een genummerde status.
+
