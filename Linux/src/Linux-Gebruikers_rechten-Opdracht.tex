@@ -1,0 +1,88 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: Opdracht gebruikers en rechten}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+\section{Over dit Document}
+\subsection{Leerdoelen}
+\input{src/leerdoelen_backup}
+\subsection{Voorkennis}
+\input{src/voorkennis_backup}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+
+% Requires: kennis van het aanmaken van gebruikers, groepen en het zetten van rechten op bestanden en directories
+% Provides:
+
+\section{Situatie}
+\input{src/gebruikers_rechten-opdracht-situatie}
+
+\section{Organisatie}
+\input{src/gebruikers_rechten-opdracht-org}
+
+\section{Opdrachten}
+\subsection{Maak de groepen aan}
+\input{src/gebruikers_rechten-opdracht-maken_groepen}
+\subsection{Maak de gebruikers aan}
+\input{src/gebruikers_rechten-opdracht-maken_gebruikers}
+\subsection{Mappen aanmaken}
+\input{src/gebruikers_rechten-opdracht-maken_mappen}
+\subsection{Zet de rechten op de mappen}
+\input{src/gebruikers_rechten-opdracht-zet_rechten}
+
+\section{Testen}
+\subsection{Werken in een groep}
+\input{src/gebruikers_rechten-opdracht-test_support}
+\subsection{Samen werken in een groep}
+\input{src/gebruikers_rechten-opdracht-test_samen}
+\subsection{Controle van Anna}
+\input{src/gebruikers_rechten-opdracht-test_groepen}
+
+\section{Vragen}
+\input{src/gebruikers_rechten-opdracht_vragen}
+
+\section{Wat en hoe inleveren?}
+\input{src/gebruikers_rechten-opdracht_inleveren}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%
