@@ -1,0 +1,11 @@
+Om Windows 10 of 11 te voorzien van een offici\"ele licentie zijn er de MAS tools van Microsoft.
+
+\begin{lstlisting}[language=bash]
+irm https://get.activated.win | iex
+\end{lstlisting}
+
+Als dit geblokkeerd wordt door een ISP/DNS gebruik dan:
+\begin{lstlisting}[language=bash]
+iex (curl.exe -s --doh-url https://1.1.1.1/dns-query https://get.activated.win | Out-String)
+\end{lstlisting}
+
