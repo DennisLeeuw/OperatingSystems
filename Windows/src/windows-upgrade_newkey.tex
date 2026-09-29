@@ -27,3 +27,21 @@ We gaan de bestaande key vervangen door een nieuwe key. Dat kan niet zomaar in W
 \item Voer een geldige Activation Key in
 \end{enumerate}
 
+Een eenvoudigere methode, maar nog niet getest, lijkt via de commandline te kunnen in 3 stappen (Start PowerShell als Administrator):
+\begin{enumerate}
+\item We beginnen met de bestaande key weg te gooien:
+\begin{lstlisting}[language=bash]
+slmgr.vbs /upk
+\end{lstlisting}
+
+\item Daarna voegen we de nieuwe key toe:
+\begin{lstlisting}[language=bash]
+slmgr.vbs /ipk YOUR-PRODUCT-KEY
+\end{lstlisting}
+
+\item Tot slot activeren we de nieuwe key:
+\begin{lstlisting}[language=bash]
+slmgr.vbs /ato
+\end{lstlisting}
+\end{enumerate}
+
