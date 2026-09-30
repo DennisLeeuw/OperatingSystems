@@ -1,11 +1,10 @@
-Gebruikers worden standaard aangemaakt zonder wachtwoord. Ze kunnen dus niet inloggen. Om een gebruiker de mogelijkheid te geven om in te loggen moeten we de gebruiker een wachtwoord geven. Daarvoor gebruiken we het commando \texttt{passwd}.
-
-\begin{lstlisting}[language=bash]
-$ sudo passwd eengebruiker
-\end{lstlisting}
-
-We kunnen met \texttt{passwd} ook ons eigen wachtwoord veranderen
+Met \texttt{passwd}\index{passwd} kunnen we het wachtwoord van een gebruiker aanpassen. Zonder extra informatie passen we ons eigen wachtwoord aan:
 \begin{lstlisting}[language=bash]
 $ passwd
+\end{lstlisting}
+
+Als root kunnen we ook de het wachtwoord van een andere gebruiker aanpassen:
+\begin{lstlisting}[language=bash]
+$ sudo passwd eengebruiker
 \end{lstlisting}
 
