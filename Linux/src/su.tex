@@ -11,7 +11,14 @@ $ su -
 \end{lstlisting}
 We hebben bij de switch naar root niet opgegeven dat we de root gebruiker willen worden. Als er bij \texttt{su} geen naam wordt opgeven gaat \texttt{su} ervan uit dat je root wil worden. Met het \texttt{exit} commando kom je weer terug naar je eigen omgeving.
 
-Voor het installeren van software moet je root zijn. Een gewone gebruiker mag dat niet. We gaan nu eenmalig het \texttt{sudo} packet installeren als root gebruiker, zodat we hierna \texttt{sodu} kunnen gebruiken.
+Als je terug bent in je eigen omgeving geef je het commando \texttt{id}
+\begin{lstlisting}[language=bash]
+$ id
+uid=1001(dennisnc) gid=1001(dennisnc) groups=1001(dennisnc),27(sudo)
+\end{lstlisting}
+Als ook de sudo groep ziet, dan is alles op orde en mag je door naar de volgende sectie. Zie je de sudo groep niet dan gaan we daar wat aan doen in de rest van deze tekst.
+
+Voor het installeren van software moet je root zijn. Een gewone gebruiker mag dat niet. We gaan nu eenmalig het \texttt{sudo} packet installeren als root gebruiker, zodat we hierna \texttt{sudo} kunnen gebruiken.
 
 \begin{lstlisting}[language=bash]
 $ su -
@@ -21,5 +28,4 @@ $ su -
 We hebben het sudo-packet ge\"installeerd en de gebruiker (dennis, die je natuurlijk weer vervangen hebt door je eigen gebruikersnaam) toegevoegd (-a is append) aan de groep sudo (-G sudo) die rechten heeft om \texttt{sudo} te gebruiken.
 
 Als we met \texttt{exit} de omgeving van root verlaten en weer terug zijn in ons eigen account dan typen we nog een keer \texttt{exit} zodat we uitgelogd zijn. Als we daarna weer inloggen kunnen we met \texttt{id} zien dat we nu een extra (sudo) groep hebben waarvan we lid zijn.
-
 
