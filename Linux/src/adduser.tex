@@ -2,10 +2,24 @@ Om gebruikers toe te voegen aan het systeem zijn er twee tools. De eerste is \te
 
 \begin{lstlisting}[language=bash]
 $ sudo adduser eengebruiker
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for eengebruiker
+Enter the new value, or press ENTER for the default
+	Full Name []: Een Gebruiker
+	Room Number []: 42
+	Work Phone []: +42 987654321
+	Home Phone []: +42 127001
+	Other []: 
+Is the information correct? [Y/n]
 \end{lstlisting}
 Om gebruikers te kunnen aanmaken hebben we root-rechten nodig, dus we gebruiken het \texttt{sudo} commando.
 
-Het \texttt{adduser} commando maakt bijna alles automatisch aan. Het enige dat je hoeft te doen is te vertellen wat het wachtwoord van de gebruiker is en welke informatie er in het GECOS-veld terecht moet komen.
+Het \texttt{adduser} commando maakt bijna alles automatisch aan. Het enige dat je hoeft te doen is te vertellen wat het wachtwoord van de gebruiker is en welke informatie er in het GECOS-veld terecht moet komen. Controlleer of de gebruiker correct is aangemaakt:
+\begin{lstlisting}[language=bash]
+$ grep eengebruiker /etc/passwd
+\end{lstlisting}
 
 Je mag aan \texttt{adduser} ook meegeven dat zaken anders moeten zijn. Bijvoorbeeld dat een gebruiker een andere shell gebruikt dan bash. Dat kan door de optie \texttt{--shell /bin/chsh} mee te geven. Lees de man-page van \texttt{adduser} eens door met wat er nog meer mogelijk is.
 
