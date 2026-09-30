@@ -4,6 +4,8 @@ Om een gebruiker aan een groep toe te voegen gebruiken we:
 \begin{lstlisting}[language=bash]
 $ sudo gpasswd -a eengebruiker specialgroup
 \end{lstlisting}
+Controlleer de \texttt{/etc/group} file om te zien dat eengebruiker aan de groep specialgroup is toegevoegd.
+
 om diezelfde gebruiker weer uit de groep te halen gebruiken we:
 \begin{lstlisting}[language=bash]
 $ sudo gpasswd -d eengebruiker specialgroup
