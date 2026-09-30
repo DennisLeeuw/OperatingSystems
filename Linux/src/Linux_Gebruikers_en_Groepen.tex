@@ -18,7 +18,7 @@
 % Define document
 \author{D. Leeuw}
 \title{Linux: Gebruikers en Groepen}
-\date{\today\\v.0.9.6}
+\date{\today\\v.1.0.0}
 
 \begin{document}
 \selectlanguage{dutch}
@@ -71,9 +71,12 @@
 \section{Gebruikers toevoegen}
 \input{src/adduser}
 \subsection{User: wachtwoorden}
+\input{src/passwd}
+\subsection{Switch User}
+\input{src/sudo-user}
 \section{Groepen toevoegen}
 \input{src/addgroup}
-\subsection{Group: wachtwoorden}
+\subsection{Groupen wijzigen}
 \input{src/gpasswd}
 \section{Wijzigen van een gebruiker}
 \input{src/usermod}
