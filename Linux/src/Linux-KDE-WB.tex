@@ -1,0 +1,70 @@
+\documentclass[a4paper,12pt,twoside,openright,titlepage]{article}
+
+%Additional packages
+\input{styles/packages}
+
+% Listing style
+\input{styles/lstset}
+
+% Uncomment for production
+% \syntaxonly
+
+% Style
+\pagestyle{headings}
+
+% Turn on indexing
+\makeindex[intoc]
+
+% Define document
+\author{D. Leeuw}
+\title{Linux: KDE een kennismaking}
+\date{\today\\
+\vfill
+\raggedright
+\copyright\ 2026 Dennis Leeuw\\
+\input{styles/licentie-titlepage}}
+
+\begin{document}
+\selectlanguage{dutch}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%
+%%% Introductie %%%
+%%%%%%%%%%%%%%%%%%%
+
+%\section{Over dit Document}
+%\subsection{Leerdoelen}
+%\input{src/leerdoelen_cli_waarom_cli}
+%\subsection{Voorkennis}
+%\input{src/voorkennis_cli_waarom_cli}
+
+%%%%%%%%%%%%%%%%%
+%%% De inhoud %%%
+%%%%%%%%%%%%%%%%%
+%%% \tableofcontents
+
+
+% Requires:
+% Provides:
+\section{KDE verkennen}
+\input{src/linux-kde-verkennen}
+
+\section{Debian en KDE informatie}
+\input{src/linux-kde-browser}
+
+\section{Werken met bestanden en mappen}
+\input{src/linux-kde-dolphin}
+
+\section{Werken met Writer}
+\input{src/linux-kde-office-writer}
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Index and End %%%
+%%%%%%%%%%%%%%%%%%%%%
+%B% \backmatter
+\printindex
+\end{document}
+
+%%% Last line %%%
